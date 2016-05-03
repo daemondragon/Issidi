@@ -11,5 +11,3 @@ EditorBuildSettings:
     path: Assets/sebastien.unity
   - enabled: 1
     path: Assets/jeremy.unity
-  - enabled: 1
-    path: Assets/Map/Map 2.unity

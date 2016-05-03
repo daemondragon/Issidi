@@ -673,7 +673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!4 &1065246938 stripped
 Transform:
   m_PrefabParentObject: {fileID: 412838, guid: fddc3e4f06fa5ed46adac06462436146, type: 2}
@@ -895,7 +895,7 @@ Transform:
   - {fileID: 1227031028}
   - {fileID: 695913250}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
 --- !u!1001 &1643737246
 Prefab:
   m_ObjectHideFlags: 0
@@ -1261,4 +1261,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
