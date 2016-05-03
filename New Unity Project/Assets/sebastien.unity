@@ -1027,7 +1027,7 @@ Prefab:
     - target: {fileID: 11483200, guid: fb8d163e0f1e2de46a9e5d665c858a0e, type: 2}
       propertyPath: m_PlayerPrefab
       value: 
-      objectReference: {fileID: 145996, guid: dda54dbee425421449f66cc4768d8f0e, type: 2}
+      objectReference: {fileID: 186464, guid: e604ab38f01fb574c99aaf518e89d8bd, type: 2}
     - target: {fileID: 11483200, guid: fb8d163e0f1e2de46a9e5d665c858a0e, type: 2}
       propertyPath: m_CustomConfig
       value: 0
