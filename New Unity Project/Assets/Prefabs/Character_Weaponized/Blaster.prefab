@@ -1734,12 +1734,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3516bff17cfc62d4f80c1b8a9a261796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activate_input: 0
-  gravity: -0.981
-  speed: 5
+  sens: 79
+  gravity: -40
+  speed: 4
   jump_speed: 15
-  dash_time: 1
-  dash_speed: 15
+  dash_time: 0.5
+  dash_speed: 10
   rotation_time: 0.25
 --- !u!114 &11418824
 MonoBehaviour:

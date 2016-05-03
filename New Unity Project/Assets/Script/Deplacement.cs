@@ -7,8 +7,7 @@ using UnityEngine.Networking;
 
 public class Deplacement : MonoBehaviour
 {
-    public Direction sens { get; private set; }
-    public bool activate_input;
+    public Direction sens = Direction.Y;
 
     //Physic
     Rigidbody rigid_body;
@@ -58,26 +57,10 @@ public class Deplacement : MonoBehaviour
     {
         enabled = GetComponent<NetworkOwner>().IsMine();
 
-        activate_input = true;
-        is_walking = false;
-
-        gravity = -40.0f;
-        sens = Direction.Y;
-        speed = 4.0f;
-        on_ground = true;
-
-        jump_speed = 15.0f;
-        multiple_jump = 0;
-
-        on_dash = false;
-        dash_time = 0.5f;
-        dash_speed = speed * 2;
-
-        is_rotate = false;
-        rotation_time = 0.25f;
-
         rigid_body = GetComponent<Rigidbody>();
         stats = GetComponent<Stats>();
+
+        Debug.Log("start");
     }
 
     void FixedUpdate()
@@ -100,18 +83,12 @@ public class Deplacement : MonoBehaviour
         float movement_speed = speed;
 
         if (!on_dash)
-        {
-            if (activate_input)
-            {
-                movement = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
-            }
-        }
+            movement = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
         else
         {
-            if (activate_input && Input.GetAxis("Vertical") < -0.25f)
-            {
+            if (Input.GetAxis("Vertical") < -0.25f)
                 on_dash = false;
-            }
+
             movement.x = 1;
             movement_speed = dash_speed;
 
@@ -126,8 +103,9 @@ public class Deplacement : MonoBehaviour
             movement *= 0.5f;
         }
 
-        is_walking = (movement.x != 0.0f || movement.y != 0.0f);
-        if (is_walking)
+        bool is_moving = (movement.x != 0.0f || movement.y != 0.0f);
+        is_walking = is_moving && on_ground;
+        if (is_moving)
         {
             //Clear the velocity of the deplacement axis
             rigid_body.velocity = new Vector3(rigid_body.velocity.x * Mathf.Abs(direction.x),
@@ -144,31 +122,29 @@ public class Deplacement : MonoBehaviour
 
         rigid_body.velocity += final_gravity;
 
-        if (activate_input)
+
+        if (Input.GetAxis("Jump") != 0.0f && (on_ground || (multiple_jump < 2 && jump_time > 0.30)))
+            Jump();
+
+        if (Input.GetKey(KeyCode.LeftShift) && on_ground && !on_dash && stats.CanDash())
         {
-            if (Input.GetAxis("Jump") != 0.0f && (on_ground || (multiple_jump < 2 && jump_time > 0.30)))
-                Jump();
-
-            if (Input.GetKey(KeyCode.LeftShift) && on_ground && !on_dash && stats.CanDash())
-            {
-                on_dash = true;
-                actual_dash_time = 0.0f;
-                stats.Dash();
-            }
-
-            if (Input.GetKey(KeyCode.Keypad1))
-                SetDirection(Direction.X);
-            else if (Input.GetKey(KeyCode.Keypad2))
-                SetDirection(Direction.mX);
-            else if (Input.GetKey(KeyCode.Keypad3))
-                SetDirection(Direction.Y);
-            else if (Input.GetKey(KeyCode.Keypad4))
-                SetDirection(Direction.mY);
-            else if (Input.GetKey(KeyCode.Keypad5))
-                SetDirection(Direction.Z);
-            else if (Input.GetKey(KeyCode.Keypad6))
-                SetDirection(Direction.mZ);
+            on_dash = true;
+            actual_dash_time = 0.0f;
+            stats.Dash();
         }
+
+        if (Input.GetKey(KeyCode.Keypad1))
+            SetDirection(Direction.X);
+        else if (Input.GetKey(KeyCode.Keypad2))
+            SetDirection(Direction.mX);
+        else if (Input.GetKey(KeyCode.Keypad3))
+            SetDirection(Direction.Y);
+        else if (Input.GetKey(KeyCode.Keypad4))
+            SetDirection(Direction.mY);
+        else if (Input.GetKey(KeyCode.Keypad5))
+            SetDirection(Direction.Z);
+        else if (Input.GetKey(KeyCode.Keypad6))
+            SetDirection(Direction.mZ);
     }
 
     void Jump()
@@ -266,7 +242,7 @@ public class Deplacement : MonoBehaviour
 
     public bool canMoveCamera()
     {
-        return (!on_dash && !is_rotate && activate_input);
+        return (!on_dash && !is_rotate);
     }
 
     public void SetDirection(Direction dir)
@@ -347,7 +323,7 @@ public class Deplacement : MonoBehaviour
         return (rot);
     }
 
-    Direction findGlobalAxis(Vector3 v)
+    public Direction findGlobalAxis(Vector3 v)
     {
         if (v.x != 0.0f)
         {

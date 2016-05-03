@@ -30,7 +30,10 @@ public class Spawner : MonoBehaviour {
 
         Deplacement deplacement = obj.GetComponent<Deplacement>();
         if (deplacement)
+        {
             deplacement.CorrectRotation();
+            deplacement.sens = deplacement.findGlobalAxis(transform.up);
+        }
     }
 
     void SetTeam(GameObject obj)

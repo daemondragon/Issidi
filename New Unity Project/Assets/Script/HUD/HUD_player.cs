@@ -48,7 +48,6 @@ public class HUD_player : NetworkBehaviour
     {
         gameObject.SetActive(hasAuthority);
         enabled = hasAuthority;
-        Debug.Log(hasAuthority);
 
         if (!hasAuthority)
             return;
@@ -162,11 +161,9 @@ public class HUD_player : NetworkBehaviour
                 obj.GetComponent<Stats>().team = obj.GetComponent<Stats>().team;
                 //parce qu'il est désactivé s'il n'est pas à nous
                 NetworkOwner net = obj.GetComponent<NetworkOwner>();
-                if (net && net.IsMine())
+                if (!have_find && net && net.IsMine())
                 {
-                    Debug.Log(obj);
                     Initialisation(obj);
-                    break;
                 }
             }
         }
