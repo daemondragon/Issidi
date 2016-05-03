@@ -821,7 +821,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.335, z: 2.419}
+  m_LocalPosition: {x: 0.301, y: 0.378, z: 2.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 404618}
@@ -931,7 +931,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.5681539, y: -1.925403, z: -0.2623008}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 414072}
@@ -2370,7 +2370,7 @@ MonoBehaviour:
   Name: Lance-Flamme
   activate: 0
   Automatic: 1
-  Rate: 20
+  Rate: 15
   bullet_template: {fileID: 156458, guid: 5eb24a3c08346c94ca73d745826db3d6, type: 2}
   nb_bullets: 100
   bullet_per_second: 1
@@ -2606,7 +2606,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 3
+      scalar: 1.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2641,7 +2641,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 15
+      scalar: 40
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2938,7 +2938,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 200
+      scalar: 400
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4097,6 +4097,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: bullet_per_second
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Rate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Automatic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: activate
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
