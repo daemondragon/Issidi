@@ -158,7 +158,7 @@ public class Bullet : NetworkBehaviour
         explo.transform.position = transform.position;
         explo.transform.LookAt(r.contacts[0].normal);//r == collision in OnCollisionEnter
          */
-        Debug.Log("Destroyed bullet");
+       // Debug.Log("Destroyed bullet");
         Destroy(this.gameObject);
     }
 

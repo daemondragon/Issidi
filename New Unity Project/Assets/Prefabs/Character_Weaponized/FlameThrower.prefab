@@ -245,7 +245,6 @@ GameObject:
   - 4: {fileID: 406922}
   - 198: {fileID: 19869968}
   - 199: {fileID: 19943814}
-  - 114: {fileID: 11401976}
   m_Layer: 2
   m_Name: FlamePart
   m_TagString: Untagged
@@ -322,6 +321,7 @@ GameObject:
   - 114: {fileID: 11453002}
   - 114: {fileID: 11424452}
   - 114: {fileID: 11455958}
+  - 114: {fileID: 11444408}
   - 114: {fileID: 11440228}
   m_Layer: 2
   m_Name: FlameThrower
@@ -2273,17 +2273,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11401976
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211b1e42b9b261f4b871d737cefa2117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11404250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2418,6 +2407,18 @@ MonoBehaviour:
     i15: 14
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11444408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211b1e42b9b261f4b871d737cefa2117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetTransform: {fileID: 406922}
 --- !u!114 &11448030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2598,7 +2599,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 0
   scalingMode: 1
   InitialModule:
