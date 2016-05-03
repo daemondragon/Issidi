@@ -1,0 +1,5 @@
+Lors de la création de la map un problème est vite apparu, le setpasscall, en effet ceci est lié au nombre d'appel aux textures qui ont lieu sur la map.
+Le problème et que plus celui-ci est élève plus les FPS chuté et moins le jeu est jouable. Le but était donc de réduire celui-ci au maximum.
+Le problème est que cela est très difficile de diminuer le nombre de setpasscall car nous essayons d'avoir un nombre d'entités suffisant pour que le décor soit destructible.
+De plus même si une texture est réutilisée de nouveau setpasscall apparaissent. Par la suite nous n'avons pas réussi à faire une carte véritablement destructible car générant trop d'objet et donc de setpasscall.
+Notre carte solo ne sera donc n'un peu moins n'optimise que celle en ligne pour le moment car celle-ci n'utilise pas beaucoup d'objet.

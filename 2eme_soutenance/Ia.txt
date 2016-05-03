@@ -1,0 +1,8 @@
+\subsection {IA}
+
+L'IA a été très intéressante pour le moment à faire car il y a toujours un problème ou un cas auquel on 
+n'a pas pensé qui ce produit. En effet lors du codage du script de la tourelle celle-ci faisait tout sauf 
+ce que l'on lui demandait.
+En effet celle-ci se mettait à tourner sur elle-même sans jamais ce fixer dès qu'un joueur était détecté. 
+Quand celle-ci bougeait le référentiel n'était pas fixé et les coordonnées étant fixe la tourelle essayaient 
+de rejoindre un point qu'elle ne pouvait pas rejoindre.

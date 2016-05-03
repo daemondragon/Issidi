@@ -1,0 +1,25 @@
+\subsubsection {Camera}
+La caméra a été retravaillée pour cette soutenance, afin de ne plus passer à travers les murs.
+Pour ce faire, nous récupéront l'axe sur laquelle la caméra doit se déplacer, et lançont un Raycast afin de voir
+la présence d'un mur. Si il y en a un, nous modifions la position de la caméra afin de placer celle-ci juste avant le mur.
+
+\subsubsection {Son}
+L'ajout du son lors des mouvements du personnage permet de donner une meilleure immersion dans le jeu.
+Afin d'ajouter cette partie imporante, nous avons créer une liste de sons de pas, prenons un son dans cette liste et le jouons
+losrque le joueur marche. Lorsque le son s'arrete mais le le joueur est toujours sensé marcher, nous prenons alors le son suivant
+et répétons cette procédure. Ainsi, le code à alors cette forme :
+\begin {verbatim}
+void Update ()
+{
+    if (!audio_source.isPlaying && deplacement.IsWalking())
+    {//La gestion des erreurs a été enlevé pour plus de claireté
+        audio_source.clip = footstep_sound[actual_sound];
+        audio_source.Play();
+
+        //Loop to next sound
+        actual_sound = (actual_sound + 1) % footstep_sound.Count;
+    }
+}
+\end{verbatim}
+
+\subsubsection {Rotation}

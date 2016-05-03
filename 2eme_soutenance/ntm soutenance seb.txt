@@ -1,0 +1,46 @@
+\subsubsection {Particules}
+
+Si Michael Bay était un membre de notre projet, il serait fier de nos particules. La création de 
+nouvelles armes, surtout le lance grenade, nous a poussé a chercher des effets un peu plus poussés 
+que les premiers. Ceux-ci que nous avons dû manuellemnt adaptés aux réseau vu qu'ils n'étaient prevu 
+que pour du single player. La partie la plus embetante des particules fut des les conserver jusqu'a 
+leur mort naturelle. Pour ce faire, il a fallu separer l'objet, l'obus du generateur de particules 
+en lui même, a l'impact faire que l'objet generateur de particules ne soit plus enfant de l'obus, 
+arreter la generation de particules et enfin le supprimer plus tard.
+
+\centerline{\includegraphics[scale=1]{explosion.png}}
+
+
+\subsubsection {Physique}
+La plus grosse partie de la physique était déjà disponible à la soutenance precedente, mais globalement,
+celle-ci est plus fluide mais surtout, est présente sur certaines munition. Dans un soucis de réaelisme,
+car oui marcher sur les murs est réaliste, une gravité est maintenant présente sur les obus et cette
+gravité depend du joueur, sur quel mur il est aligné.
+
+
+\subsubsection {Armes}
+En plus d'une refonte graphique, toutes les armes ont subis une refonte au niveau du code. Ainsi elles sont
+maintenant fonctionelles en réseau. Le sniper, petit nouveau a cette soutenance dispose de son systeme de zoom,
+qui changera le FoV de la caméra. Le lance flame maintenant complet inflige correctement les degats.
+Le lance grenade aussi, nouveau, s'ajoute au contenu du jeu. Les armes sont aussi maintenant dangereuses,
+les joueurs prendrons des degats des differentes munitions mais aussi et surtout, certains parties des 
+cartes seront aussi destructibles et prennent des degats des armes.
+
+
+\subsubsection {Modèles}
+Tout comme le site, les modeles ont fait peau neuve. Toutes les armes ainsi que le personnage sont dotés
+de nouveaux modeles, en accord les un avec les autres. Cette partie fut particullierement longue pour
+respecter les critères graphiques du jeu, mais aussi pour que une sniper ressemble bien a un sniper, 
+mais cubique.
+
+\centerline{\includegraphics[scale=1]{NewPlayer.png}}
+
+\subsubsection {Mes peines}
+
+Le generateur de particules en reseau n'est pas tres coopératif et necessite plusieurs fonctions annexes pour l'activer
+sur tout les clients et le serveur.
+
+\subsubsection {Mes joies}
+
+Pour les degats en zones du lance grenade, le fait de pouvoir reccuperer tout les objets autour
+d'un point est très pratique.

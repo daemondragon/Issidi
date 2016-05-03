@@ -1,0 +1,29 @@
+\subsubsection{Interface}
+Barre de vie:
+Une barre de vie étant indispensable dans un TPS, nous en avons creer une de manière très discrète en haut à gauche de l'écran.
+Celle-ci permettra de monitorer la vie de notre personnage ayant un bref aperçu du maximum de vie possible ainsi que de la vie que nous possédons.
+La barre de vie est composée, donc, de 2 éléments distincts, un en fond qui indique le montant maximum de vie et un en premier plan qui indique la vie effective de notre personnage.
+\subsection{Modèles}
+Map:
+les modèles des maps doivent prévoir le fait que le décor serat destructible a l'avenir. Pour ce fait nous avons creer une map qui est subdivisée en de nombreuses unités independetes.
+Celles-ci permettront donc la destruction partielle de la map sans pour autant qu'une tire dans un mur n'entraine pas la destruction intégrale dudit mur.
+De plus UNITY ne permet pas, selon nos connaissances, de détruire partiellement un objet ou une entité mais ne peut gérer que la destruction de l'entité entière.
+Il nous a donc paru évident que la map doit être resegmentée en une multitude d'objets afin de pouvoir prévenir la destruction de celle-ci.
+
+Lance flamme:
+nous possédons deux modèles d'armes dont un lance-flamme.
+Celui-ci a ete dessine pour représenter au mieux la réalité et aussi pour s'intégrer au mieux à l'univers du jeu.
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+Les peines :
+après des essayes au nombre de 5, il se trouve que presegmenter un bâtiment en de nombreux objets, cubes dans notre cas, surcharge la mémoire de l'ordinateur.
+C'est pourquoi je vais devoir trouver un autre moyen de rendre destructibles les maps que je crerai a l'avenir sans utiliser cette méthode.
+De plus je n'ai pas reussi à changer la couleur de ma barre de vie car à chaque tentative de ma part un seul pixel de la barre change de couleur.
+Mes joies :
+ma grande joie est la decouverte de la GUI box permettant des creer des scripts simples et efficaces tels que la barre de vie ou autres mais c'est bien la seule chose qui ne m'a pas donné de fils a retordre.

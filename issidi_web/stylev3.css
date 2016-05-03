@@ -1,0 +1,82 @@
+body{
+	background-color: white;
+	margin:0;
+	padding:0;
+	
+	background-size: cover;
+	}
+#body{
+	/*border:solid;*/
+	position: absolute;
+	/*border-color:rgb(74,86,195);*/
+	background-color:rgb(242,242,242);
+	width:65%;
+	top:40%;
+	left:12.5%;
+	text-align:left;
+	padding-left:5%;
+	padding-right:5%;
+	text-align:justify;
+	word-wrap: break-word;
+}
+#issidi {
+	/*background-color: rgb(210,210,210);*/
+	position: relative;
+	width:40%;
+	height:30%;
+	border:none;
+	top:38%;
+	left:27%;
+}
+#entete{
+	border:solid;
+	position:absolute;
+	height:35%;
+	width:100%;
+	background-color:black;
+}
+#bandeau a:visited{
+	color:black;
+}#bandeau a{
+	color:white;
+}#bandeau{
+	position:relative;
+	padding-left:2%;
+	position :absolute;
+	
+	width:34%;
+	height:9%;
+	right: -4%;
+	top:7%;
+	overflow:hidden;
+}
+.menu{
+	position:relative;
+	display:inline-block;
+	position:relative;
+	width:14%;
+	height:99.8%;
+	padding-top:0.2%;
+	margin-left:0.5%;
+		
+}.menu:hover{
+	color: grey;
+}
+#news{
+	width:11.5%;
+}
+#dl{
+	width:23%;
+	margin-left:0.8%;
+	margin-right:0.8%;
+}
+#contact:hover{
+	border:solid;
+	border-color:white;
+	background-color:white;
+	color:black;
+	height:100%;
+}
+
+
+
