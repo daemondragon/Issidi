@@ -64,11 +64,10 @@ public class CameraDeplacement : MonoBehaviour
         camera_direction.Normalize();
 
         RaycastHit info;
-        if (Physics.Raycast(parent_position, camera_direction, out info, max_distance))
-            transform.position = parent_position + camera_direction * info.distance * 0.90f;
+        if (Physics.Raycast(parent_position ,camera_direction, out info, max_distance))
+            transform.position = parent_position + camera_direction * info.distance * 0.8f;
         else
-            transform.position = parent_position + camera_direction * max_distance * 0.90f;
-        Debug.DrawRay(transform.parent.transform.position, camera_direction, Color.red);
+            transform.position = parent_position + camera_direction * max_distance * 0.9f;
 
         if (deplacement && deplacement.canMoveCamera())
             MoveCamera();
