@@ -32,7 +32,7 @@ public class LaserScript : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100))
         {
             Stats S = hit.transform.GetComponent<Stats>();
-            if (S && MyStats && S.team != MyStats.team)
+            if ((S && MyStats && S.team != MyStats.team) || hit.transform.GetComponent<CubeLife>())
             {
                 EndMat = ReadyToShoot;
             }
