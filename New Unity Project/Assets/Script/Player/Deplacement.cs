@@ -72,6 +72,11 @@ public class Deplacement : MonoBehaviour
             MoveCharacter(delta_time);
     }
 
+    void Update()
+    {
+
+    }
+
     #region movement
 
     void MoveCharacter(float delta_time)
