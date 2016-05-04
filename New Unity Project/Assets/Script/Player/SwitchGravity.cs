@@ -30,19 +30,19 @@ public class SwitchGravity : MonoBehaviour
         Deplacement.Flip direction = Deplacement.Flip.Back;
 
         //add forward * 0.50001f to get outside the player
-        if (Physics.Raycast(start_position, transform.forward, out info, DistanceMax, layerMask) && info.distance < min_distance)
+        if (Physics.Raycast(start_position, transform.forward, out info, DistanceMax, layerMask))
         {
             min_distance = MinCustom(min_distance, info.distance, ref direction, Deplacement.Flip.Back);
         }
-        if (Physics.Raycast(start_position, -transform.forward, out info, DistanceMax, layerMask) && info.distance < min_distance)
+        if (Physics.Raycast(start_position, -transform.forward, out info, DistanceMax, layerMask))
         {
             min_distance = MinCustom(min_distance, info.distance, ref direction, Deplacement.Flip.Front);
         }
-        if (Physics.Raycast(start_position, transform.right, out info, DistanceMax, layerMask) && info.distance < min_distance)
+        if (Physics.Raycast(start_position, transform.right, out info, DistanceMax, layerMask))
         {
             min_distance = MinCustom(min_distance, info.distance, ref direction, Deplacement.Flip.Right);
         }
-        if (Physics.Raycast(start_position, -transform.right, out info, DistanceMax, layerMask) && info.distance < min_distance)
+        if (Physics.Raycast(start_position, -transform.right, out info, DistanceMax, layerMask))
         {
             min_distance = MinCustom(min_distance, info.distance, ref direction, Deplacement.Flip.Left);
         }
