@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11473540}
   - 114: {fileID: 11462228}
   - 114: {fileID: 11443522}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431242}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: CameraTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 4: {fileID: 428120}
   - 33: {fileID: 3397268}
   - 23: {fileID: 2312652}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - 4: {fileID: 454922}
   - 33: {fileID: 3374536}
   - 23: {fileID: 2358818}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - 4: {fileID: 405726}
   - 33: {fileID: 3378788}
   - 23: {fileID: 2357552}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 491998}
   - 114: {fileID: 11417538}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: blue_team
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,8 +114,25 @@ GameObject:
   - 4: {fileID: 460908}
   - 33: {fileID: 3388952}
   - 23: {fileID: 2337846}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.002
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &110384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 442322}
+  - 114: {fileID: 11432542}
+  - 114: {fileID: 11436666}
+  m_Layer: 0
+  m_Name: NetworkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +148,7 @@ GameObject:
   - 4: {fileID: 441078}
   - 33: {fileID: 3328126}
   - 23: {fileID: 2312542}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +165,7 @@ GameObject:
   - 4: {fileID: 499022}
   - 33: {fileID: 3378528}
   - 23: {fileID: 2342124}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +182,7 @@ GameObject:
   - 4: {fileID: 464498}
   - 33: {fileID: 3328652}
   - 23: {fileID: 2367898}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +199,7 @@ GameObject:
   - 4: {fileID: 407748}
   - 33: {fileID: 3301286}
   - 23: {fileID: 2337320}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +216,7 @@ GameObject:
   - 4: {fileID: 455436}
   - 33: {fileID: 3391580}
   - 23: {fileID: 2313266}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cylindre.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +231,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 473980}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: "Sym\xE9trie"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +260,7 @@ GameObject:
   - 114: {fileID: 11406568}
   - 114: {fileID: 11493924}
   - 114: {fileID: 11472098}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Sniper
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -260,7 +277,7 @@ GameObject:
   - 4: {fileID: 416758}
   - 33: {fileID: 3342228}
   - 23: {fileID: 2314092}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +294,7 @@ GameObject:
   - 4: {fileID: 433932}
   - 33: {fileID: 3300780}
   - 23: {fileID: 2328198}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +311,7 @@ GameObject:
   - 4: {fileID: 456590}
   - 33: {fileID: 3346578}
   - 23: {fileID: 2369218}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +328,7 @@ GameObject:
   - 4: {fileID: 418158}
   - 33: {fileID: 3309896}
   - 23: {fileID: 2368788}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +345,7 @@ GameObject:
   - 4: {fileID: 488308}
   - 33: {fileID: 3375370}
   - 23: {fileID: 2364154}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +362,7 @@ GameObject:
   - 4: {fileID: 431060}
   - 120: {fileID: 12003908}
   - 114: {fileID: 11449702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +379,7 @@ GameObject:
   - 4: {fileID: 404940}
   - 33: {fileID: 3307612}
   - 23: {fileID: 2348098}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +396,7 @@ GameObject:
   - 4: {fileID: 419698}
   - 33: {fileID: 3388090}
   - 23: {fileID: 2390166}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +413,7 @@ GameObject:
   - 4: {fileID: 493412}
   - 33: {fileID: 3371996}
   - 23: {fileID: 2363824}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +430,7 @@ GameObject:
   - 4: {fileID: 449498}
   - 33: {fileID: 3301706}
   - 23: {fileID: 2329024}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +446,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 404916}
   - 95: {fileID: 9506604}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: SniperModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +463,7 @@ GameObject:
   - 4: {fileID: 486830}
   - 33: {fileID: 3338086}
   - 23: {fileID: 2331584}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cylindre.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +480,7 @@ GameObject:
   - 4: {fileID: 427336}
   - 33: {fileID: 3361298}
   - 23: {fileID: 2380082}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +497,7 @@ GameObject:
   - 4: {fileID: 463196}
   - 33: {fileID: 3380126}
   - 23: {fileID: 2325232}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +514,7 @@ GameObject:
   - 4: {fileID: 499750}
   - 33: {fileID: 3384070}
   - 23: {fileID: 2378718}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +529,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 442568}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cloneur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +546,7 @@ GameObject:
   - 4: {fileID: 492130}
   - 33: {fileID: 3300548}
   - 23: {fileID: 2385056}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +562,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 467040}
   - 114: {fileID: 11407130}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,7 +579,7 @@ GameObject:
   - 4: {fileID: 414742}
   - 33: {fileID: 3325964}
   - 23: {fileID: 2397162}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cylindre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +596,7 @@ GameObject:
   - 4: {fileID: 429980}
   - 33: {fileID: 3378366}
   - 23: {fileID: 2342952}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +613,7 @@ GameObject:
   - 4: {fileID: 438350}
   - 33: {fileID: 3389904}
   - 23: {fileID: 2386512}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cylindre.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +630,7 @@ GameObject:
   - 4: {fileID: 484958}
   - 33: {fileID: 3387444}
   - 23: {fileID: 2375440}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +645,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439334}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: bullet_start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +662,7 @@ GameObject:
   - 4: {fileID: 436272}
   - 33: {fileID: 3348258}
   - 23: {fileID: 2340846}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +679,7 @@ GameObject:
   - 4: {fileID: 419992}
   - 33: {fileID: 3358450}
   - 23: {fileID: 2363318}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -803,6 +820,7 @@ Transform:
   - {fileID: 467040}
   - {fileID: 431242}
   - {fileID: 491998}
+  - {fileID: 442322}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &427336
@@ -938,6 +956,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 431242}
   m_RootOrder: 0
+--- !u!4 &442322
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.086254, y: 9.751991, z: 12.939634}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_Children: []
+  m_Father: {fileID: 421152}
+  m_RootOrder: 3
 --- !u!4 &442568
 Transform:
   m_ObjectHideFlags: 1
@@ -2367,6 +2397,72 @@ MonoBehaviour:
     i15: 181
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11432542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -822479833, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NetworkPort: 7777
+  m_ServerBindToIP: 0
+  m_ServerBindAddress: 
+  m_NetworkAddress: localhost
+  m_DontDestroyOnLoad: 1
+  m_RunInBackground: 1
+  m_ScriptCRCCheck: 1
+  m_MaxDelay: 0.01
+  m_LogLevel: 2
+  m_PlayerPrefab: {fileID: 128596}
+  m_AutoCreatePlayer: 1
+  m_PlayerSpawnMethod: 0
+  m_OfflineScene: 
+  m_OnlineScene: 
+  m_SpawnPrefabs:
+  - {fileID: 0}
+  m_CustomConfig: 0
+  m_MaxConnections: 4
+  m_ConnectionConfig:
+    m_PacketSize: 1500
+    m_FragmentSize: 500
+    m_ResendTimeout: 1200
+    m_DisconnectTimeout: 2000
+    m_ConnectTimeout: 2000
+    m_MinUpdateTimeout: 10
+    m_PingTimeout: 500
+    m_ReducedPingTimeout: 100
+    m_AllCostTimeout: 20
+    m_NetworkDropThreshold: 5
+    m_OverflowDropThreshold: 5
+    m_MaxConnectionAttempt: 10
+    m_AckDelay: 33
+    m_MaxCombinedReliableMessageSize: 100
+    m_MaxCombinedReliableMessageCount: 10
+    m_MaxSentMessageQueueSize: 128
+    m_IsAcksLong: 0
+    m_UsePlatformSpecificProtocols: 0
+    m_Channels: []
+  m_GlobalConfig:
+    m_ThreadAwakeTimeout: 1
+    m_ReactorModel: 0
+    m_ReactorMaximumReceivedMessages: 1024
+    m_ReactorMaximumSentMessages: 1024
+    m_MaxPacketSize: 2000
+  m_Channels: 0500000000000000
+  m_UseWebSockets: 0
+  m_UseSimulator: 0
+  m_SimulatedLatency: 1
+  m_PacketLossPercentage: 0
+  m_MatchHost: mm.unet.unity3d.com
+  m_MatchPort: 443
+  isNetworkActive: 0
+  matchMaker: {fileID: 0}
+  matchName: default
+  matchSize: 4
 --- !u!114 &11435932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2381,6 +2477,21 @@ MonoBehaviour:
   Name: 
   paused: 0
   mana_per_second: 0
+--- !u!114 &11436666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 227461547, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  showGUI: 1
+  offsetX: 0
+  offsetY: 0
 --- !u!114 &11442984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2414,6 +2525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0214055f029c1564fa9d4d8bb600c8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Nothing: {fileID: 2100000, guid: eceac6ea04a54764b9287781c2b2a92b, type: 2}
+  ReadyToShoot: {fileID: 2100000, guid: bdbc834321b68dd49b682c623d58410d, type: 2}
 --- !u!114 &11462224
 MonoBehaviour:
   m_ObjectHideFlags: 1

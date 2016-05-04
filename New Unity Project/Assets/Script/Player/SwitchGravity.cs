@@ -8,7 +8,8 @@ public class SwitchGravity : MonoBehaviour
 {
     private float DistanceMax = 2.0f;
     Deplacement d;
-
+    int layerMask = 9;
+    
     void Start()
     {
         d = transform.GetComponent<Deplacement>();
@@ -28,25 +29,23 @@ public class SwitchGravity : MonoBehaviour
         RaycastHit info;
         Deplacement.Flip direction = Deplacement.Flip.Back;
 
-        Debug.DrawRay(start_position + transform.forward, transform.forward);
-
         //add forward * 0.50001f to get outside the player
-        if (Physics.Raycast(start_position, transform.forward, out info, DistanceMax) && info.distance < min_distance)
+        if (Physics.Raycast(start_position, transform.forward, out info, DistanceMax, layerMask) && info.distance < min_distance)
         {
             min_distance = info.distance;
             direction = Deplacement.Flip.Back;
         }
-        else if (Physics.Raycast(start_position, -transform.forward, out info, DistanceMax) && info.distance < min_distance)
+        else if (Physics.Raycast(start_position, -transform.forward, out info, DistanceMax, layerMask) && info.distance < min_distance)
         {
             min_distance = info.distance;
             direction = Deplacement.Flip.Front;
         }
-        else if (Physics.Raycast(start_position, transform.right, out info, DistanceMax) && info.distance < min_distance)
+        else if (Physics.Raycast(start_position, transform.right, out info, DistanceMax, layerMask) && info.distance < min_distance)
         {
             min_distance = info.distance;
             direction = Deplacement.Flip.Right;
         }
-        else if (Physics.Raycast(start_position, -transform.right, out info, DistanceMax) && info.distance < min_distance)
+        else if (Physics.Raycast(start_position, -transform.right, out info, DistanceMax, layerMask) && info.distance < min_distance)
         {
             min_distance = info.distance;
             direction = Deplacement.Flip.Left;
