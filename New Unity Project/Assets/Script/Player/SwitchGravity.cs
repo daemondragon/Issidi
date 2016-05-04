@@ -9,7 +9,7 @@ public class SwitchGravity : MonoBehaviour
     private float DistanceMax = 2.0f;
     Deplacement d;
     int layerMask = 9;
-    
+
     void Start()
     {
         d = transform.GetComponent<Deplacement>();
@@ -32,27 +32,37 @@ public class SwitchGravity : MonoBehaviour
         //add forward * 0.50001f to get outside the player
         if (Physics.Raycast(start_position, transform.forward, out info, DistanceMax, layerMask) && info.distance < min_distance)
         {
-            min_distance = info.distance;
-            direction = Deplacement.Flip.Back;
+            min_distance = MinCustom(min_distance, info.distance, ref direction, Deplacement.Flip.Back);
         }
-        else if (Physics.Raycast(start_position, -transform.forward, out info, DistanceMax, layerMask) && info.distance < min_distance)
+        if (Physics.Raycast(start_position, -transform.forward, out info, DistanceMax, layerMask) && info.distance < min_distance)
         {
-            min_distance = info.distance;
-            direction = Deplacement.Flip.Front;
+            min_distance = MinCustom(min_distance, info.distance, ref direction, Deplacement.Flip.Front);
         }
-        else if (Physics.Raycast(start_position, transform.right, out info, DistanceMax, layerMask) && info.distance < min_distance)
+        if (Physics.Raycast(start_position, transform.right, out info, DistanceMax, layerMask) && info.distance < min_distance)
         {
-            min_distance = info.distance;
-            direction = Deplacement.Flip.Right;
+            min_distance = MinCustom(min_distance, info.distance, ref direction, Deplacement.Flip.Right);
         }
-        else if (Physics.Raycast(start_position, -transform.right, out info, DistanceMax, layerMask) && info.distance < min_distance)
+        if (Physics.Raycast(start_position, -transform.right, out info, DistanceMax, layerMask) && info.distance < min_distance)
         {
-            min_distance = info.distance;
-            direction = Deplacement.Flip.Left;
+            min_distance = MinCustom(min_distance, info.distance, ref direction, Deplacement.Flip.Left);
         }
 
         //if can switch gravity, switch
         if (min_distance < Mathf.Infinity)
             d.DoFlip(direction);
     }
+
+    float MinCustom(float OldMinimum, float NewMinimum, ref Deplacement.Flip ResultDeplacement, Deplacement.Flip NewDeplacement)
+    {
+        if (OldMinimum < NewMinimum)
+        {
+            return OldMinimum;
+        }
+        else
+        {
+            ResultDeplacement = NewDeplacement;
+            return NewMinimum;
+        }
+    }
+
 }
