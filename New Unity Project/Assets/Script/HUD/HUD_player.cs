@@ -158,16 +158,25 @@ public class HUD_player : NetworkBehaviour
             //Try to find the good player
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
             {
-                obj.GetComponent<Stats>().team = obj.GetComponent<Stats>().team;
-                //parce qu'il est désactivé s'il n'est pas à nous
                 NetworkOwner net = obj.GetComponent<NetworkOwner>();
-                if (!have_find && net && net.IsMine())
+                if (net && net.IsMine())
                 {
                     Initialisation(obj);
+                    break;
                 }
             }
+            RecolorAllPlayer();
         }
+    }
 
+    void RecolorAllPlayer()
+    {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            Stats s = obj.GetComponent<Stats>();
+            if (s)
+                s.team = s.team;//Recolor all player
+        }
     }
 
     void DrawUpdate()

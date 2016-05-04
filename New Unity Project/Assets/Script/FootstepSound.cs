@@ -13,7 +13,6 @@ public class FootstepSound : MonoBehaviour
     public List<AudioClip> footstep_sound;
     private AudioSource audio_source;
     private Deplacement deplacement;
-    private int actual_sound;
     private NetworkOwner net;
 
 	// Use this for initialization
@@ -21,7 +20,6 @@ public class FootstepSound : MonoBehaviour
         deplacement = GetComponent<Deplacement>();
         audio_source = GetComponent<AudioSource>();
         net = GetComponent<NetworkOwner>();
-        actual_sound = 0;
 
         GetComponent<AudioListener>().enabled = net.IsMine();
         enabled = net.IsMine();
@@ -32,11 +30,8 @@ public class FootstepSound : MonoBehaviour
     {
         if (footstep_sound.Count > 0 && !audio_source.isPlaying && deplacement.IsWalking())
         {
-            audio_source.clip = footstep_sound[actual_sound];
+            audio_source.clip = footstep_sound[Random.Range(0, footstep_sound.Count)];
             audio_source.Play();
-
-            //Loop to next sound
-            actual_sound = (actual_sound + 1) % footstep_sound.Count;
         }
 	}
 }
