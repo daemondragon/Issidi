@@ -304,9 +304,7 @@ GameObject:
   - 114: {fileID: 11448012}
   - 114: {fileID: 11403630}
   - 114: {fileID: 11491656}
-  - 114: {fileID: 11481610}
-  - 114: {fileID: 11484186}
-  - 114: {fileID: 11409780}
+  - 114: {fileID: 11425840}
   m_Layer: 8
   m_Name: Blaster
   m_TagString: Player
@@ -1710,19 +1708,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f8a600269bb1d714e8551f1502bac348, type: 3}
   - {fileID: 8300000, guid: 84a8005c2985e5d4690aa825707e65fc, type: 3}
   - {fileID: 8300000, guid: ed15257815df51b4eb9612a5d5731dec, type: 3}
---- !u!114 &11409780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothSpeed: 10
-  TargetChild: {fileID: 421688}
 --- !u!114 &11410728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1775,6 +1760,17 @@ MonoBehaviour:
   edgesOnly: 0
   edgesOnlyBgColor: {r: 1, g: 1, b: 1, a: 1}
   edgeDetectShader: {fileID: 4800000, guid: 0d1644bdf064147baa97f235fc5b4903, type: 3}
+--- !u!114 &11425840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28945cc4df886a24ab3b31bb50791b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11432426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1882,19 +1878,6 @@ MonoBehaviour:
     i15: 70
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &11481610
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fe0b0dd5e462bc49b72e38039eaab93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothSpeed: 10
-  TargetChild: {fileID: 0}
 --- !u!114 &11482150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1907,19 +1890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraTarget: {fileID: 413094}
---- !u!114 &11484186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothSpeed: 10
-  TargetChild: {fileID: 0}
 --- !u!114 &11491656
 MonoBehaviour:
   m_ObjectHideFlags: 1

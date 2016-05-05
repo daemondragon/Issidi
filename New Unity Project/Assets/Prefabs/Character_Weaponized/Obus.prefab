@@ -391,9 +391,7 @@ GameObject:
   - 114: {fileID: 11448266}
   - 114: {fileID: 11418524}
   - 114: {fileID: 11490934}
-  - 114: {fileID: 11406686}
-  - 114: {fileID: 11417362}
-  - 114: {fileID: 11402288}
+  - 114: {fileID: 11450920}
   m_Layer: 8
   m_Name: Obus
   m_TagString: Player
@@ -1610,32 +1608,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11402288
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothSpeed: 10
-  TargetChild: {fileID: 475102}
---- !u!114 &11406686
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fe0b0dd5e462bc49b72e38039eaab93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothSpeed: 10
-  TargetChild: {fileID: 0}
 --- !u!114 &11415656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1650,19 +1622,6 @@ MonoBehaviour:
   White: {fileID: 2100000, guid: 7d3c5af9006cc3e4599ff4198f0ae924, type: 2}
   Blue: {fileID: 2100000, guid: 2dbe48cb1aeaa3a4ba4eb4e6c371bf1b, type: 2}
   Orange: {fileID: 2100000, guid: 6050e3eda5758e544a38c8e61274a842, type: 2}
---- !u!114 &11417362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothSpeed: 10
-  TargetChild: {fileID: 0}
 --- !u!114 &11418524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1813,6 +1772,17 @@ MonoBehaviour:
   Name: 
   paused: 0
   mana_per_second: 0
+--- !u!114 &11450920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28945cc4df886a24ab3b31bb50791b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11475584
 MonoBehaviour:
   m_ObjectHideFlags: 1

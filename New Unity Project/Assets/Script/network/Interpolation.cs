@@ -1,54 +1,44 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-[RequireComponent(typeof(NetworkTransform))]
-[RequireComponent(typeof(NetworkIdentity))]
 [RequireComponent(typeof(Rigidbody))]
-
-public class Interpolation :  NetworkBehaviour
+public class Interpolation : NetworkBehaviour
 {
-    Vector3 last_position;
+    Rigidbody body;
+
     [SyncVar]
-    Vector3 network_velocity;
+    Vector3 network_position;
     [SyncVar]
     Quaternion network_rotation;
-
-    Rigidbody rigid_body;
+    [SyncVar]
+    Vector3 network_velocity;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        rigid_body = GetComponent<Rigidbody>();
-        last_position = new Vector3(0, 0, 0);
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        body = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
     {
         if (hasAuthority)
-        {
-            network_velocity = rigid_body.velocity;
-            network_rotation = transform.rotation;
-        }
+                Cmd_SendData(transform.position, transform.rotation, body.velocity);
         else
-            Interpolate(Time.deltaTime);
-	}
+            Interpolate();
+    }
 
-    void Interpolate(float delta_time)
+    [Command]
+    void Cmd_SendData(Vector3 pp, Quaternion pr, Vector3 pv)
     {
-        float distance = Vector3.Distance(transform.position, last_position);
-        float speed = network_velocity.magnitude;
+        network_position = pp;
+        network_rotation = pr;
+        network_velocity = pv;
+    }
 
-        if (distance < 3.0f)//Random value
-        {//In this case, we interpolate the position, else we teleport the player (too far from target)
-            if (speed * delta_time < distance)
-            {//Need interpolation
-                rigid_body.velocity = network_velocity;
-            }//else, at this frame it will be at the good position
-        }
-        last_position = transform.position;
-
-        //Interpolate rotation
+    void Interpolate()
+    {
+        transform.position = Vector3.Lerp(transform.position, network_position, 0.75f);
         transform.rotation = Quaternion.Lerp(transform.rotation, network_rotation, 0.75f);
+        body.velocity = network_velocity;
     }
 }
