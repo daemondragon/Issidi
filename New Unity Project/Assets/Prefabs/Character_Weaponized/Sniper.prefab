@@ -249,7 +249,6 @@ GameObject:
   - 65: {fileID: 6524684}
   - 54: {fileID: 5442292}
   - 114: {fileID: 11422970}
-  - 114: {fileID: 11495596}
   - 81: {fileID: 8155268}
   - 82: {fileID: 8267384}
   - 114: {fileID: 11462224}
@@ -257,9 +256,11 @@ GameObject:
   - 114: {fileID: 11442984}
   - 114: {fileID: 11435932}
   - 114: {fileID: 11478102}
-  - 114: {fileID: 11406568}
   - 114: {fileID: 11493924}
   - 114: {fileID: 11472098}
+  - 114: {fileID: 11451962}
+  - 114: {fileID: 11466648}
+  - 114: {fileID: 11448000}
   m_Layer: 8
   m_Name: Sniper
   m_TagString: Player
@@ -562,6 +563,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 467040}
   - 114: {fileID: 11407130}
+  - 114: {fileID: 11466252}
+  - 114: {fileID: 11480346}
   m_Layer: 8
   m_Name: Orientation
   m_TagString: Untagged
@@ -2328,17 +2331,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11406568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075dfde3d107bba489925531ab5bf843, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11407130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2514,6 +2506,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57016c7fb1a48424593adbd7d9194495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11448000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 10
+  TargetChild: {fileID: 467040}
 --- !u!114 &11449702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2527,6 +2532,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Nothing: {fileID: 2100000, guid: eceac6ea04a54764b9287781c2b2a92b, type: 2}
   ReadyToShoot: {fileID: 2100000, guid: bdbc834321b68dd49b682c623d58410d, type: 2}
+--- !u!114 &11451962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe0b0dd5e462bc49b72e38039eaab93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 10
+  TargetChild: {fileID: 0}
 --- !u!114 &11462224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2571,6 +2589,51 @@ MonoBehaviour:
   shaderFXAAPreset3: {fileID: 4800000, guid: c182fa94a5a0a4c02870641efcd38cd5, type: 3}
   shaderFXAAII: {fileID: 4800000, guid: cd5b323dcc592457790ff18b528f5e67, type: 3}
   shaderFXAAIII: {fileID: 4800000, guid: c547503fff0e8482ea5793727057041c, type: 3}
+--- !u!114 &11466252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 30
+    i1: 2
+    i2: 172
+    i3: 85
+    i4: 181
+    i5: 189
+    i6: 136
+    i7: 164
+    i8: 218
+    i9: 152
+    i10: 253
+    i11: 32
+    i12: 237
+    i13: 42
+    i14: 109
+    i15: 181
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &11466648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 10
+  TargetChild: {fileID: 0}
 --- !u!114 &11472098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2632,6 +2695,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_distance: 3
   mouse_sensivity: 1.5
+--- !u!114 &11480346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 10
+  TargetChild: {fileID: 0}
 --- !u!114 &11493924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2662,26 +2738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aeaeddad7b7ae6409fa47862f836e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11495596
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 0.2
 --- !u!120 &12003908
 LineRenderer:
   m_ObjectHideFlags: 1

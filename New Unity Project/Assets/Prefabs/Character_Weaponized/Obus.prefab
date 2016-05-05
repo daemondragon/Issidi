@@ -383,7 +383,6 @@ GameObject:
   - 65: {fileID: 6593954}
   - 54: {fileID: 5495878}
   - 114: {fileID: 11438592}
-  - 114: {fileID: 11483198}
   - 81: {fileID: 8196614}
   - 82: {fileID: 8243806}
   - 114: {fileID: 11434036}
@@ -391,8 +390,10 @@ GameObject:
   - 114: {fileID: 11430628}
   - 114: {fileID: 11448266}
   - 114: {fileID: 11418524}
-  - 114: {fileID: 11478942}
   - 114: {fileID: 11490934}
+  - 114: {fileID: 11406686}
+  - 114: {fileID: 11417362}
+  - 114: {fileID: 11402288}
   m_Layer: 8
   m_Name: Obus
   m_TagString: Player
@@ -1609,6 +1610,32 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11402288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 10
+  TargetChild: {fileID: 475102}
+--- !u!114 &11406686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe0b0dd5e462bc49b72e38039eaab93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 10
+  TargetChild: {fileID: 0}
 --- !u!114 &11415656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1623,6 +1650,19 @@ MonoBehaviour:
   White: {fileID: 2100000, guid: 7d3c5af9006cc3e4599ff4198f0ae924, type: 2}
   Blue: {fileID: 2100000, guid: 2dbe48cb1aeaa3a4ba4eb4e6c371bf1b, type: 2}
   Orange: {fileID: 2100000, guid: 6050e3eda5758e544a38c8e61274a842, type: 2}
+--- !u!114 &11417362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 10
+  TargetChild: {fileID: 0}
 --- !u!114 &11418524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1785,37 +1825,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraTarget: {fileID: 452040}
---- !u!114 &11478942
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075dfde3d107bba489925531ab5bf843, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11483198
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &11486234
 MonoBehaviour:
   m_ObjectHideFlags: 1

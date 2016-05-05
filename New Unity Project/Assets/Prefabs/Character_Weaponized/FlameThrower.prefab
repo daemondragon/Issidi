@@ -312,7 +312,6 @@ GameObject:
   - 65: {fileID: 6529192}
   - 54: {fileID: 5434200}
   - 114: {fileID: 11442272}
-  - 114: {fileID: 11448030}
   - 81: {fileID: 8114686}
   - 82: {fileID: 8249324}
   - 114: {fileID: 11465334}
@@ -320,9 +319,11 @@ GameObject:
   - 114: {fileID: 11404328}
   - 114: {fileID: 11453002}
   - 114: {fileID: 11424452}
-  - 114: {fileID: 11455958}
   - 114: {fileID: 11444408}
   - 114: {fileID: 11440228}
+  - 114: {fileID: 11444774}
+  - 114: {fileID: 11468770}
+  - 114: {fileID: 11436144}
   m_Layer: 8
   m_Name: FlameThrower
   m_TagString: Player
@@ -2356,6 +2357,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f8a600269bb1d714e8551f1502bac348, type: 3}
   - {fileID: 8300000, guid: 84a8005c2985e5d4690aa825707e65fc, type: 3}
   - {fileID: 8300000, guid: ed15257815df51b4eb9612a5d5731dec, type: 3}
+--- !u!114 &11436144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 10
+  TargetChild: {fileID: 404618}
 --- !u!114 &11440228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2419,7 +2433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetTransform: {fileID: 406922}
---- !u!114 &11448030
+--- !u!114 &11444774
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2427,18 +2441,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 145996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fe0b0dd5e462bc49b72e38039eaab93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
+  smoothSpeed: 10
+  TargetChild: {fileID: 0}
 --- !u!114 &11453002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2453,17 +2460,6 @@ MonoBehaviour:
   Name: 
   paused: 0
   mana_per_second: 0
---- !u!114 &11455958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075dfde3d107bba489925531ab5bf843, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11456270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2531,6 +2527,19 @@ MonoBehaviour:
   shaderFXAAPreset3: {fileID: 4800000, guid: c182fa94a5a0a4c02870641efcd38cd5, type: 3}
   shaderFXAAII: {fileID: 4800000, guid: cd5b323dcc592457790ff18b528f5e67, type: 3}
   shaderFXAAIII: {fileID: 4800000, guid: c547503fff0e8482ea5793727057041c, type: 3}
+--- !u!114 &11468770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 10
+  TargetChild: {fileID: 0}
 --- !u!114 &11478008
 MonoBehaviour:
   m_ObjectHideFlags: 1

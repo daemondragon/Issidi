@@ -49,6 +49,7 @@ public class Bullet : NetworkBehaviour
         }
         else if (life_time == 0.0f && hasAuthority)
         {
+            DetachPartiles();
             Cmd_DestroyBullet();
         }
     }
@@ -85,7 +86,7 @@ public class Bullet : NetworkBehaviour
                 {
                     if (ZoneEffect > 0)
                     {
-                        c.Damage(damage * (1-(Vector3.Distance(transform.position, collision.transform.position) / ZoneEffect)));
+                        c.Damage(damage * (1 - (Vector3.Distance(transform.position, collision.transform.position) / ZoneEffect)));
                     }
                     else
                     {
@@ -144,6 +145,7 @@ public class Bullet : NetworkBehaviour
         if (!hasAuthority)
             return;
 
+        DetachPartiles();
         Cmd_Boom();
         PlayerReceiveBullet(collision);
         Cmd_DestroyBullet();
@@ -158,8 +160,8 @@ public class Bullet : NetworkBehaviour
         explo.transform.position = transform.position;
         explo.transform.LookAt(r.contacts[0].normal);//r == collision in OnCollisionEnter
          */
-       // Debug.Log("Destroyed bullet");
-        Destroy(this.gameObject);
+        // Debug.Log("Destroyed bullet");
+        //Destroy(this.gameObject);
     }
 
     void DetachPartiles()
