@@ -31,7 +31,8 @@ GameObject:
   - 54: {fileID: 5435104}
   - 114: {fileID: 11437778}
   - 114: {fileID: 11444174}
-  - 114: {fileID: 11426388}
+  - 114: {fileID: 11455842}
+  - 114: {fileID: 11471164}
   m_Layer: 2
   m_Name: blaster_bullet
   m_TagString: Untagged
@@ -112,26 +113,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11426388
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &11437778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,7 +144,7 @@ MonoBehaviour:
     i14: 242
     i15: 177
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11444174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,6 +162,37 @@ MonoBehaviour:
   damage: 10
   life_time: 10
   ZoneEffect: 0
+--- !u!114 &11455842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &11471164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180630}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075dfde3d107bba489925531ab5bf843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13561654
 SphereCollider:
   m_ObjectHideFlags: 1

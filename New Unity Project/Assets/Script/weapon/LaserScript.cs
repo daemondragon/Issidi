@@ -15,26 +15,20 @@ public class LaserScript : MonoBehaviour
         line = gameObject.GetComponent<LineRenderer>();
         line.enabled = true;
         MyStats = transform.root.GetComponent<Stats>();
-
     }
     void LateUpdate()
-
     {
-        LaserDraw();
+        DrawLine();
     }
 
-    void FixedUpdate()
-    {
-        LaserDraw();
-    }
-    void LaserDraw()
+    void DrawLine()
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        Material EndMat = Nothing;
+        line.SetPosition(0, ray.origin);
 
-        line.SetPosition(0, transform.position);
+        Material EndMat = Nothing;
         if (Physics.Raycast(ray, out hit, 100))
         {
             Stats S = hit.transform.GetComponent<Stats>();
@@ -49,8 +43,7 @@ public class LaserScript : MonoBehaviour
             line.SetPosition(1, ray.GetPoint(100));
         }
         line.material = EndMat;
+
     }
-
-
 
 }

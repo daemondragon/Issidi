@@ -13,7 +13,8 @@ GameObject:
   - 54: {fileID: 5478484}
   - 114: {fileID: 11495084}
   - 114: {fileID: 11483730}
-  - 114: {fileID: 11437386}
+  - 114: {fileID: 11445664}
+  - 114: {fileID: 11488392}
   m_Layer: 2
   m_Name: flame_notparts
   m_TagString: Untagged
@@ -55,7 +56,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11437386
+--- !u!114 &11445664
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,6 +93,17 @@ MonoBehaviour:
   damage: 10
   life_time: 0.1
   ZoneEffect: 0
+--- !u!114 &11488392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156458}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075dfde3d107bba489925531ab5bf843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11495084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,7 +135,7 @@ MonoBehaviour:
     i14: 179
     i15: 214
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!135 &13513826
 SphereCollider:
   m_ObjectHideFlags: 1
