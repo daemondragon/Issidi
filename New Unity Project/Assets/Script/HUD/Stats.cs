@@ -188,18 +188,7 @@ public class Stats : NetworkBehaviour
             paused = !paused;
 
         if (IsDead())
-        {
-            CameraDeplacement cam = GetComponentInChildren<CameraDeplacement>();
-            if (cam)
-            {
-                cam.ActivateCamera(false);
-            }
-            else
-                Debug.Log("No cam found");
-
-            
             Cmd_DestroyPlayer(gameObject);
-        }
     }
 
     public bool IsDead()

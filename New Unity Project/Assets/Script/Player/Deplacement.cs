@@ -59,8 +59,6 @@ public class Deplacement : MonoBehaviour
 
         rigid_body = GetComponent<Rigidbody>();
         stats = GetComponent<Stats>();
-
-        Debug.Log("start");
     }
 
     void FixedUpdate()

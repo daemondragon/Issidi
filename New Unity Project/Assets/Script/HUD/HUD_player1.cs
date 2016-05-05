@@ -203,10 +203,7 @@ public class HUD_player1 : NetworkBehaviour
                 if (Cursor.visible)
                     Cursor.lockState = CursorLockMode.None;
                 pause_menu.SetActive(stats.paused);
-                if (stats.paused)
-                {
-                    player.GetComponentInChildren<CameraDeplacement>().ActivateCamera(false);
-                }
+
             }
         }
 
@@ -228,7 +225,6 @@ public class HUD_player1 : NetworkBehaviour
     public void unpause()
     {
         stats.paused = false;
-        player.GetComponentInChildren<CameraDeplacement>().ActivateCamera(true);
     }
 
     public void quit()

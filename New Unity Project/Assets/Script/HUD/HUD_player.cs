@@ -4,10 +4,24 @@ using UnityEngine.UI;
 
 public class HUD_player : NetworkBehaviour
 {
+    enum State
+    {
+        Selection = 0,
+        Play,
+        Pause,
+        Death,
+
+        Count//Don't add something after it
+    }
+
+    State state;
+
     private Stats stats;//The stats to render
     private Image healthbar;
     private Image nrjbar;
     private Image ammo_count;
+
+    GameObject[] panels;
 
     GameObject stats_bars;
     GameObject weapon_panel;
@@ -23,7 +37,6 @@ public class HUD_player : NetworkBehaviour
     Image score_blue;
     Image score_orange;
 
-    CameraDeplacement cam;
     private Button btn_continue;
 
     GameObject playbtn;
@@ -52,8 +65,14 @@ public class HUD_player : NetworkBehaviour
         if (!hasAuthority)
             return;
 
-        have_find = false;
-        can_grap_player = true;
+
+        panels = new GameObject[(int)State.Count];
+        panels[(int)State.Play] = GameObject.Find("game_info");
+        panels[(int)State.Selection] = GameObject.Find("select_perso");
+        panels[(int)State.Death] = GameObject.Find("death_panel");
+        panels[(int)State.Pause] = GameObject.Find("pause_panel");
+
+
 
         stats_bars = GameObject.Find("stats_bars");
         if (stats_bars)
@@ -72,16 +91,6 @@ public class HUD_player : NetworkBehaviour
             Image[] image_ammo = weapon_panel.GetComponentsInChildren<Image>();
             ammo_count = image_ammo[1];
         }
-
-        // pause gestion
-        pause_menu = GameObject.Find("pause_panel");
-        if (pause_menu)
-            pause_menu.SetActive(false);
-
-        // death gestion
-        death_panel = GameObject.Find("death_panel");
-        if (death_panel)
-            death_panel.SetActive(false);
 
         // score gestion
         score_panel = GameObject.Find("score_panel");
@@ -112,23 +121,12 @@ public class HUD_player : NetworkBehaviour
 
         playbtn.SetActive(false);
 
-
-        select_panel = GameObject.Find("selec_perso");
-        crooshair = GameObject.Find("crosshair");
-
-        stats_bars.SetActive(false);
-        score_panel.SetActive(false);
-        weapon_panel.SetActive(false);
-        crooshair.SetActive(false);
-
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        ChangeState(State.Selection);
     }
 
     void Initialisation(GameObject character)
     {
         stats = character.GetComponentInChildren<Stats>();//init des stats
-        cam = character.GetComponentInChildren<CameraDeplacement>();
         have_find = true;
         stats.paused = false;
 
@@ -145,15 +143,14 @@ public class HUD_player : NetworkBehaviour
             playbtn.SetActive(true);
 
         if (have_find)
+        {
+            UpdateState();
             DrawUpdate();
+        }
         else
         {
             if (!can_grap_player)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
                 return;
-            }
 
             //Try to find the good player
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
@@ -166,6 +163,8 @@ public class HUD_player : NetworkBehaviour
                 }
             }
             RecolorAllPlayer();
+
+            UpdateState();
         }
     }
 
@@ -208,25 +207,6 @@ public class HUD_player : NetworkBehaviour
                 stats.Life += 10;
                 scoreb++;
             }
-
-            if (stats.IsDead())
-            {
-                death_panel.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                have_find = false;
-            }
-            else
-            {
-                Cursor.visible = stats.paused || !have_find;
-                if (Cursor.visible)
-                    Cursor.lockState = CursorLockMode.None;
-                pause_menu.SetActive(stats.paused);
-                if (stats.paused)
-                {
-                    player.GetComponentInChildren<CameraDeplacement>().ActivateCamera(false);
-                }
-            }
         }
 
         if (scoreo == scoreb && scoreb == 0)
@@ -244,10 +224,47 @@ public class HUD_player : NetworkBehaviour
         scoreO.text = scoreo.ToString();
     }
 
+    void UpdateState()
+    {
+        if (state == State.Play)
+        {
+            if (can_grap_player && (!stats || stats.IsDead()))
+                ChangeState(State.Death);
+            else if (stats.paused)
+                ChangeState(State.Pause);
+        }
+        else if (state == State.Pause)
+        {
+            if (stats && !stats.paused)
+                ChangeState(State.Play);
+        }
+    }
+
+    void ChangeState(State s)
+    {
+        state = s;
+        for (int i = 0; i < (int)State.Count; i++)
+        {
+            panels[i].SetActive((int)s == i);
+        }
+
+        Cursor.visible = (s != State.Play);
+        can_grap_player = (s == State.Play);
+
+        if (s == State.Play)
+            Cursor.lockState = CursorLockMode.Locked;
+        else
+            Cursor.lockState = CursorLockMode.None;
+
+        if (s == State.Selection)
+            have_find = false;
+    }
+
+    #region buttons
     public void unpause()
     {
         stats.paused = false;
-        player.GetComponentInChildren<CameraDeplacement>().ActivateCamera(true);
+        ChangeState(State.Play);
     }
 
     public void quit()
@@ -257,10 +274,6 @@ public class HUD_player : NetworkBehaviour
     public void return2main()
     {
         Application.LoadLevel("menu_pricipal");
-    }
-    public void resume()
-    {
-        pause_menu.SetActive(false);
     }
 
     [Command]
@@ -275,17 +288,7 @@ public class HUD_player : NetworkBehaviour
         if (player)
             Cmd_DestroyPlayer(player);
 
-        have_find = false;
-        player = null;
-        stats = null;
-        can_grap_player = false;
-
-        select_panel.SetActive(true);
-        death_panel.SetActive(false);
-        pause_menu.SetActive(false);
-        stats_bars.SetActive(false);
-        score_panel.SetActive(false);
-        weapon_panel.SetActive(false);
+        ChangeState(State.Selection);
     }
 
     public void Play()
@@ -306,15 +309,7 @@ public class HUD_player : NetworkBehaviour
 
         factory.Cmd_CreatePlayer(selected_team, weaponType - 1);//-1 car mes indices commencent à zéro
 
-
-        select_panel.SetActive(false);
-        death_panel.SetActive(false);
-        pause_menu.SetActive(false);
-        stats_bars.SetActive(true);
-        score_panel.SetActive(true);
-        weapon_panel.SetActive(true);
-        crooshair.SetActive(true);
-        can_grap_player = true;
+        ChangeState(State.Play);
     }
 
     public void snipselect()
@@ -353,4 +348,5 @@ public class HUD_player : NetworkBehaviour
         team = 2;
         selectbtnB.SetActive(true);
     }
+    #endregion
 }

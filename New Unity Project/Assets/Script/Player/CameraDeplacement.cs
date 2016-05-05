@@ -20,20 +20,9 @@ public class CameraDeplacement : MonoBehaviour
         GetComponent<Camera>().enabled = net.IsMine();
         enabled = net.IsMine();
 
-        ActivateCamera(true);
+        activate = true;
         mouse_sensivity = 1.5f;
         max_distance = 3.0f;
-    }
-
-    public void ActivateCamera(bool b)
-    {
-        activate = b;
-        Cursor.visible = !b;
-
-        if (b)
-            Cursor.lockState = CursorLockMode.Locked;
-        else
-            Cursor.lockState = CursorLockMode.None;
     }
 
     void MoveCameraX(float rotation)

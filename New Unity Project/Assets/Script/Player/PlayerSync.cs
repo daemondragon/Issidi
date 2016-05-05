@@ -28,8 +28,6 @@ public class PlayerSync : NetworkBehaviour
             weapon = temp.transform;
         else
             Debug.Log("No WeaponOrientation script found in children of " + this);
-
-        Debug.Log(hasAuthority);
     }
 
     void FixedUpdate()
