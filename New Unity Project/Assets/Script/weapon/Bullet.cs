@@ -6,6 +6,11 @@ using UnityEngine.Networking;
 
 public class Bullet : NetworkBehaviour
 {
+
+    //Keep particle
+    [SyncVar]
+    bool Destroy_Keep = false;
+
     //If null, no explosion
     public GameObject explosion;
 
@@ -33,6 +38,8 @@ public class Bullet : NetworkBehaviour
         enabled = hasAuthority;
         this.team = team;
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -85,7 +92,7 @@ public class Bullet : NetworkBehaviour
                 {
                     if (ZoneEffect > 0)
                     {
-                        c.Damage(damage * (1-(Vector3.Distance(transform.position, collision.transform.position) / ZoneEffect)));
+                        c.Damage(damage * (1 - (Vector3.Distance(transform.position, collision.transform.position) / ZoneEffect)));
                     }
                     else
                     {
@@ -109,11 +116,6 @@ public class Bullet : NetworkBehaviour
             C[0] = collision.collider;
             ApplyDamages(C);
         }
-
-
-
-
-
     }
 
     [Command]
@@ -129,10 +131,13 @@ public class Bullet : NetworkBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+
+
         if (!hasAuthority)
             return;
 
-        DetachPartiles();
+
+
         Cmd_Boom();
         PlayerReceiveBullet(collision);
         Cmd_DestroyBullet();
@@ -141,8 +146,10 @@ public class Bullet : NetworkBehaviour
     //if the bullet spawn in the player, it will be this case and not OnCollisionEnter
     void OnCollisionStay(Collision collision)
     {
+
         if (!hasAuthority)
             return;
+
 
         Cmd_Boom();
         PlayerReceiveBullet(collision);
@@ -158,11 +165,21 @@ public class Bullet : NetworkBehaviour
         explo.transform.position = transform.position;
         explo.transform.LookAt(r.contacts[0].normal);//r == collision in OnCollisionEnter
          */
-       // Debug.Log("Destroyed bullet");
-        Destroy(this.gameObject);
+        // Debug.Log("Destroyed bullet");
+
+
+        Rpc_KeepParticles();
+        Detach();
+        Destroy(gameObject);
     }
 
-    void DetachPartiles()
+    [ClientRpc]
+    void Rpc_KeepParticles()
+    {
+        Detach();
+    }
+
+    void Detach()
     {
         var t = transform.FindChild("parts");
         if (t != null)
@@ -172,6 +189,6 @@ public class Bullet : NetworkBehaviour
             t.parent = null;
             Destroy(t.gameObject, 4);
         }
-
     }
+
 }

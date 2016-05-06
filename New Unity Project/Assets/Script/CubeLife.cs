@@ -5,6 +5,8 @@ using System.Collections;
 public class CubeLife : NetworkBehaviour
 {
     public float MaximumLife = 100;
+
+    [SyncVar]
     float Life;
     public GameObject ExplosionEffect;
 
@@ -28,10 +30,9 @@ public class CubeLife : NetworkBehaviour
 
     public void Damage(float Damage)
     {
-        Debug.Log("damaged:" + Damage);
         Life -= Damage;
-        Debug.Log("life:" + Life);
     }
+                
 
 
     void Update()

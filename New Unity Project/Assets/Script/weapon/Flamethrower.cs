@@ -30,6 +30,10 @@ public class Flamethrower : NetworkBehaviour
 
     private void EnablePartsChanged(bool value)
     {
+
+        if (part == null)
+            return;
+
         if (value)
         {
             part.Play(true);
