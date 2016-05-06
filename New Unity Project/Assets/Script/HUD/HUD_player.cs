@@ -174,11 +174,12 @@ public class HUD_player : NetworkBehaviour
         }
 
         recolor_time = 0.0f;
+
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
         {
             Stats s = obj.GetComponent<Stats>();
             if (s)
-                s.team = s.team;//Recolor all player
+                s.RecolorPlayer();
         }
     }
 
@@ -190,9 +191,9 @@ public class HUD_player : NetworkBehaviour
             Text pdv = healthbar.GetComponentInChildren<Text>();
             pdv.text = ((int)(Mathf.Ceil(stats.Life))).ToString() + "/" + stats.MaxLife.ToString();
 
-            nrjbar.fillAmount = stats.Mana / stats.MaxMana;
+            nrjbar.fillAmount = stats.EnergyRatio();
             Text point_nrj = nrjbar.GetComponentInChildren<Text>();
-            point_nrj.text = ((int)(stats.Mana)).ToString() + "/" + ((int)(stats.MaxMana)).ToString();
+            point_nrj.text = ((int)(stats.Energy)).ToString() + "/" + ((int)(stats.MaxEnergy)).ToString();
 
             ammo_count.fillAmount = (float)stats.Ammo / (float)stats.MaxAmmo;
             Text amo = ammo_count.GetComponentInChildren<Text>();
@@ -202,7 +203,7 @@ public class HUD_player : NetworkBehaviour
             if (Input.GetKeyDown(KeyCode.T))
             {
                 stats.Life -= 20;
-                stats.Mana -= 30;
+                stats.Energy -= 30;
                 stats.Ammo -= 2;
                 scoreo += 100;
             }

@@ -11,31 +11,40 @@ public class Stats : NetworkBehaviour
         Blue = 1,
         Orange = 2
     }
-    public string Name;
-    public bool paused;
     #region GetterSetter
 
-    private Team _team = Team.None;
+    [SyncVar]
+    string _name;
+    public string Name
+    {
+        get { return _name; }
+        set { _name = value; }
+    }
+    [SyncVar]
+    bool _paused;
+    public bool paused
+    {
+        get { return _paused; }
+        set { _paused = value; }
+    }
+
+    [SyncVar]
+    Team _team;
     public Team team
     {
         get { return (_team); }
         set
         {
-            if (colors == null)
-                Start();
-            else if (colors.Length <= 0)
-                colors = GetComponentsInChildren<ColorModifier>(); ;
-
             _team = value;
-            foreach (ColorModifier col in colors)
-            {
-                col.SetTeam(value);
-            }
-
+            RecolorPlayer();
         }
     }
-    private float max_life;
-    private float life;
+
+    [SyncVar]
+    float max_life;
+    [SyncVar]
+    float life;
+
     public float MaxLife
     {
         get { return (max_life); }
@@ -60,44 +69,56 @@ public class Stats : NetworkBehaviour
     }
 
     //For the dash
-    private float max_mana;
-    private float mana;
-    private float mana_per_dash;
-    public float MaxMana
+    [SyncVar]
+    float max_energy;
+    [SyncVar]
+    float energy;
+    [SyncVar]
+    float energy_per_dash;
+    [SyncVar]
+    float energy_per_second;
+
+    public float MaxEnergy
     {
-        get { return (max_mana); }
+        get { return (max_energy); }
         set
         {
             if (value < 0.0f)
                 value = 0.0f;
-            max_mana = value;
+            max_energy = value;
         }
     }
-    public float Mana
+    public float Energy
     {
-        get { return (mana); }
+        get { return (energy); }
         set
         {
-            if (value > MaxMana)
-                value = MaxMana;
+            if (value > MaxEnergy)
+                value = MaxEnergy;
             else if (value < 0.0f)
                 value = 0.0f;
-            mana = value;
+            energy = value;
         }
     }
-    public float ManaPerDash
+    public float EnergyPerDash
     {
-        get { return (mana_per_dash); }
+        get { return (energy_per_dash); }
         set
         {
             if (value < 0.0f)
                 value = 0.0f;
-            mana_per_dash = value;
+            energy_per_dash = value;
         }
     }
+    public float EnergyPerSecond
+    {
+        get { return (energy_per_second); }
+        set { energy_per_second = value; }
+    }
 
-    public float mana_per_second;
-    private int max_ammo;
+    [SyncVar]
+    int max_ammo;
+    [SyncVar]
     private int ammo;
     public int MaxAmmo
     {
@@ -150,12 +171,25 @@ public class Stats : NetworkBehaviour
 
         MaxLife = 100.0f;
         Life = MaxLife;
-        MaxMana = 100.0f;
-        Mana = MaxMana;
-        mana_per_second = MaxMana / 15.0f;//Mana full in 15 second 
-        ManaPerDash = 30;
+        MaxEnergy = 100.0f;
+        Energy = MaxEnergy;
+        EnergyPerSecond = MaxEnergy / 15.0f;//Mana full in 15 second 
+        EnergyPerDash = 30;
         Name = "Player";
         paused = false;
+    }
+
+    public void RecolorPlayer()
+    {
+        if (colors == null)
+            Start();
+        else if (colors.Length <= 0)
+            colors = GetComponentsInChildren<ColorModifier>(); ;
+
+        foreach (ColorModifier col in colors)
+        {
+            col.SetTeam(_team);
+        }
     }
 
     [Command]
@@ -170,7 +204,7 @@ public class Stats : NetworkBehaviour
         if (!hasAuthority)
             return;
 
-        Mana += mana_per_second * Time.deltaTime;
+        Energy += EnergyPerSecond * Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Escape))
             paused = !paused;
@@ -189,9 +223,9 @@ public class Stats : NetworkBehaviour
         return (life / MaxLife);
     }
 
-    public float ManaRatio()
+    public float EnergyRatio()
     {
-        return (mana / max_mana);
+        return (Energy / MaxEnergy);
     }
 
     public float AmmoRatio()
@@ -201,12 +235,12 @@ public class Stats : NetworkBehaviour
 
     public bool CanDash()
     {
-        return Mana >= ManaPerDash;
+        return Energy >= EnergyPerDash;
     }
 
     public void Dash()
     {
-        Mana -= ManaPerDash;
+        Energy -= EnergyPerDash;
     }
 
     public bool CanShoot()

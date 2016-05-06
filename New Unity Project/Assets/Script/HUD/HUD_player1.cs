@@ -168,9 +168,9 @@ public class HUD_player1 : NetworkBehaviour
             Text pdv = healthbar.GetComponentInChildren<Text>();
             pdv.text = ((int)(Mathf.Ceil(stats.Life))).ToString() + "/" + stats.MaxLife.ToString();
 
-            nrjbar.fillAmount = stats.Mana / stats.MaxMana;
+            nrjbar.fillAmount = stats.EnergyRatio();
             Text point_nrj = nrjbar.GetComponentInChildren<Text>();
-            point_nrj.text = ((int)(stats.Mana)).ToString() + "/" + ((int)(stats.MaxMana)).ToString();
+            point_nrj.text = ((int)(stats.Energy)).ToString() + "/" + ((int)(stats.MaxEnergy)).ToString();
 
             ammo_count.fillAmount = (float)stats.Ammo / (float)stats.MaxAmmo;
             Text amo = ammo_count.GetComponentInChildren<Text>();
@@ -180,7 +180,7 @@ public class HUD_player1 : NetworkBehaviour
             if (Input.GetKeyDown(KeyCode.T))
             {
                 stats.Life -= 20;
-                stats.Mana -= 30;
+                stats.Energy -= 30;
                 stats.Ammo -= 2;
                 scoreo += 100;
             }
