@@ -33,7 +33,6 @@ GameObject:
   - 4: {fileID: 491688}
   - 198: {fileID: 19853628}
   - 199: {fileID: 19945070}
-  - 114: {fileID: 11491188}
   m_Layer: 2
   m_Name: parts
   m_TagString: Untagged
@@ -169,38 +168,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 237
-    i1: 221
-    i2: 164
-    i3: 9
-    i4: 239
-    i5: 194
-    i6: 225
-    i7: 132
-    i8: 24
-    i9: 113
-    i10: 135
-    i11: 183
-    i12: 146
-    i13: 198
-    i14: 48
-    i15: 221
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
---- !u!114 &11491188
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160830}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
