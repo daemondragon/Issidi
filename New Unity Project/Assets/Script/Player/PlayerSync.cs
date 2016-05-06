@@ -59,15 +59,15 @@ public class PlayerSync : NetworkBehaviour
 
     void Interpolate()
     {
-        transform.position = Vector3.Lerp(transform.position, player_position, 0.75f);
-        transform.rotation = Quaternion.Lerp(transform.rotation, player_rotation, 0.75f);
+        transform.position = Vector3.Lerp(transform.position, player_position, 0.5f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, player_rotation, 0.5f);
         body.velocity = player_velocity;
 
         //Weapon Interpolation
         if (weapon)
         {
-            weapon.localPosition = weapon_position;
-            weapon.localRotation = weapon_rotation;
+            weapon.localPosition =Vector3.Lerp(weapon.localPosition, weapon_position, 0.5f);
+            weapon.localRotation = Quaternion.Lerp(weapon.localRotation, weapon_rotation, 0.5f);
         }
     }
 }
