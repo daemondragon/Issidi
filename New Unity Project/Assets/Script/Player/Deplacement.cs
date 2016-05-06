@@ -63,6 +63,9 @@ public class Deplacement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (stats.paused)
+            return;
+
         float delta_time = Time.deltaTime;
         if (is_rotate)
             UpdateRotation(delta_time);
@@ -240,7 +243,7 @@ public class Deplacement : MonoBehaviour
 
     public bool canMoveCamera()
     {
-        return (!on_dash && !is_rotate);
+        return (!stats.paused && !on_dash && !is_rotate);
     }
 
     public void SetDirection(Direction dir)

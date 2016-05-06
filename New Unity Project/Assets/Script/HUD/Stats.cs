@@ -11,13 +11,10 @@ public class Stats : NetworkBehaviour
         Blue = 1,
         Orange = 2
     }
-    [SyncVar]
     public string Name;
-    [SyncVar]
     public bool paused;
     #region GetterSetter
 
-    [SyncVar]
     private Team _team = Team.None;
     public Team team
     {
@@ -37,9 +34,7 @@ public class Stats : NetworkBehaviour
 
         }
     }
-    [SyncVar]
     private float max_life;
-    [SyncVar]
     private float life;
     public float MaxLife
     {
@@ -65,11 +60,8 @@ public class Stats : NetworkBehaviour
     }
 
     //For the dash
-    [SyncVar]
     private float max_mana;
-    [SyncVar]
     private float mana;
-    [SyncVar]
     private float mana_per_dash;
     public float MaxMana
     {
@@ -104,12 +96,8 @@ public class Stats : NetworkBehaviour
         }
     }
 
-    [SyncVar]
     public float mana_per_second;
-
-    [SyncVar]
     private int max_ammo;
-    [SyncVar]
     private int ammo;
     public int MaxAmmo
     {

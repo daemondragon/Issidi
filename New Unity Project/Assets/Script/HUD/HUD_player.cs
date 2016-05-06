@@ -51,7 +51,9 @@ public class HUD_player : NetworkBehaviour
     //Pour récuperer le bon character
     bool have_find;
     GameObject player;
-    bool can_grap_player;
+
+    //To recolor every players every x time
+    float recolor_time = 0.0f;
 
     int team = -1; // 1 pour orange , 0 pour spectat, 2 pour bleu
     int weaponType = -1; // dans l ordre snip, lance-flame , obus de 1 a 3
@@ -142,16 +144,14 @@ public class HUD_player : NetworkBehaviour
         if (team != -1 && weaponType != -1)
             playbtn.SetActive(true);
 
-        if (have_find)
-        {
-            UpdateState();
-            DrawUpdate();
-        }
-        else
-        {
-            if (!can_grap_player)
-                return;
+        UpdateState();
+        RecolorAllPlayer();
 
+        if (state == State.Play || state == State.Pause)
+            DrawUpdate();
+        
+        if (state == State.Play && !have_find)
+        {
             //Try to find the good player
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
             {
@@ -162,14 +162,18 @@ public class HUD_player : NetworkBehaviour
                     break;
                 }
             }
-            RecolorAllPlayer();
-
-            UpdateState();
         }
     }
 
     void RecolorAllPlayer()
     {
+        if (recolor_time < 1.0f)
+        {
+            recolor_time += Time.deltaTime;
+            return;
+        }
+
+        recolor_time = 0.0f;
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
         {
             Stats s = obj.GetComponent<Stats>();
@@ -228,9 +232,9 @@ public class HUD_player : NetworkBehaviour
     {
         if (state == State.Play)
         {
-            if (can_grap_player && (!stats || stats.IsDead()))
+            if (have_find && (!stats || stats.IsDead()))
                 ChangeState(State.Death);
-            else if (stats.paused)
+            else if (stats && stats.paused)
                 ChangeState(State.Pause);
         }
         else if (state == State.Pause)
@@ -248,8 +252,10 @@ public class HUD_player : NetworkBehaviour
             panels[i].SetActive((int)s == i);
         }
 
+        if (s == State.Pause)
+            panels[(int)State.Play].SetActive(true);
+
         Cursor.visible = (s != State.Play);
-        can_grap_player = (s == State.Play);
 
         if (s == State.Play)
             Cursor.lockState = CursorLockMode.Locked;
