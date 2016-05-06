@@ -427,7 +427,6 @@ GameObject:
   - 114: {fileID: 11408670}
   - 114: {fileID: 11418350}
   - 114: {fileID: 11467870}
-  - 114: {fileID: 11467116}
   m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
@@ -1152,7 +1151,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161616}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
@@ -2440,9 +2439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de76bb4ef65d7c48a43cf632bb53bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  paused: 0
-  mana_per_second: 0
 --- !u!114 &11456270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2473,17 +2469,6 @@ MonoBehaviour:
   dash_time: 0.5
   dash_speed: 10
   rotation_time: 0.25
---- !u!114 &11467116
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57016c7fb1a48424593adbd7d9194495, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11467870
 MonoBehaviour:
   m_ObjectHideFlags: 1

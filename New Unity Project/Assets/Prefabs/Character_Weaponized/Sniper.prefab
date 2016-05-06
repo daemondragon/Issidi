@@ -14,7 +14,6 @@ GameObject:
   - 114: {fileID: 11480182}
   - 114: {fileID: 11473540}
   - 114: {fileID: 11462228}
-  - 114: {fileID: 11443522}
   m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
@@ -116,23 +115,6 @@ GameObject:
   - 23: {fileID: 2337846}
   m_Layer: 8
   m_Name: Cube.002
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &110384
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 442322}
-  - 114: {fileID: 11432542}
-  - 114: {fileID: 11436666}
-  m_Layer: 0
-  m_Name: NetworkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,8 +543,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 467040}
   - 114: {fileID: 11407130}
-  - 114: {fileID: 11466252}
-  - 114: {fileID: 11480346}
   m_Layer: 8
   m_Name: Orientation
   m_TagString: Untagged
@@ -821,7 +801,6 @@ Transform:
   - {fileID: 467040}
   - {fileID: 431242}
   - {fileID: 491998}
-  - {fileID: 442322}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &427336
@@ -957,18 +936,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 431242}
   m_RootOrder: 0
---- !u!4 &442322
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110384}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.086254, y: 9.751991, z: 12.939634}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
-  m_Children: []
-  m_Father: {fileID: 421152}
-  m_RootOrder: 3
 --- !u!4 &442568
 Transform:
   m_ObjectHideFlags: 1
@@ -1212,7 +1179,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102038}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
@@ -2387,72 +2354,6 @@ MonoBehaviour:
     i15: 181
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &11432542
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -822479833, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NetworkPort: 7777
-  m_ServerBindToIP: 0
-  m_ServerBindAddress: 
-  m_NetworkAddress: localhost
-  m_DontDestroyOnLoad: 1
-  m_RunInBackground: 1
-  m_ScriptCRCCheck: 1
-  m_MaxDelay: 0.01
-  m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 128596}
-  m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
-  m_OfflineScene: 
-  m_OnlineScene: 
-  m_SpawnPrefabs:
-  - {fileID: 0}
-  m_CustomConfig: 0
-  m_MaxConnections: 4
-  m_ConnectionConfig:
-    m_PacketSize: 1500
-    m_FragmentSize: 500
-    m_ResendTimeout: 1200
-    m_DisconnectTimeout: 2000
-    m_ConnectTimeout: 2000
-    m_MinUpdateTimeout: 10
-    m_PingTimeout: 500
-    m_ReducedPingTimeout: 100
-    m_AllCostTimeout: 20
-    m_NetworkDropThreshold: 5
-    m_OverflowDropThreshold: 5
-    m_MaxConnectionAttempt: 10
-    m_AckDelay: 33
-    m_MaxCombinedReliableMessageSize: 100
-    m_MaxCombinedReliableMessageCount: 10
-    m_MaxSentMessageQueueSize: 128
-    m_IsAcksLong: 0
-    m_UsePlatformSpecificProtocols: 0
-    m_Channels: []
-  m_GlobalConfig:
-    m_ThreadAwakeTimeout: 1
-    m_ReactorModel: 0
-    m_ReactorMaximumReceivedMessages: 1024
-    m_ReactorMaximumSentMessages: 1024
-    m_MaxPacketSize: 2000
-  m_Channels: 0500000000000000
-  m_UseWebSockets: 0
-  m_UseSimulator: 0
-  m_SimulatedLatency: 1
-  m_PacketLossPercentage: 0
-  m_MatchHost: mm.unet.unity3d.com
-  m_MatchPort: 443
-  isNetworkActive: 0
-  matchMaker: {fileID: 0}
-  matchName: default
-  matchSize: 4
 --- !u!114 &11435932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2464,24 +2365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de76bb4ef65d7c48a43cf632bb53bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  paused: 0
-  mana_per_second: 0
---- !u!114 &11436666
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 227461547, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  showGUI: 1
-  offsetX: 0
-  offsetY: 0
 --- !u!114 &11442984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2491,17 +2374,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8365578835954424293f4df4ccd95858, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11443522
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57016c7fb1a48424593adbd7d9194495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11449702
@@ -2561,38 +2433,6 @@ MonoBehaviour:
   shaderFXAAPreset3: {fileID: 4800000, guid: c182fa94a5a0a4c02870641efcd38cd5, type: 3}
   shaderFXAAII: {fileID: 4800000, guid: cd5b323dcc592457790ff18b528f5e67, type: 3}
   shaderFXAAIII: {fileID: 4800000, guid: c547503fff0e8482ea5793727057041c, type: 3}
---- !u!114 &11466252
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 30
-    i1: 2
-    i2: 172
-    i3: 85
-    i4: 181
-    i5: 189
-    i6: 136
-    i7: 164
-    i8: 218
-    i9: 152
-    i10: 253
-    i11: 32
-    i12: 237
-    i13: 42
-    i14: 109
-    i15: 181
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11472098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2654,19 +2494,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_distance: 3
   mouse_sensivity: 1.5
---- !u!114 &11480346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd94a72042d58843a80ada11ef433cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothSpeed: 10
-  TargetChild: {fileID: 0}
 --- !u!114 &11491346
 MonoBehaviour:
   m_ObjectHideFlags: 1

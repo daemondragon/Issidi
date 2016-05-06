@@ -98,7 +98,6 @@ GameObject:
   - 114: {fileID: 11432426}
   - 114: {fileID: 11425048}
   - 114: {fileID: 11439400}
-  - 114: {fileID: 11492994}
   m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
@@ -905,7 +904,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109056}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
@@ -1832,9 +1831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de76bb4ef65d7c48a43cf632bb53bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  paused: 0
-  mana_per_second: 0
 --- !u!114 &11454338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1909,17 +1905,6 @@ MonoBehaviour:
   nb_bullets: 100
   bullet_per_second: 1
   BulletStart: {fileID: 448658}
---- !u!114 &11492994
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 109056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!124 &12498200
 Behaviour:
   m_ObjectHideFlags: 1

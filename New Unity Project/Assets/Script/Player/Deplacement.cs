@@ -243,7 +243,11 @@ public class Deplacement : MonoBehaviour
 
     public bool canMoveCamera()
     {
-        return (!stats.paused && !on_dash && !is_rotate);
+        bool is_paused = false;
+        if (stats)
+            is_paused = stats.paused;
+
+        return (!is_paused && !on_dash && !is_rotate);
     }
 
     public void SetDirection(Direction dir)
