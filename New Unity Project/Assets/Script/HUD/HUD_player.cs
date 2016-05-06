@@ -149,7 +149,7 @@ public class HUD_player : NetworkBehaviour
 
         if (state == State.Play || state == State.Pause)
             DrawUpdate();
-        
+
         if (state == State.Play && !have_find)
         {
             //Try to find the good player
@@ -314,7 +314,10 @@ public class HUD_player : NetworkBehaviour
         else if (team == 2)
             selected_team = Stats.Team.Blue;
 
-        factory.Cmd_CreatePlayer(selected_team, weaponType - 1);//-1 car mes indices commencent à zéro
+        if (hasAuthority)
+            factory.Cmd_CreatePlayer(selected_team, weaponType - 1);//-1 car mes indices commencent à zéro
+        else
+            Debug.Log("Weird...");
 
         ChangeState(State.Play);
     }
