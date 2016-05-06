@@ -1524,7 +1524,7 @@ Prefab:
     - target: {fileID: 11483200, guid: fb8d163e0f1e2de46a9e5d665c858a0e, type: 2}
       propertyPath: m_PlayerPrefab
       value: 
-      objectReference: {fileID: 128596, guid: 1e02ac55b5bd88a4da98fd20ed2a6db5, type: 2}
+      objectReference: {fileID: 145996, guid: dda54dbee425421449f66cc4768d8f0e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb8d163e0f1e2de46a9e5d665c858a0e, type: 2}
   m_IsPrefabParent: 0

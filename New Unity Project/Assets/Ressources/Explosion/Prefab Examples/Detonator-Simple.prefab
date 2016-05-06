@@ -9,12 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
-  - 114: {fileID: 11495706}
-  - 114: {fileID: 11400620}
+  - 114: {fileID: 11469140}
+  - 114: {fileID: 11422730}
   m_Layer: 0
-  m_Name: Detonator-Tiny
+  m_Name: Detonator-Simple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.292255, y: 0.05, z: 1.0406284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,27 +47,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4007f1233a9b74fa9be42583fafba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 2.4612799
-  color: {r: 1, g: 0.6807969, b: 0.6294964, a: 0.49803922}
+  size: 3
+  color: {r: 0.96153843, g: 0.66568047, b: 0, a: 0.54901963}
   explodeOnStart: 1
-  duration: 1.0367463
-  detail: 1.4199996
+  duration: 2.0464537
+  detail: 1.109933
   upwardsBias: 0
-  destroyTime: 4.2200327
-  useWorldSpace: 0
+  destroyTime: 7
+  useWorldSpace: 1
   direction: {x: 0, y: 0, z: 0}
-  fireballAMaterial: {fileID: 2100000, guid: 3049dffabc5225d40b27675901977fdd, type: 2}
-  fireballBMaterial: {fileID: 2100000, guid: 02a46fb295082ed488cab61782ddc01f, type: 2}
+  fireballAMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
+  fireballBMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
   smokeAMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
   smokeBMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
   shockwaveMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
   sparksMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
   glowMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
-  heatwaveMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
-  autoCreateFireball: 0
+  heatwaveMaterial: {fileID: 0}
+  autoCreateFireball: 1
   autoCreateSparks: 1
-  autoCreateShockwave: 1
-  autoCreateSmoke: 0
+  autoCreateShockwave: 0
+  autoCreateSmoke: 1
   autoCreateGlow: 1
   autoCreateLight: 1
   autoCreateForce: 0
@@ -77,81 +75,7 @@ MonoBehaviour:
 --- !u!1002 &11400001
 EditorExtensionImpl:
   serializedVersion: 6
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a99a52afbdc68cd4fbc1c477cf05bbba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  on: 0
-  detonatorControlled: 1
-  startSize: 1
-  size: 1
-  explodeDelayMin: 0
-  explodeDelayMax: 0
-  startDuration: 2
-  duration: 2
-  timeScale: 1
-  startDetail: 1
-  detail: 1
-  startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: 1, g: 1, b: 1, a: 1}
-  startLocalPosition: {x: 0, y: 0, z: 0}
-  localPosition: {x: 0, y: 0, z: 0}
-  startForce: {x: 0, y: 0, z: 0}
-  force: {x: 0, y: 0, z: 0}
-  startVelocity: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  detailThreshold: 0
-  radius: 103.47042
-  power: 35134.027
-  fireObject: {fileID: 0}
-  fireObjectLife: 0
---- !u!1002 &11400003
-EditorExtensionImpl:
-  serializedVersion: 6
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 745312967000e3c449713c45a6a516f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  on: 1
-  detonatorControlled: 1
-  startSize: 1
-  size: 3.8651195
-  explodeDelayMin: 0
-  explodeDelayMax: 0
-  startDuration: 2
-  duration: 0.25
-  timeScale: 1
-  startDetail: 1
-  detail: 1
-  startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: 0, g: 0.21041407, b: 0.97692305, a: 1}
-  startLocalPosition: {x: 0, y: 0, z: 0}
-  localPosition: {x: 0, y: 0, z: 0}
-  startForce: {x: 0, y: 0, z: 0}
-  force: {x: 0, y: 0, z: 0}
-  startVelocity: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  detailThreshold: 0
-  shockwaveMaterial: {fileID: 0}
-  renderMode: 0
---- !u!1002 &11400005
-EditorExtensionImpl:
-  serializedVersion: 6
---- !u!114 &11400620
+--- !u!114 &11422730
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -171,7 +95,7 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11495706
+--- !u!114 &11469140
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -185,24 +109,24 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 103
-    i1: 229
-    i2: 185
-    i3: 240
-    i4: 153
-    i5: 149
-    i6: 132
-    i7: 4
-    i8: 73
-    i9: 201
-    i10: 136
-    i11: 177
-    i12: 69
-    i13: 204
-    i14: 29
-    i15: 123
+    i0: 19
+    i1: 38
+    i2: 106
+    i3: 156
+    i4: 248
+    i5: 218
+    i6: 40
+    i7: 228
+    i8: 27
+    i9: 250
+    i10: 97
+    i11: 179
+    i12: 120
+    i13: 223
+    i14: 171
+    i15: 197
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -211,19 +135,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
-      propertyPath: on
-      value: 0
+      propertyPath: size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: autoCreateFireball
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: autoCreateSmoke
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: autoCreateShockwave
+      propertyPath: autoCreateLight
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
@@ -235,24 +155,8 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: explodeOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: useWorldSpace
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: autoCreateSparks
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: autoCreateLight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: autoCreateGlow
-      value: 1
+      propertyPath: autoCreateShockwave
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

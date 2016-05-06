@@ -167,8 +167,11 @@ public class Bullet : NetworkBehaviour
          */
         // Debug.Log("Destroyed bullet");
 
+        if (NetworkServer.connections.Count > 1)
+        {
+            Rpc_KeepParticles();
+        }
 
-        Rpc_KeepParticles();
         Detach();
         Destroy(gameObject);
     }
