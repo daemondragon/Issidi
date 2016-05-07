@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HUD_player : NetworkBehaviour
 {
@@ -284,7 +285,7 @@ public class HUD_player : NetworkBehaviour
     }
     public void return2main()
     {
-        Application.LoadLevel("menu_pricipal");
+        SceneManager.LoadScene("menu_pricipal");
     }
 
     public void reload_level()
@@ -314,7 +315,7 @@ public class HUD_player : NetworkBehaviour
         if (hasAuthority)
             factory.Cmd_CreatePlayer(selected_team, weaponType - 1);//-1 car mes indices commencent à zéro
         else
-            Debug.Log("Weird...");
+            Debug.Log("No more Authority");
 
         ChangeState(State.Play);
     }

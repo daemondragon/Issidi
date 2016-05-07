@@ -42,7 +42,7 @@ public class BulletIA : NetworkBehaviour
                 delta_time = life_time;
             life_time -= delta_time;
         }
-        else if (life_time == 0.0f && !hasAuthority)
+        else if (life_time == 0.0f && hasAuthority)
         {
             Cmd_DestroyBullet();
         }
