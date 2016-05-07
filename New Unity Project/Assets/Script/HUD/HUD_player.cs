@@ -283,17 +283,10 @@ public class HUD_player : NetworkBehaviour
         Application.LoadLevel("menu_pricipal");
     }
 
-    [Command]
-    void Cmd_DestroyPlayer(GameObject obj)
-    {
-        NetworkServer.Destroy(obj);
-        obj = null;
-    }
-
     public void reload_level()
     {
-        if (player)
-            Cmd_DestroyPlayer(player);
+        if (player && stats)
+            stats.KillPlayer();
 
         ChangeState(State.Selection);
     }

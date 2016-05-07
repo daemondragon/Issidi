@@ -210,7 +210,13 @@ public class Stats : NetworkBehaviour
             paused = !paused;
 
         if (IsDead())
-            Cmd_DestroyPlayer(gameObject);
+            KillPlayer();
+    }
+
+    public void KillPlayer()
+    {
+        life = 0;
+        Cmd_DestroyPlayer(gameObject);
     }
 
     public bool IsDead()
