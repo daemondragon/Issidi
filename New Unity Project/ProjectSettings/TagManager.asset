@@ -9,6 +9,7 @@ TagManager:
   - OrangeSpawn
   - BlueSpawn
   - WhiteSpawn
+  - CharacterFactory
   layers:
   - Default
   - TransparentFX

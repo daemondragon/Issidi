@@ -11,6 +11,8 @@ public class Stats : NetworkBehaviour
         Blue = 1,
         Orange = 2
     }
+    public GameObject character_factory;
+
     #region GetterSetter
 
     [SyncVar]
@@ -213,8 +215,16 @@ public class Stats : NetworkBehaviour
             KillPlayer();
     }
 
+    [Command]
+    void Cmd_CreateCharacterFactory()
+    {
+        GameObject temp = Instantiate(character_factory);
+        NetworkServer.ReplacePlayerForConnection(connectionToClient, temp, playerControllerId);
+    }
+
     public void KillPlayer()
     {
+        Cmd_CreateCharacterFactory();
         Cmd_DestroyPlayer(gameObject);
     }
 

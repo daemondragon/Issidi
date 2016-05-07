@@ -2,6 +2,7 @@
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class HUD_player : NetworkBehaviour
 {
@@ -57,7 +58,7 @@ public class HUD_player : NetworkBehaviour
     float recolor_time = 0.0f;
 
     int team = -1; // 1 pour orange , 0 pour spectat, 2 pour bleu
-    int weaponType = -1; // dans l ordre snip, lance-flame , obus de 1 a 3
+    int weaponType = -1; // dans 0 ordre snip, lance-flame , obus de 0 a 2
 
     // Use this for initialization
     void Start()
@@ -67,7 +68,6 @@ public class HUD_player : NetworkBehaviour
 
         if (!hasAuthority)
             return;
-
 
         panels = new GameObject[(int)State.Count];
         panels[(int)State.Play] = GameObject.Find("game_info");
@@ -298,39 +298,43 @@ public class HUD_player : NetworkBehaviour
 
     public void Play()
     {
-        CharacterFactory factory = GetComponent<CharacterFactory>();
-        if (!factory)
-        {
-            Debug.Log("no CharacterFactor attached to " + this);
-            return;
-        }
+        
 
         Stats.Team selected_team = Stats.Team.None;
-
         if (team == 1)
             selected_team = Stats.Team.Orange;
         else if (team == 2)
             selected_team = Stats.Team.Blue;
 
-        if (hasAuthority)
-            factory.Cmd_CreatePlayer(selected_team, weaponType - 1);//-1 car mes indices commencent à zéro
-        else
-            Debug.Log("No more Authority");
+        GameObject factory = null;
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("CharacterFactory"))
+        {
+            if (obj.GetComponent<CharacterFactory>().hasAuthority)
+            {
+                factory = obj;
+                break;
+            }
+        }
+
+        if (factory)
+            factory.GetComponent<CharacterFactory>().Cmd_CreatePlayer(weaponType, selected_team, true);
+        else//First time for character creation, HUD have the authority
+            GetComponent<CharacterFactory>().Cmd_CreatePlayer(weaponType, selected_team, false);
 
         ChangeState(State.Play);
     }
 
     public void snipselect()
     {
-        weaponType = 1;
+        weaponType = 0;
     }
     public void obusselect()
     {
-        weaponType = 3;
+        weaponType = 2;
     }
     public void falmeselect()
     {
-        weaponType = 2;
+        weaponType = 1;
     }
     public void Oselection()
     {

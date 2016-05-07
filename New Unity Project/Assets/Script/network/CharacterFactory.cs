@@ -4,18 +4,18 @@ using System.Collections.Generic;
 
 public class CharacterFactory : NetworkBehaviour
 {
-    public List<GameObject> character_and_weapons;
+    public List<GameObject> weaponized_characters;
 
     [Command]
-    public void Cmd_CreatePlayer(Stats.Team team, int weapon_index)
+    public void Cmd_CreatePlayer(int weapon_index, Stats.Team team, bool auto_destroy)
     {
-        if (weapon_index < 0 || weapon_index >= character_and_weapons.Count)
+        if (weapon_index < 0 || weapon_index >= weaponized_characters.Count)
         {
-            Debug.Log("weapon index out of range");
+            Debug.Log(weapon_index + " outside weaponized_characters list");
             return;
         }
 
-        GameObject character = Instantiate(character_and_weapons[weapon_index]);
+        GameObject character = Instantiate(weaponized_characters[weapon_index]);
         if (!character)
         {
             Debug.Log("Instantiate character failed");
@@ -39,5 +39,7 @@ public class CharacterFactory : NetworkBehaviour
             spawns[Random.Range(0, spawns.Length)].GetComponent<Spawner>().Spawn(character);
 
         NetworkServer.ReplacePlayerForConnection(connectionToClient, character, playerControllerId);
+        if (auto_destroy)
+            NetworkServer.Destroy(gameObject);
     }
 }

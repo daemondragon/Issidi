@@ -281,7 +281,7 @@ public class HUD_player1 : NetworkBehaviour
         else if (team == 2)
             selected_team = Stats.Team.Blue;
 
-        factory.Cmd_CreatePlayer(selected_team, weaponType - 1);//-1 car mes indices commencent à zéro
+        //factory.Cmd_CreatePlayer(selected_team, weaponType - 1);//-1 car mes indices commencent à zéro
 
 
         select_panel.SetActive(false);

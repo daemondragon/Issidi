@@ -2297,7 +2297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fb9cb0aca5f964da390f03ee9f77cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character_and_weapons:
+  weaponized_characters:
   - {fileID: 128596, guid: 1e02ac55b5bd88a4da98fd20ed2a6db5, type: 2}
   - {fileID: 145996, guid: dda54dbee425421449f66cc4768d8f0e, type: 2}
   - {fileID: 186464, guid: e604ab38f01fb574c99aaf518e89d8bd, type: 2}
