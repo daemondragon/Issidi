@@ -215,7 +215,6 @@ public class Stats : NetworkBehaviour
 
     public void KillPlayer()
     {
-        life = 0;
         Cmd_DestroyPlayer(gameObject);
     }
 

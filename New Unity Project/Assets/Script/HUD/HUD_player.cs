@@ -264,7 +264,11 @@ public class HUD_player : NetworkBehaviour
             Cursor.lockState = CursorLockMode.None;
 
         if (s == State.Selection)
+        {
             have_find = false;
+            player = null;
+            stats = null;
+        }
     }
 
     #region buttons
