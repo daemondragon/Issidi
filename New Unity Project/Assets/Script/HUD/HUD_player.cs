@@ -318,8 +318,10 @@ public class HUD_player : NetworkBehaviour
 
         if (factory)
             factory.GetComponent<CharacterFactory>().Cmd_CreatePlayer(weaponType, selected_team, true);
-        else//First time for character creation, HUD have the authority
+        else if (hasAuthority)//First time for character creation, HUD have the authority
             GetComponent<CharacterFactory>().Cmd_CreatePlayer(weaponType, selected_team, false);
+        else
+            Debug.Log("Can't respawn player because you forgotten to add CharacterFactory Prefab to Player.Stats");
 
         ChangeState(State.Play);
     }

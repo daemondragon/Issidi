@@ -218,8 +218,13 @@ public class Stats : NetworkBehaviour
     [Command]
     void Cmd_CreateCharacterFactory()
     {
-        GameObject temp = Instantiate(character_factory);
-        NetworkServer.ReplacePlayerForConnection(connectionToClient, temp, playerControllerId);
+        if (character_factory)
+        {
+            GameObject temp = Instantiate(character_factory);
+            NetworkServer.ReplacePlayerForConnection(connectionToClient, temp, playerControllerId);
+        }
+        else
+            Debug.Log("no character factory attached to " + this + ". Player can't respawn");
     }
 
     public void KillPlayer()

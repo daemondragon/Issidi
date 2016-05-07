@@ -18,9 +18,11 @@ NE PAS OUBLIER d'ajouter la balles que l'on veut faire spawner dans le NetworkMa
 
 Ajout des personnages en reseaux:
 Dans UI, ouvrir le CharacterFactory et ajouter les personnage dans la liste.
+Faire de même pour le prefab CharacterFactory.
 ATTENTION : l'ordre de la liste est le même que le weapon_index quand on veut créer un perso : Si l'on appelle avec 0 comme index, cela fera
 spawn le premier élément de la liste.
 NE PAS OUBLIER d'ajouter les personnage dans le NetworkManager, comme pour les balles.
+Dans les stats du personnages, rajouter le prefab CharacterFactory, cela lui permet de respawn
 
 Ajout de point de respawn :
 Dans le MasterSpawner se trouve plusieurs type de spawn, chaque team pouvant avoir un nombre quasi infini de spawn, le choix au respawn
