@@ -116,7 +116,6 @@ GameObject:
   - 114: {fileID: 11470550}
   - 114: {fileID: 11446422}
   - 114: {fileID: 11447682}
-  - 114: {fileID: 11442372}
   m_Layer: 5
   m_Name: UI_2
   m_TagString: Untagged
@@ -2286,21 +2285,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 100/100
---- !u!114 &11442372
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6fb9cb0aca5f964da390f03ee9f77cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponized_characters:
-  - {fileID: 128596, guid: 1e02ac55b5bd88a4da98fd20ed2a6db5, type: 2}
-  - {fileID: 145996, guid: dda54dbee425421449f66cc4768d8f0e, type: 2}
-  - {fileID: 186464, guid: e604ab38f01fb574c99aaf518e89d8bd, type: 2}
 --- !u!114 &11442854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3071,6 +3055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b382a9cd23a0e8043b04fd4427e009dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character_factory: {fileID: 199760, guid: ce477039f2f90704b812d7c054290042, type: 2}
 --- !u!114 &11472622
 MonoBehaviour:
   m_ObjectHideFlags: 1

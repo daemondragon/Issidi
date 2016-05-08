@@ -2,7 +2,6 @@
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 public class HUD_player : NetworkBehaviour
 {
@@ -17,6 +16,8 @@ public class HUD_player : NetworkBehaviour
     }
 
     State state;
+
+    public GameObject character_factory;
 
     private Stats stats;//The stats to render
     private Image healthbar;
@@ -68,6 +69,8 @@ public class HUD_player : NetworkBehaviour
 
         if (!hasAuthority)
             return;
+
+        Cmd_CreateCharacterFactory();
 
         panels = new GameObject[(int)State.Count];
         panels[(int)State.Play] = GameObject.Find("game_info");
@@ -137,6 +140,15 @@ public class HUD_player : NetworkBehaviour
 
         Text[] weapon_name = weapon_panel.GetComponentsInChildren<Text>();
         weapon_name[1].text = stats.WeaponName; // insert weapon name to be fair to other oponent else they stand no chance!
+    }
+
+    [Command]
+    void Cmd_CreateCharacterFactory()
+    {
+        if (character_factory)
+            NetworkServer.ReplacePlayerForConnection(connectionToClient, Instantiate(character_factory), playerControllerId);
+        else
+            Debug.Log("Can't create CharacterFactory, So player can't spawn!");
     }
 
     // Update is called once per frame
@@ -298,8 +310,6 @@ public class HUD_player : NetworkBehaviour
 
     public void Play()
     {
-        
-
         Stats.Team selected_team = Stats.Team.None;
         if (team == 1)
             selected_team = Stats.Team.Orange;
@@ -318,10 +328,8 @@ public class HUD_player : NetworkBehaviour
 
         if (factory)
             factory.GetComponent<CharacterFactory>().Cmd_CreatePlayer(weaponType, selected_team, true);
-        else if (hasAuthority)//First time for character creation, HUD have the authority
-            GetComponent<CharacterFactory>().Cmd_CreatePlayer(weaponType, selected_team, false);
         else
-            Debug.Log("Can't respawn player because you forgotten to add CharacterFactory Prefab to Player.Stats");
+            Debug.Log("Can't spawn player because you forgotten to add CharacterFactory Prefab to Player.Stats or to HUD_Player");
 
         ChangeState(State.Play);
     }
