@@ -32,7 +32,7 @@ public class HUD_player : NetworkBehaviour
     GameObject pause_menu;
     GameObject death_panel;
     GameObject select_panel;
-    GameObject crooshair;
+    GameObject crosshair_panel;
     Text scoreB;
     int scoreb;
     Text scoreO;
@@ -128,6 +128,8 @@ public class HUD_player : NetworkBehaviour
         playbtn.SetActive(false);
 
         ChangeState(State.Selection);
+
+
     }
 
     void Initialisation(GameObject character)
@@ -140,6 +142,14 @@ public class HUD_player : NetworkBehaviour
 
         Text[] weapon_name = weapon_panel.GetComponentsInChildren<Text>();
         weapon_name[1].text = stats.WeaponName; // insert weapon name to be fair to other oponent else they stand no chance!
+
+        //chrosshair gestion
+        crosshair_panel = GameObject.Find("crosshair_panel");
+        Image[] all_crosshair = crosshair_panel.GetComponentsInChildren<Image>();
+        foreach (var img in all_crosshair)
+        {
+            img.gameObject.SetActive(img.gameObject.name == stats.WeaponName);
+        }
     }
 
     [Command]
