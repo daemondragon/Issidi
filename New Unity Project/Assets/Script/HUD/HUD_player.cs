@@ -40,6 +40,8 @@ public class HUD_player : NetworkBehaviour
     Image score_blue;
     Image score_orange;
 
+    Text timer_text;
+
     private Button btn_continue;
 
     GameObject playbtn;
@@ -110,12 +112,15 @@ public class HUD_player : NetworkBehaviour
             Text[] scores = score_panel.GetComponentsInChildren<Text>();
             scoreB = scores[0];
             scoreO = scores[1];
+            timer_text = scores[2];
+
             scoreB.text = scoreb.ToString();
             scoreO.text = scoreo.ToString();
 
             Image[] score_bars = score_panel.GetComponentsInChildren<Image>();
             score_orange = score_bars[1];
             score_blue = score_bars[2];
+
         }
 
         //select perso gestion
@@ -258,6 +263,8 @@ public class HUD_player : NetworkBehaviour
 
             scoreB.text = scoreb.ToString();
             scoreO.text = scoreo.ToString();
+
+            timer_text.text = game_manager.getStringTime();
         }
     }
 
