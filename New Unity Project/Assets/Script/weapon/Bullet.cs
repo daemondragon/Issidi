@@ -6,11 +6,6 @@ using UnityEngine.Networking;
 
 public class Bullet : NetworkBehaviour
 {
-
-    //Keep particle
-    [SyncVar]
-    bool Destroy_Keep = false;
-
     //If null, no explosion
     public GameObject explosion;
 
@@ -24,8 +19,6 @@ public class Bullet : NetworkBehaviour
 
     //if negative, infinite life_time (don't die if no collision)
     public float life_time;
-
-    float TimeDestoy = -1;
 
     public float ZoneEffect;
 

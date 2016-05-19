@@ -61,6 +61,9 @@ public class HUD_player : NetworkBehaviour
     int team = -1; // 1 pour orange , 0 pour spectat, 2 pour bleu
     int weaponType = -1; // dans 0 ordre snip, lance-flame , obus de 0 a 2
 
+
+    GameManager game_manager = null;
+
     // Use this for initialization
     void Start()
     {
@@ -129,7 +132,7 @@ public class HUD_player : NetworkBehaviour
 
         ChangeState(State.Selection);
 
-
+        game_manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     void Initialisation(GameObject character)
@@ -237,19 +240,25 @@ public class HUD_player : NetworkBehaviour
             }
         }
 
-        if (scoreo == scoreb && scoreb == 0)
+        if (game_manager)
         {
-            score_orange.fillAmount = 0.5f;
-            score_blue.fillAmount = 0.5f;
-        }
-        else
-        {
-            score_orange.fillAmount = (float)scoreo / (float)(scoreb + scoreo);
-            score_blue.fillAmount = (float)scoreb / (float)(scoreb + scoreo);
-        }
+            scoreo = game_manager.getOrangeScore();
+            scoreb = game_manager.getBlueScore();
 
-        scoreB.text = scoreb.ToString();
-        scoreO.text = scoreo.ToString();
+            if (scoreo == scoreb && scoreb == 0)
+            {
+                score_orange.fillAmount = 0.5f;
+                score_blue.fillAmount = 0.5f;
+            }
+            else
+            {
+                score_orange.fillAmount = (float)scoreo / (float)(scoreb + scoreo);
+                score_blue.fillAmount = (float)scoreb / (float)(scoreb + scoreo);
+            }
+
+            scoreB.text = scoreb.ToString();
+            scoreO.text = scoreo.ToString();
+        }
     }
 
     void UpdateState()

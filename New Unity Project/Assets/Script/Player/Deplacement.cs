@@ -16,6 +16,8 @@ public class Deplacement : MonoBehaviour
     public float jump_speed;
     private bool is_walking;
 
+    Vector2 movement;
+
     //Jump
     private bool on_ground;
     private float jump_time;
@@ -80,7 +82,7 @@ public class Deplacement : MonoBehaviour
         Vector3 direction = transform.up;
         is_walking = false;
 
-        Vector2 movement = new Vector2(0, 0);
+        movement = new Vector2(0, 0);
         float movement_speed = speed;
 
         if (!on_dash)
@@ -182,6 +184,11 @@ public class Deplacement : MonoBehaviour
                 jump_time = 0.0f;
             }
         }
+    }
+
+    public Vector2 getMovement()
+    {
+        return movement;
     }
 
     #endregion
