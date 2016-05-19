@@ -212,20 +212,7 @@ public class Stats : NetworkBehaviour
             paused = !paused;
 
         if (IsDead())
-        {
-
-            GameObject game_manager = GameObject.FindGameObjectWithTag("GameController");
-            if (game_manager)
-            {
-                if (team == Stats.Team.Orange)
-                    game_manager.GetComponent<GameManager>().Cmd_increaseOrangeScore();
-                else if (team == Stats.Team.Blue)
-                    game_manager.GetComponent<GameManager>().Cmd_increaseBlueScore();
-            }
-            else
-                Debug.Log("No GameController found");
             KillPlayer();
-        }
     }
 
     [Command]

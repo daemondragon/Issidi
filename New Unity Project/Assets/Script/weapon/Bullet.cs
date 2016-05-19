@@ -73,6 +73,9 @@ public class Bullet : NetworkBehaviour
                         {
                             stats.Life -= damage;
                         }
+
+                        if (stats.IsDead())
+                            IncreaseScore(team);
                     }
 
                 }
@@ -120,6 +123,20 @@ public class Bullet : NetworkBehaviour
             Explo.transform.position = this.transform.position;
             NetworkServer.Spawn(Explo);
         }
+    }
+
+    void IncreaseScore(Stats.Team team_)
+    {
+        GameObject game_manager = GameObject.FindGameObjectWithTag("GameController");
+        if (game_manager)
+        {
+            if (team == Stats.Team.Orange)
+                game_manager.GetComponent<GameManager>().Cmd_increaseOrangeScore();
+            else if (team == Stats.Team.Blue)
+                game_manager.GetComponent<GameManager>().Cmd_increaseBlueScore();
+        }
+        else
+            Debug.Log("No GameController found");
     }
 
     void OnCollisionEnter(Collision collision)
