@@ -194,6 +194,26 @@ public class Stats : NetworkBehaviour
         }
     }
 
+    public void ReturnToSpawn()
+    {
+        GameObject[] spawns = null;
+
+        if (team == Stats.Team.None)
+            spawns = GameObject.FindGameObjectsWithTag("WhiteSpawn");
+        else if (team == Stats.Team.Blue)
+            spawns = GameObject.FindGameObjectsWithTag("BlueSpawn");
+        else if (team == Stats.Team.Orange)
+            spawns = GameObject.FindGameObjectsWithTag("OrangeSpawn");
+
+        if (spawns == null || spawns.Length <= 0)
+        {
+            transform.position = new Vector3(0, 0, 0);
+            Debug.Log("Error : no " + team + " spawn register in CharacterFactory, player will spawn at (0;0;0)");
+        }
+        else //Spawn at a random location
+            spawns[Random.Range(0, spawns.Length)].GetComponent<Spawner>().Spawn(gameObject);
+    }
+
     [Command]
     void Cmd_DestroyPlayer(GameObject obj)
     {

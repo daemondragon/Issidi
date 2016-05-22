@@ -37,13 +37,11 @@ public class HUD_player : NetworkBehaviour
     int scoreo;
     Image score_blue;
     Image score_orange;
-<<<<<<< HEAD
-    public string name;
-=======
+
+    public string Name;
 
     Text timer_text;
 
->>>>>>> df6d9dc12c44d82ec60156b319f007f829faa2db
     private Button btn_continue;
 
     GameObject playbtn;
@@ -76,7 +74,7 @@ public class HUD_player : NetworkBehaviour
         panels[(int)State.Selection] = GameObject.Find("select_perso");
         panels[(int)State.Death] = GameObject.Find("death_panel");
         panels[(int)State.Pause] = GameObject.Find("pause_panel");
-        name = stats.Name;
+        Name = stats.Name;
        
 
 
@@ -339,7 +337,7 @@ public class HUD_player : NetworkBehaviour
         }
 
         if (factory)
-            factory.GetComponent<CharacterFactory>().Cmd_CreatePlayer(weaponType, selected_team, true);
+            factory.GetComponent<CharacterFactory>().Cmd_CreatePlayer(weaponType, selected_team);
         else
             Debug.Log("Can't spawn player because you forgotten to add CharacterFactory Prefab to Player.Stats or to HUD_Player");
 
