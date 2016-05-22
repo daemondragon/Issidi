@@ -37,9 +37,13 @@ public class HUD_player : NetworkBehaviour
     int scoreo;
     Image score_blue;
     Image score_orange;
+<<<<<<< HEAD
+    public string name;
+=======
 
     Text timer_text;
 
+>>>>>>> df6d9dc12c44d82ec60156b319f007f829faa2db
     private Button btn_continue;
 
     GameObject playbtn;
@@ -72,7 +76,8 @@ public class HUD_player : NetworkBehaviour
         panels[(int)State.Selection] = GameObject.Find("select_perso");
         panels[(int)State.Death] = GameObject.Find("death_panel");
         panels[(int)State.Pause] = GameObject.Find("pause_panel");
-
+        name = stats.Name;
+       
 
 
         stats_bars = GameObject.Find("stats_bars");
