@@ -99,7 +99,7 @@ public class Bullet : NetworkBehaviour
         }
     }
 
-    void PlayerReceiveBullet(Collision collision)
+    void PlayerReceiveBullet(Collider collider)
     {
         if (ZoneEffect > 0)
         {
@@ -109,7 +109,7 @@ public class Bullet : NetworkBehaviour
         else
         {
             Collider[] C = new Collider[1];
-            C[0] = collision.collider;
+            C[0] = collider;
             ApplyDamages(C);
         }
     }
@@ -139,22 +139,18 @@ public class Bullet : NetworkBehaviour
             Debug.Log("No GameController found");
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-
-
         if (!hasAuthority)
             return;
 
-
-
         Cmd_Boom();
-        PlayerReceiveBullet(collision);
+        PlayerReceiveBullet(collider);
         Cmd_DestroyBullet();
     }
 
     //if the bullet spawn in the player, it will be this case and not OnCollisionEnter
-    void OnCollisionStay(Collision collision)
+    void OnTriggerStay(Collider collider)
     {
 
         if (!hasAuthority)
@@ -162,7 +158,7 @@ public class Bullet : NetworkBehaviour
 
 
         Cmd_Boom();
-        PlayerReceiveBullet(collision);
+        PlayerReceiveBullet(collider);
         Cmd_DestroyBullet();
     }
 
