@@ -17,8 +17,6 @@ public class HUD_player : NetworkBehaviour
 
     State state;
 
-    public GameObject character_factory;
-
     private Stats stats;//The stats to render
     private Image healthbar;
     private Image nrjbar;
@@ -69,14 +67,6 @@ public class HUD_player : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
-        gameObject.SetActive(hasAuthority);
-        enabled = hasAuthority;
-
-        if (!hasAuthority)
-            return;
-
-        Cmd_CreateCharacterFactory();
-
         panels = new GameObject[(int)State.Count];
         panels[(int)State.Play] = GameObject.Find("game_info");
         panels[(int)State.Selection] = GameObject.Find("select_perso");
@@ -158,15 +148,6 @@ public class HUD_player : NetworkBehaviour
         {
             img.gameObject.SetActive(img.gameObject.name == stats.WeaponName);
         }
-    }
-
-    [Command]
-    void Cmd_CreateCharacterFactory()
-    {
-        if (character_factory)
-            NetworkServer.ReplacePlayerForConnection(connectionToClient, Instantiate(character_factory), playerControllerId);
-        else
-            Debug.Log("Can't create CharacterFactory, So player can't spawn!");
     }
 
     // Update is called once per frame

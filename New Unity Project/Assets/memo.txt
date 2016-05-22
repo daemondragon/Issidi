@@ -17,8 +17,7 @@ Ajouter la balles en prefab sur le script weapon (drag and drop)
 NE PAS OUBLIER d'ajouter la balles que l'on veut faire spawner dans le NetworkManager -> Spawnable prefab (sinon ca spawn pas)
 
 Ajout des personnages en reseaux:
-Dans UI, ouvrir le CharacterFactory et ajouter les personnage dans la liste.
-Faire de même pour le prefab CharacterFactory.
+Dans les prefabs, prendre le prefab CharacterFactory et ajouter le perso voulu dans la liste
 ATTENTION : l'ordre de la liste est le même que le weapon_index quand on veut créer un perso : Si l'on appelle avec 0 comme index, cela fera
 spawn le premier élément de la liste.
 NE PAS OUBLIER d'ajouter les personnage dans le NetworkManager, comme pour les balles.
@@ -30,3 +29,6 @@ est aléatoire. Copier coller un spawn et le mettre avec les autres pour que cela
 Le MasterSpawner ne permet que de regrouper les spawns, il n'est pas obligatoire, mais merci de les laisser à l'interieur pour plus de claireté
 dans la hiérachie des objets.
 NE PAS OUBLIER de tagger les spawns (et pas le MasterSpawner pour qu'ils puissent être détectés)
+
+UI:
+NE PLUS mettre l'UI comme player prefab dans le network manager, juste le mettre dans la scene, et tout vas marcher correctement.
