@@ -53,7 +53,10 @@ public class GameManager : NetworkBehaviour
                 if (timer > 0.5f)
                 {
                     if (HaveEnoughtPlayer())
+                    {
                         state = State.StartOfGame;
+                        GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "Starting game...", "server");
+                    }
                     timer = 0.0f;
                 }
                 break;
@@ -64,6 +67,7 @@ public class GameManager : NetworkBehaviour
                     StartGame(15, 00);
                     state = State.InGame;
                     second_timer = 0.0f;
+                    GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "Game start", "server");
                 }
                 break;
             case State.InGame:
@@ -72,12 +76,16 @@ public class GameManager : NetworkBehaviour
                 if (timer <= 0.0f || blue_score > 25 || orange_score > 25)
                 {
                     state = State.EndOfGame;
+                    GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "End of game", "server");
                     timer = 0.0f;
                 }
                 if (second_timer > 10.0)
                 {
                     if (!HaveEnoughtPlayer())
+                    {
                         state = State.WaitingForPlayer;
+                        GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "Not enought player, stoping game", "server");
+                    }
                     else
                         second_timer = 0.0f;
                 }
@@ -85,7 +93,10 @@ public class GameManager : NetworkBehaviour
             case State.EndOfGame:
                 timer += delta_time;
                 if (timer >= 10)
+                {
                     state = State.WaitingForPlayer;
+                    GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "Waiting for player", "server");
+                }
                 break;
         }
     }

@@ -74,9 +74,6 @@ public class HUD_player : NetworkBehaviour
         panels[(int)State.Selection] = GameObject.Find("select_perso");
         panels[(int)State.Death] = GameObject.Find("death_panel");
         panels[(int)State.Pause] = GameObject.Find("pause_panel");
-        Name = stats.Name;
-       
-
 
         stats_bars = GameObject.Find("stats_bars");
         if (stats_bars)
@@ -140,6 +137,7 @@ public class HUD_player : NetworkBehaviour
         stats.paused = false;
 
         player = character;
+        Name = stats.Name;
 
         Text[] weapon_name = weapon_panel.GetComponentsInChildren<Text>();
         weapon_name[1].text = stats.WeaponName; // insert weapon name to be fair to other oponent else they stand no chance!

@@ -29,15 +29,14 @@ public class main_menu : MonoBehaviour
         mainpanel.SetActive(false);
         coPanel.SetActive(true);
     */
-        Application.LoadLevel("jeremy");
+        SceneManager.LoadScene("jeremy");
     }
     public void launchsolo()
     {/*
         mainpanel.SetActive(false);
         coPanel.SetActive(true);
     */
-        //Application.LoadLevel(2);
-        SceneManager.LoadScene(2);//SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2);
     }
     public void quit()
     {
