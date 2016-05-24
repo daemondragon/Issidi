@@ -1375,6 +1375,32 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 22491612, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22491612, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.35835734
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400806, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 122.649994
+      objectReference: {fileID: 0}
+    - target: {fileID: 22491612, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445208, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
+      propertyPath: m_Text
+      value: 'aaaaaa
+
+        saddad
+
+        csccscscscsc
+
+        coucou!'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
   m_IsPrefabParent: 0

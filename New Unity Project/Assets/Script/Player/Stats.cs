@@ -23,11 +23,11 @@ public class Stats : NetworkBehaviour
         set { _name = value; }
     }
     [SyncVar]
-    bool _paused;
-    public bool paused
+    bool can_move_player;
+    public bool CanMovePlayer
     {
-        get { return _paused; }
-        set { _paused = value; }
+        get { return can_move_player; }
+        set { can_move_player = value; }
     }
 
     [SyncVar]
@@ -178,7 +178,7 @@ public class Stats : NetworkBehaviour
         EnergyPerSecond = MaxEnergy / 15.0f;//Mana full in 15 second 
         EnergyPerDash = 30;
         Name = "Player";
-        paused = false;
+        can_move_player = true;
     }
 
     public void RecolorPlayer()
@@ -227,9 +227,6 @@ public class Stats : NetworkBehaviour
             return;
 
         Energy += EnergyPerSecond * Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            paused = !paused;
 
         if (IsDead())
             KillPlayer();

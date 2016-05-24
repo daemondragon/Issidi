@@ -10,6 +10,7 @@ public class HUD_player : NetworkBehaviour
         Selection = 0,
         Play,
         Pause,
+        Chat,
         Death,
 
         Count//Don't add something after it
@@ -31,7 +32,6 @@ public class HUD_player : NetworkBehaviour
     GameObject death_panel;
     GameObject select_panel;
     GameObject crosshair_panel;
-    GameObject tchat_panel;
     GameObject input_tchat;
 
     InputField msg_input;
@@ -81,13 +81,13 @@ public class HUD_player : NetworkBehaviour
         panels[(int)State.Selection] = GameObject.Find("select_perso");
         panels[(int)State.Death] = GameObject.Find("death_panel");
         panels[(int)State.Pause] = GameObject.Find("pause_panel");
+        panels[(int)State.Chat] = GameObject.Find("tchatbox");
 
         // tchat
-        tchat_panel = GameObject.Find("tchatbox");
         input_tchat = GameObject.Find("msg_input");
         msg_input = input_tchat.GetComponentInChildren<InputField>();
         Debug.Log(msg_input);
-        msg_tchat = GameObject.Find("viewed_tchat").GetComponentInChildren<Text>();
+        msg_tchat = GameObject.Find("msg_display").GetComponentInChildren<Text>();
         istchating = false;
 
         stats_bars = GameObject.Find("stats_bars");
@@ -149,7 +149,7 @@ public class HUD_player : NetworkBehaviour
     {
         stats = character.GetComponentInChildren<Stats>();//init des stats
         have_find = true;
-        stats.paused = false;
+        stats.CanMovePlayer = true;
 
         player = character;
         Name = stats.Name;
@@ -193,14 +193,13 @@ public class HUD_player : NetworkBehaviour
         }
         if (state == State.Play && Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-       
-            istchating = true;
+            ChangeState(State.Chat);
+            stats.CanMovePlayer = false;
+
             msg_input.Select();
             if (msg_input.isFocused)
                 Debug.Log("hgfvd");
             msg_input.ActivateInputField();
-       
-
         }
     }
 
@@ -282,12 +281,17 @@ public class HUD_player : NetworkBehaviour
         {
             if (have_find && (!stats || stats.IsDead()))
                 ChangeState(State.Death);
-            else if (stats && stats.paused)
+            else if (Input.GetKeyDown(KeyCode.Escape))
                 ChangeState(State.Pause);
         }
         else if (state == State.Pause)
         {
-            if (stats && !stats.paused)
+            if (Input.GetKeyDown(KeyCode.Escape))
+                ChangeState(State.Play);
+        }
+        else if (state == State.Chat)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
                 ChangeState(State.Play);
         }
     }
@@ -295,15 +299,18 @@ public class HUD_player : NetworkBehaviour
     void ChangeState(State s)
     {
         state = s;
+        Debug.Log(s);
         for (int i = 0; i < (int)State.Count; i++)
         {
             panels[i].SetActive((int)s == i);
         }
 
-        if (s == State.Pause)
+        if (s == State.Pause || s == State.Chat)
             panels[(int)State.Play].SetActive(true);
 
         Cursor.visible = (s != State.Play);
+        if (stats)
+            stats.CanMovePlayer = (s == State.Play);
 
         if (s == State.Play)
             Cursor.lockState = CursorLockMode.Locked;
@@ -322,13 +329,12 @@ public class HUD_player : NetworkBehaviour
     {
         string msg = msg_tchat.text;
         GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, msg , stats.name);
-        istchating = false;
-        Cursor.visible = false;
+        ChangeState(State.Play);
     }
     #region buttons
     public void unpause()
     {
-        stats.paused = false;
+        stats.CanMovePlayer = true;
         ChangeState(State.Play);
     }
 

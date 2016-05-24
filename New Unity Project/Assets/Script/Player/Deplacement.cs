@@ -65,13 +65,13 @@ public class Deplacement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (stats.paused)
+        if (!stats.CanMovePlayer)
             return;
 
         float delta_time = Time.deltaTime;
         if (is_rotate)
             UpdateRotation(delta_time);
-        else if (!stats.IsDead() && !stats.paused)
+        else if (!stats.IsDead())
             MoveCharacter(delta_time);
     }
 
@@ -250,11 +250,11 @@ public class Deplacement : MonoBehaviour
 
     public bool canMoveCamera()
     {
-        bool is_paused = false;
+        bool can_move = true;
         if (stats)
-            is_paused = stats.paused;
+            can_move = stats.CanMovePlayer;
 
-        return (!is_paused && !on_dash && !is_rotate);
+        return (can_move && !on_dash && !is_rotate);
     }
 
     public void SetDirection(Direction dir)

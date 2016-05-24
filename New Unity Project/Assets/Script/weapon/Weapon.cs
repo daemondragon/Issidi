@@ -73,7 +73,7 @@ public class Weapon : NetworkBehaviour
 
     void Update()
     {
-        if (stats.IsDead() || stats.paused)
+        if (stats.IsDead() || stats.CanMovePlayer)
             return;
 
         temp_bullet += bullet_per_second * Time.deltaTime;

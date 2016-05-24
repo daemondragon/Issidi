@@ -62,7 +62,9 @@ public class Chat : NetworkBehaviour
     public void Cmd_SendMessage(Type type, string message, string sender)
     {
         if (type == Type.Command)
-            ;//Do something
+        {
+            //Do something
+        }
         else
         {
             messages.Add(new Message
