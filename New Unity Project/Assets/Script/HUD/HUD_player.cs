@@ -31,6 +31,12 @@ public class HUD_player : NetworkBehaviour
     GameObject death_panel;
     GameObject select_panel;
     GameObject crosshair_panel;
+    GameObject tchat_panel;
+    GameObject input_tchat;
+
+    InputField msg_input;
+    Text msg_tchat;
+
     Text scoreB;
     int scoreb;
     Text scoreO;
@@ -52,6 +58,7 @@ public class HUD_player : NetworkBehaviour
     GameObject selectbtnS;
     GameObject selectbtnB;
 
+    public bool istchating;
 
     //Pour récuperer le bon character
     bool have_find;
@@ -74,6 +81,14 @@ public class HUD_player : NetworkBehaviour
         panels[(int)State.Selection] = GameObject.Find("select_perso");
         panels[(int)State.Death] = GameObject.Find("death_panel");
         panels[(int)State.Pause] = GameObject.Find("pause_panel");
+
+        // tchat
+        tchat_panel = GameObject.Find("tchatbox");
+        input_tchat = GameObject.Find("msg_input");
+        msg_input = input_tchat.GetComponentInChildren<InputField>();
+        Debug.Log(msg_input);
+        msg_tchat = GameObject.Find("viewed_tchat").GetComponentInChildren<Text>();
+        istchating = false;
 
         stats_bars = GameObject.Find("stats_bars");
         if (stats_bars)
@@ -175,6 +190,17 @@ public class HUD_player : NetworkBehaviour
                     break;
                 }
             }
+        }
+        if (state == State.Play && Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+       
+            istchating = true;
+            msg_input.Select();
+            if (msg_input.isFocused)
+                Debug.Log("hgfvd");
+            msg_input.ActivateInputField();
+       
+
         }
     }
 
@@ -292,6 +318,13 @@ public class HUD_player : NetworkBehaviour
         }
     }
 
+    public void send_tchat()
+    {
+        string msg = msg_tchat.text;
+        GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, msg , stats.name);
+        istchating = false;
+        Cursor.visible = false;
+    }
     #region buttons
     public void unpause()
     {
