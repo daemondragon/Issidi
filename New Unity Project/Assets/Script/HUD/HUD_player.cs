@@ -38,7 +38,7 @@ public class HUD_player : NetworkBehaviour
     InputField msg_input;
     Text msg_tchat;
     Text inputed_text;
-    Text desplay_msg;
+    Text display_msg;
 
     Text scoreB;
     int scoreb;
@@ -92,7 +92,9 @@ public class HUD_player : NetworkBehaviour
         gamecontroller = GameObject.FindGameObjectWithTag("GameController");
         istchating = false;
         inputed_text = msg_input.GetComponentInChildren<Text>();
-       desplay_msg = GameObject.Find("Scroll_View").GetComponent<Text>();
+        display_msg = GameObject.Find("msg_display").GetComponent<Text>();
+        if (!display_msg)
+            Debug.Log("afgg");
 
         stats_bars = GameObject.Find("stats_bars");
         if (stats_bars)
@@ -283,6 +285,8 @@ public class HUD_player : NetworkBehaviour
             scoreO.text = scoreo.ToString();
 
             timer_text.text = game_manager.getStringTime();
+
+            displayChat();
         }
     }
 
@@ -310,7 +314,6 @@ public class HUD_player : NetworkBehaviour
     void ChangeState(State s)
     {
         state = s;
-        Debug.Log(s);
         for (int i = 0; i < (int)State.Count; i++)
         {
             panels[i].SetActive((int)s == i);
@@ -342,20 +345,21 @@ public class HUD_player : NetworkBehaviour
         {
             Debug.Log(msg_input.text);
             string msg = msg_input.text.ToString();
-           
+
             Debug.Log(stats.name);
             gamecontroller.GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, msg, stats.name);
         }
         input_tchat.SetActive(false);
         ChangeState(State.Play);
     }
-    public void diplay_msg()
+
+    public void displayChat()
     {
         Chat.SyncMessages historyMessage = gamecontroller.GetComponent<Chat>().Messages;
-        desplay_msg.text = "";
+        display_msg.text = "";
         foreach (var msg in historyMessage)
         {
-            desplay_msg.text += msg.sender + " : " + msg.text + "\n";
+            display_msg.text += "\n" + msg.sender + " : " + msg.text;
         }
     }
 

@@ -23,49 +23,23 @@ public class Chat : NetworkBehaviour
 
     public class SyncMessages : SyncListStruct<Message> { }
 
-    List<float> time_left = new List<float>();//To know how many second the message will stay in the screen
     SyncMessages messages = new SyncMessages();
     public SyncMessages Messages
     {
         get { return messages; }
     }
 
-    float time_in_chat = 5.0f;
     int max_message = 10;
 
     // Update is called once per frame
     void Update()
     {
-        if (!hasAuthority)
-            return;
-
-        if (messages == null || time_left == null)
-        {
-            Debug.Log("Either messages or time_left is null :" + messages + ";" + time_left);
-            return;
-        }
-
-        float delta_time = Time.deltaTime;
-        /*for (int i = 0; i < messages.Count; i++)
-        {
-            time_left[i] += delta_time;
-            if (time_left[i] > time_in_chat)
-            {
-                time_left.RemoveAt(i);
-                messages.RemoveAt(i);
-                i--;
-            }
-        }*/
     }
 
     [Command]
     public void Cmd_SendMessage(Type type, string message, string sender)
     {
-        if (type == Type.Command)
-        {
-            //Do something
-        }
-        else
+        if (type != Type.Command)
         {
             messages.Add(new Message
             {

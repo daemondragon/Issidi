@@ -651,7 +651,7 @@ GameObject:
   - 114: {fileID: 11439356}
   - 114: {fileID: 11498344}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: Scroll_View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3686,7 +3686,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11495848}
   m_HandleRect: {fileID: 22491612}
   m_Direction: 2
-  m_Value: 0.000000062204606
+  m_Value: 0
   m_Size: 0.3583573
   m_NumberOfSteps: 11
   m_OnValueChanged:
