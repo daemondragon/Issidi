@@ -46,7 +46,7 @@ public class Chat : NetworkBehaviour
         }
 
         float delta_time = Time.deltaTime;
-        for (int i = 0; i < messages.Count; i++)
+        /*for (int i = 0; i < messages.Count; i++)
         {
             time_left[i] += delta_time;
             if (time_left[i] > time_in_chat)
@@ -55,7 +55,7 @@ public class Chat : NetworkBehaviour
                 messages.RemoveAt(i);
                 i--;
             }
-        }
+        }*/
     }
 
     [Command]

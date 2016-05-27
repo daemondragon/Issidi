@@ -33,9 +33,12 @@ public class HUD_player : NetworkBehaviour
     GameObject select_panel;
     GameObject crosshair_panel;
     GameObject input_tchat;
+    GameObject gamecontroller;
 
     InputField msg_input;
     Text msg_tchat;
+    Text inputed_text;
+    Text desplay_msg;
 
     Text scoreB;
     int scoreb;
@@ -84,11 +87,12 @@ public class HUD_player : NetworkBehaviour
         panels[(int)State.Chat] = GameObject.Find("tchatbox");
 
         // tchat
-        input_tchat = GameObject.Find("msg_input");
+        input_tchat = GameObject.Find("tchatbox");
         msg_input = input_tchat.GetComponentInChildren<InputField>();
-        Debug.Log(msg_input);
-        msg_tchat = GameObject.Find("msg_display").GetComponentInChildren<Text>();
+        gamecontroller = GameObject.FindGameObjectWithTag("GameController");
         istchating = false;
+        inputed_text = msg_input.GetComponentInChildren<Text>();
+       desplay_msg = GameObject.Find("Scroll_View").GetComponent<Text>();
 
         stats_bars = GameObject.Find("stats_bars");
         if (stats_bars)
@@ -195,11 +199,18 @@ public class HUD_player : NetworkBehaviour
         {
             ChangeState(State.Chat);
             stats.CanMovePlayer = false;
+            input_tchat.SetActive(true);
 
+            msg_input.ActivateInputField();
             msg_input.Select();
+            msg_input.MoveTextStart(true);
+
+
+            Debug.Log(msg_input.isFocused);
+            msg_input.text += " ";
             if (msg_input.isFocused)
                 Debug.Log("hgfvd");
-            msg_input.ActivateInputField();
+
         }
     }
 
@@ -327,10 +338,27 @@ public class HUD_player : NetworkBehaviour
 
     public void send_tchat()
     {
-        string msg = msg_tchat.text;
-        GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, msg , stats.name);
+        if (msg_input.text != null)
+        {
+            Debug.Log(msg_input.text);
+            string msg = msg_input.text.ToString();
+           
+            Debug.Log(stats.name);
+            gamecontroller.GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, msg, stats.name);
+        }
+        input_tchat.SetActive(false);
         ChangeState(State.Play);
     }
+    public void diplay_msg()
+    {
+        Chat.SyncMessages historyMessage = gamecontroller.GetComponent<Chat>().Messages;
+        desplay_msg.text = "";
+        foreach (var msg in historyMessage)
+        {
+            desplay_msg.text += msg.sender + " : " + msg.text + "\n";
+        }
+    }
+
     #region buttons
     public void unpause()
     {
