@@ -198,11 +198,11 @@ public class Stats : NetworkBehaviour
     {
         GameObject[] spawns = null;
 
-        if (team == Stats.Team.None)
+        if (team == Team.None)
             spawns = GameObject.FindGameObjectsWithTag("WhiteSpawn");
-        else if (team == Stats.Team.Blue)
+        else if (team == Team.Blue)
             spawns = GameObject.FindGameObjectsWithTag("BlueSpawn");
-        else if (team == Stats.Team.Orange)
+        else if (team == Team.Orange)
             spawns = GameObject.FindGameObjectsWithTag("OrangeSpawn");
 
         if (spawns == null || spawns.Length <= 0)

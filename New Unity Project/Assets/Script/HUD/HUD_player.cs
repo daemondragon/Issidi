@@ -93,8 +93,6 @@ public class HUD_player : NetworkBehaviour
         istchating = false;
         inputed_text = msg_input.GetComponentInChildren<Text>();
         display_msg = GameObject.Find("msg_display").GetComponent<Text>();
-        if (!display_msg)
-            Debug.Log("afgg");
 
         stats_bars = GameObject.Find("stats_bars");
         if (stats_bars)
@@ -118,11 +116,9 @@ public class HUD_player : NetworkBehaviour
         score_panel = GameObject.Find("score_panel");
         if (score_panel)
         {
-            scoreo = 0;
-            scoreb = 0;
             Text[] scores = score_panel.GetComponentsInChildren<Text>();
-            scoreB = scores[0];
-            scoreO = scores[1];
+            scoreB = scores[1];
+            scoreO = scores[0];
             timer_text = scores[2];
 
             scoreB.text = scoreb.ToString();
@@ -181,7 +177,7 @@ public class HUD_player : NetworkBehaviour
         UpdateState();
         RecolorAllPlayer();
 
-        if (state == State.Play || state == State.Pause)
+        if (state == State.Play || state == State.Pause || state == State.Chat)
             DrawUpdate();
 
         if (state == State.Play && !have_find)
@@ -267,8 +263,30 @@ public class HUD_player : NetworkBehaviour
 
         if (game_manager)
         {
-            scoreo = game_manager.getOrangeScore();
-            scoreb = game_manager.getBlueScore();
+            string display_string = "";
+            switch (game_manager.getState())
+            {
+                case GameManager.State.WaitingForPlayer:
+                    scoreo = 0;
+                    scoreb = 0;
+                    display_string = "Waiting for players.";
+                    break;
+                case GameManager.State.StartOfGame:
+                    scoreo = 0;
+                    scoreb = 0;
+                    display_string = "Starting game in: " + game_manager.getStringTime();
+                    break;
+                case GameManager.State.InGame:
+                    scoreo = game_manager.getOrangeScore();
+                    scoreb = game_manager.getBlueScore();
+                    display_string = "Time left: " + game_manager.getStringTime();
+                    break;
+                case GameManager.State.EndOfGame:
+                    scoreo = game_manager.getOrangeScore();
+                    scoreb = game_manager.getBlueScore();
+                    display_string = "The End.";
+                    break;
+            }
 
             if (scoreo == scoreb && scoreb == 0)
             {
@@ -284,7 +302,7 @@ public class HUD_player : NetworkBehaviour
             scoreB.text = scoreb.ToString();
             scoreO.text = scoreo.ToString();
 
-            timer_text.text = game_manager.getStringTime();
+            timer_text.text = display_string;
 
             displayChat();
         }
@@ -343,11 +361,9 @@ public class HUD_player : NetworkBehaviour
     {
         if (msg_input.text != null)
         {
-            Debug.Log(msg_input.text);
             string msg = msg_input.text.ToString();
 
-            Debug.Log(stats.name);
-            gamecontroller.GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, msg, stats.name);
+            gamecontroller.GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, msg, Name);
         }
         input_tchat.SetActive(false);
         ChangeState(State.Play);

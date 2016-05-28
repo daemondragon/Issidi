@@ -4,7 +4,7 @@ using System.Collections;
 
 public class GameManager : NetworkBehaviour
 {
-    enum State
+    public enum State
     {
         WaitingForPlayer,
         StartOfGame,
@@ -15,7 +15,7 @@ public class GameManager : NetworkBehaviour
     State state;
 
     [SyncVar]
-    float timer;
+    float decreasing_timer;
     float second_timer;
     [SyncVar]
     float game_time;
@@ -31,6 +31,8 @@ public class GameManager : NetworkBehaviour
         if (!hasAuthority)
             return;
 
+        orange_score = 0;
+        blue_score = 0;
         state = State.WaitingForPlayer;
     }
 
@@ -46,23 +48,25 @@ public class GameManager : NetworkBehaviour
     void UpdateState()
     {
         float delta_time = Time.deltaTime;
+        decreasing_timer -= delta_time;
+
         switch (state)
         {
             case State.WaitingForPlayer:
-                timer += delta_time;
-                if (timer > 0.5f)
+                if (decreasing_timer <= 0.0f)
                 {
                     if (HaveEnoughtPlayer())
                     {
                         state = State.StartOfGame;
                         GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "Starting game...", "server");
+                        decreasing_timer = 5.0f;
                     }
-                    timer = 0.0f;
+                    else
+                        decreasing_timer = 0.5f;
                 }
                 break;
             case State.StartOfGame:
-                timer += delta_time;
-                if (timer > 5.0f)
+                if (decreasing_timer < 0.0f)
                 {
                     StartGame(15, 00);
                     state = State.InGame;
@@ -71,13 +75,12 @@ public class GameManager : NetworkBehaviour
                 }
                 break;
             case State.InGame:
-                timer -= delta_time;
                 second_timer += delta_time;
-                if (timer <= 0.0f || blue_score > 25 || orange_score > 25)
+                if (decreasing_timer <= 0.0f || blue_score > 25 || orange_score > 25)
                 {
                     state = State.EndOfGame;
                     GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "End of game", "server");
-                    timer = 0.0f;
+                    decreasing_timer = 10.0f;
                 }
                 if (second_timer > 10.0)
                 {
@@ -91,8 +94,7 @@ public class GameManager : NetworkBehaviour
                 }
                 break;
             case State.EndOfGame:
-                timer += delta_time;
-                if (timer >= 10)
+                if (decreasing_timer <= 0.0f)
                 {
                     state = State.WaitingForPlayer;
                     GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "Waiting for player", "server");
@@ -106,7 +108,7 @@ public class GameManager : NetworkBehaviour
     public void StartGame(float duration_minutes, float duration_secondes = 0.0f)
     {
         game_time = duration_minutes * 60.0f + duration_secondes;
-        timer = game_time;
+        decreasing_timer = game_time;
 
         orange_score = 0;
         blue_score = 0;
@@ -147,22 +149,24 @@ public class GameManager : NetworkBehaviour
 
     public float getTimeRatio()
     {
-        return (timer / game_time);
+        return (decreasing_timer / game_time);
     }
 
     public string getStringTime()
     {
-        return ((int)(timer / 60) + "min " + ((int)(timer) % 60) + "sec");
+        int minutes = (int)(decreasing_timer / 60);
+
+        return ((minutes > 0 ? minutes + "min " : "") + ((int)(decreasing_timer) % 60) + "sec");
     }
 
-    [Command]
-    public void Cmd_increaseOrangeScore()
+    [Server]
+    public void IncreaseOrangeScore()
     {
         orange_score++;
     }
 
-    [Command]
-    public void Cmd_increaseBlueScore()
+    [Server]
+    public void IncreaseBlueScore()
     {
         blue_score++;
     }
@@ -175,6 +179,11 @@ public class GameManager : NetworkBehaviour
     public int getBlueScore()
     {
         return blue_score;
+    }
+
+    public State getState()
+    {
+        return state;
     }
     #endregion
 }

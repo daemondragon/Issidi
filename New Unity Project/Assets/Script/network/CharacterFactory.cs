@@ -22,7 +22,12 @@ public class CharacterFactory : NetworkBehaviour
             return;
         }
 
-        character.GetComponent<Stats>().ReturnToSpawn();
+        Stats stats = character.GetComponent<Stats>();
+        if (stats)
+        {
+            stats.team = team;
+            stats.ReturnToSpawn();
+        }
 
         NetworkServer.ReplacePlayerForConnection(connectionToClient, character, playerControllerId);
         NetworkServer.Destroy(gameObject);

@@ -15,7 +15,6 @@ public class Spawner : MonoBehaviour {
     public void Spawn(GameObject obj)
     {
         PlaceGameObject(obj);
-        SetTeam(obj);
     }
 
     void PlaceGameObject(GameObject obj)
@@ -35,12 +34,4 @@ public class Spawner : MonoBehaviour {
             deplacement.sens = deplacement.findGlobalAxis(transform.up);
         }
     }
-
-    void SetTeam(GameObject obj)
-    {
-        Stats stats = obj.GetComponent<Stats>();
-        if (stats)
-            stats.team = team;
-    }
-
 }

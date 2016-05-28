@@ -30,6 +30,7 @@ public class Bullet : NetworkBehaviour
 
         enabled = hasAuthority;
         this.team = team;
+        Debug.Log(team);
     }
 
 
@@ -65,6 +66,7 @@ public class Bullet : NetworkBehaviour
                     //We can't take damage if one of the two player is in Spectator team, or if we are in the same team
                     if (stats.team != Stats.Team.None && team != Stats.Team.None && team != stats.team)
                     {
+                        bool previously_dead = stats.IsDead();
                         if (ZoneEffect > 0)
                         {
                             stats.Life -= damage * (1 - (Vector3.Distance(transform.position, collision.transform.position) / ZoneEffect));
@@ -74,8 +76,8 @@ public class Bullet : NetworkBehaviour
                             stats.Life -= damage;
                         }
 
-                        if (stats.IsDead())
-                            IncreaseScore(team);
+                        if (!previously_dead && stats.IsDead())
+                            IncreaseScore();
                     }
 
                 }
@@ -125,15 +127,15 @@ public class Bullet : NetworkBehaviour
         }
     }
 
-    void IncreaseScore(Stats.Team team_)
+    void IncreaseScore()
     {
         GameObject game_manager = GameObject.FindGameObjectWithTag("GameController");
         if (game_manager)
         {
             if (team == Stats.Team.Orange)
-                game_manager.GetComponent<GameManager>().Cmd_increaseOrangeScore();
+                game_manager.GetComponent<GameManager>().IncreaseOrangeScore();
             else if (team == Stats.Team.Blue)
-                game_manager.GetComponent<GameManager>().Cmd_increaseBlueScore();
+                game_manager.GetComponent<GameManager>().IncreaseBlueScore();
         }
         else
             Debug.Log("No GameController found");
@@ -194,7 +196,7 @@ public class Bullet : NetworkBehaviour
         if (t != null)
         {
             var b = t.GetComponent<ParticleSystem>().emission;
-            var en = b.enabled = false;
+            b.enabled = false;
             t.parent = null;
             Destroy(t.gameObject, 4);
         }
