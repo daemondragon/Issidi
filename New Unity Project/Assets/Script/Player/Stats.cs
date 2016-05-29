@@ -201,6 +201,27 @@ public class Stats : NetworkBehaviour
         }
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (!hasAuthority)
+            return;
+
+        Energy += EnergyPerSecond * Time.deltaTime;
+
+        if (need_respawn)
+        {
+            ReturnToSpawn();
+            Cmd_SetNeedRespawn(false);
+        }
+
+        if (IsDead())
+            KillPlayer();
+
+    }
+
+    #region spawning
+
     public void ReturnToSpawn()
     {
         GameObject[] spawns = null;
@@ -236,31 +257,6 @@ public class Stats : NetworkBehaviour
     }
 
     [Command]
-    void Cmd_DestroyPlayer(GameObject obj)
-    {
-        NetworkServer.Destroy(obj);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!hasAuthority)
-            return;
-
-        Energy += EnergyPerSecond * Time.deltaTime;
-
-        if (need_respawn)
-        {
-            ReturnToSpawn();
-            Cmd_SetNeedRespawn(false);
-        }
-
-        if (IsDead())
-            KillPlayer();
-
-    }
-
-    [Command]
     void Cmd_CreateCharacterFactory()
     {
         if (character_factory)
@@ -277,6 +273,16 @@ public class Stats : NetworkBehaviour
         Cmd_CreateCharacterFactory();
         Cmd_DestroyPlayer(gameObject);
     }
+
+    [Command]
+    void Cmd_DestroyPlayer(GameObject obj)
+    {
+        NetworkServer.Destroy(obj);
+    }
+
+    #endregion
+
+    #region utils
 
     public bool IsDead()
     {
@@ -317,4 +323,6 @@ public class Stats : NetworkBehaviour
     {
         Ammo--;
     }
+
+    #endregion
 }

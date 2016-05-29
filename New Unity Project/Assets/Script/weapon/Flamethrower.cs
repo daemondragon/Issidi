@@ -49,7 +49,7 @@ public class Flamethrower : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stats.IsDead() || stats.CanMovePlayer)
+        if (stats.IsDead() || !stats.CanMovePlayer)
             return;
 
         if (!me.isLocalPlayer)
