@@ -16,7 +16,6 @@ public class GameManager : NetworkBehaviour
 
     [SyncVar]
     float decreasing_timer;
-    float second_timer;
     [SyncVar]
     float game_time;
 
@@ -58,7 +57,6 @@ public class GameManager : NetworkBehaviour
                     if (HaveEnoughtPlayer())
                     {
                         state = State.StartOfGame;
-                        GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "Starting game...", "server");
                         decreasing_timer = 5.0f;
                     }
                     else
@@ -70,27 +68,13 @@ public class GameManager : NetworkBehaviour
                 {
                     StartGame(15, 00);
                     state = State.InGame;
-                    second_timer = 0.0f;
-                    GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "Game start", "server");
                 }
                 break;
             case State.InGame:
-                second_timer += delta_time;
                 if (decreasing_timer <= 0.0f || blue_score > 25 || orange_score > 25)
                 {
                     state = State.EndOfGame;
-                    GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "End of game", "server");
                     decreasing_timer = 10.0f;
-                }
-                if (second_timer > 10.0)
-                {
-                    if (!HaveEnoughtPlayer())
-                    {
-                        state = State.WaitingForPlayer;
-                        GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "Not enought player, stoping game", "server");
-                    }
-                    else
-                        second_timer = 0.0f;
                 }
                 break;
             case State.EndOfGame:

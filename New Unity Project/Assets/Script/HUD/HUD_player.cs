@@ -125,8 +125,8 @@ public class HUD_player : NetworkBehaviour
             scoreO.text = scoreo.ToString();
 
             Image[] score_bars = score_panel.GetComponentsInChildren<Image>();
-            score_orange = score_bars[1];
-            score_blue = score_bars[2];
+            score_orange = score_bars[2];
+            score_blue = score_bars[1];
 
         }
 
@@ -245,20 +245,6 @@ public class HUD_player : NetworkBehaviour
             ammo_count.fillAmount = (float)stats.Ammo / (float)stats.MaxAmmo;
             Text amo = ammo_count.GetComponentInChildren<Text>();
             amo.text = stats.Ammo.ToString() + "/" + stats.MaxAmmo.ToString();
-
-            // test
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                stats.Life -= 20;
-                stats.Energy -= 30;
-                stats.Ammo -= 2;
-                scoreo += 100;
-            }
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                stats.Life += 10;
-                scoreb++;
-            }
         }
 
         if (game_manager)
