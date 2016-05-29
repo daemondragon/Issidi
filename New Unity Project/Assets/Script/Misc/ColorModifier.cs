@@ -15,9 +15,10 @@ public class ColorModifier : MonoBehaviour
         else if (team == Stats.Team.Orange)
             to_apply = Orange;
 
-        foreach (Transform child in transform)
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renderers.Length; i++)
         {
-            Material mat = child.gameObject.GetComponent<Renderer>().material;
+            Material mat = renderers[i].material;
             if (NeedChange(mat.color))
                 mat.color = to_apply.color;
         }

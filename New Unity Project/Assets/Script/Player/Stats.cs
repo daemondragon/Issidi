@@ -14,6 +14,13 @@ public class Stats : NetworkBehaviour
     public GameObject character_factory;
 
     #region GetterSetter
+    [SyncVar]
+    public bool need_respawn;
+    [Command]
+    void Cmd_SetNeedRespawn(bool b)
+    {
+        need_respawn = b;
+    }
 
     [SyncVar]
     string _name;
@@ -211,7 +218,21 @@ public class Stats : NetworkBehaviour
             Debug.Log("Error : no " + team + " spawn register in CharacterFactory, player will spawn at (0;0;0)");
         }
         else //Spawn at a random location
-            spawns[Random.Range(0, spawns.Length)].GetComponent<Spawner>().Spawn(gameObject);
+        {
+            Spawner spawn = spawns[Random.Range(0, spawns.Length)].GetComponent<Spawner>();
+            if (spawn)
+            {
+                transform.position = spawn.getSpawnPosition(gameObject);
+                transform.rotation = spawn.getSpawnRotation(gameObject);
+                Deplacement deplacement = GetComponent<Deplacement>();
+                if (deplacement)
+                {
+                    deplacement.CorrectRotation();
+                    deplacement.sens = deplacement.findGlobalAxis(transform.up);
+                    deplacement.SetOnGround(true);
+                }
+            }
+        }
     }
 
     [Command]
@@ -228,8 +249,15 @@ public class Stats : NetworkBehaviour
 
         Energy += EnergyPerSecond * Time.deltaTime;
 
+        if (need_respawn)
+        {
+            ReturnToSpawn();
+            Cmd_SetNeedRespawn(false);
+        }
+
         if (IsDead())
             KillPlayer();
+
     }
 
     [Command]

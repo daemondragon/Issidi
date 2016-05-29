@@ -243,6 +243,11 @@ public class Deplacement : MonoBehaviour
 
     #region utils
 
+    public void SetOnGround(bool b)
+    {
+        on_ground = b;
+    }
+
     public bool IsWalking()
     {
         return (is_walking);

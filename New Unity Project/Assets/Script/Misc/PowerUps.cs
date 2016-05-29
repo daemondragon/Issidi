@@ -14,19 +14,14 @@ public class PowerUps : NetworkBehaviour
     [SyncVar]
     float repop;
 
-	// Use this for initialization
-	void Start ()
-    {
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update()
     {
         if (!activated)
         {
             if (repop > repop_time)
             {
-                GetComponent<Renderer>().enabled = true;
+                SwitchRenderers(true);
                 activated = true;
             }
             else if (hasAuthority)
@@ -34,7 +29,7 @@ public class PowerUps : NetworkBehaviour
         }
 
         UpdateRotation();
-	}
+    }
 
     void OnTriggerEnter(Collider collider)
     {
@@ -61,9 +56,19 @@ public class PowerUps : NetworkBehaviour
             stats.Ammo += ammo_bonus;
         }
 
-        GetComponent<Renderer>().enabled = false;
+        SwitchRenderers(false);
         activated = false;
         repop = 0.0f;
+    }
+
+
+    void SwitchRenderers(bool b)
+    {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].enabled = b;
+        }
     }
 
     void UpdateRotation()
@@ -71,6 +76,9 @@ public class PowerUps : NetworkBehaviour
         if (!hasAuthority)
             return;
 
-        transform.RotateAround(transform.position, transform.up, Time.deltaTime * 360.0f / rotation_time);
+        if (rotation_time == 0.0f)
+            transform.RotateAround(transform.position, transform.up, Time.deltaTime * 360.0f);
+        else
+            transform.RotateAround(transform.position, transform.up, Time.deltaTime * 360.0f / rotation_time);
     }
 }

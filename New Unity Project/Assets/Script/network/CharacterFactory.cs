@@ -26,7 +26,7 @@ public class CharacterFactory : NetworkBehaviour
         if (stats)
         {
             stats.team = team;
-            stats.ReturnToSpawn();
+            stats.need_respawn = true;
         }
 
         NetworkServer.ReplacePlayerForConnection(connectionToClient, character, playerControllerId);

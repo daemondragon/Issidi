@@ -110,7 +110,7 @@ public class GameManager : NetworkBehaviour
     {
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
         {
-            player.GetComponent<Stats>().ReturnToSpawn();
+            player.GetComponent<Stats>().need_respawn = true;
         }
     }
 
