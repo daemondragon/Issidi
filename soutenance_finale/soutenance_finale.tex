@@ -70,7 +70,7 @@ de nous lors de notre futur métier.
 
 \section{Présentation}
 \subsection{Présentation du projet}
-\subsubsection{Introduction}
+\subsubsection{Scénario}
 
 \subsubsection{Gameplay}
 
@@ -106,7 +106,7 @@ d'une longue réflexion au sein de notre groupe et avec un grand potentiel me pe
 dans ce projet de grande envergure d'utiliser intelligemment ce que j'ai appris précédemment,
 dans un groupe avec une excellente entente en son sein. De plus, ce projet m'apprendra
 le travail en équipe, qui est une compétence fondamentale dans le monde d'aujourd'hui,
-ainsi que l'apprentissage d'un nouveau langage qu'est le C #, qui m'était totalement
+ainsi que l'apprentissage d'un nouveau langage qu'est le C\#, qui m'était totalement
 inconnu avant mon entrée à Epita. Ainsi, c'est avec un énorme sourire aux lèvres que
 je m'apprête à commencer ce projet. 
 
@@ -115,7 +115,7 @@ J'ai très peu codé dans ma vie mais j'ai toujours eu envie de participer à ce
 projet et Epita me donne l'opportunité de pouvoir participer enfin à ceci. Créer un jeu
 vidéo a toujours fait partie de mes rêves même si je n'ai jamais réussi à passer le cap
 tout seul. Je saisis cette occasion pour pouvoir montrer ce que je peux faire en me
-donnant à 200%. De plus je suis très confiant par rapport à mon groupe car je sais
+donnant à 200\%. De plus je suis très confiant par rapport à mon groupe car je sais
 que tous autant qu'ils sont, ils seront se donner à fond afin que celui-ci soit le
 meilleur possible. J'ai très envie de pouvoir aider mon équipe autant que possible et
 je pense vraiment que ce projet sera une réussite. Je suis très content de l'idée
@@ -135,6 +135,75 @@ ayant utilisé XNA, nativement celui du .NET. J'ai donc comme tout notre groupe 
 camarades non seulement très impliqués dans le projet, mais aussi et surtout très sympathiques,
 ouverts aux suggestions et capables de trouver des solutions aux problèmes.
 
+\subsection{Découpage du projet}
+\subsubsection{Physique}
+Cette section sera dédiée à la gestion des interactions des différents élements avec
+la gravité. Ainsi que la gestion de tous les types de collisions : joueur/terrain,
+projectile/joueur, projectile/terrain (pour à terme, permettre d’avoir un environnement
+partiellement destructible).
+Parmi les interactions on notera en particulier la possibilité de marcher sur les murs 
+et le plafond, via un changement de gravité, ce qui constituera l’une des pricipales
+mécaniques du jeu.
+
+\subsection{Mode un joueur}
+Le mode solo consistera à parcourir les ruines de vieilles usines abandonnées à la recherche
+de tout ce qui pourrait être utile à votre survie. Il faudra donc essayer de ne pas se faire
+tuer par les défenses automatiques encore actives et de se frayer un chemin parmi les décombres.
+
+\subsection{Multijoueur}
+Le multijoueur est un point important de ce projet.
+En effet, même s’il disposera d’un mode solo, l’intérêt principal d’ Issidi résidera dans les
+affrontements épiques entre joueurs. Le réseau ne permettra donc pas seulement d’allonger
+la durée de vie du jeu mais aussi d’enrichir l’expérience de celi-ci. Il sera capable
+de regrouper jusqu’à ”42” joueurs dans des modes de jeux divers et variés (deathmatch, capture de drapeau...).
+
+\subsection{Intelligence artificielle}
+Nous aurons besoin de deux types d’Intelligence Artiﬁcielle (IA) dans Issidi.
+Premièrement, il faudra un système de visée pour les tourelles qui défendront
+les usines désaffectées. Deuxièmement, la création de pathﬁding pour les systèmes
+de défense mobile sera aussi nécessaire (de gentilles araignée mécaniques dont leurs
+seul but sera de se faire sauter à votre proximité).
+
+\subsection{Particule}
+Aﬁn d’améliorer la beauté de ce projet, l’ajout de particules est indispensable!
+On pourra par exemple faire apparaitre la trainée des differents projectiles, aﬁn de
+montrer leurs trajectoires. Ou encore de dynamiser l’action et d’égailler les décors.
+
+\subsection{Personnage}
+Comment jouer sans personnage ? Cela semble en effet plutôt complexe, pour cela
+nous donnerons vie à de mignons petits robots qui pourront répandre la democratie
+américaine. Les joueurs auront non seulement la possibilité de se déplacer sur le sol,
+mais aussi sur les murs ou le plafond du terrain. Une bonne gestion des déplacements
+et de la caméra est donc indispensable, dans un monde où l’on peut se retrouver face
+à un ennemi la tête à l’envers!
+
+\subsection{Arme}
+Un robot sans défense n’a aucun interêt s’il ne possède rien lui permetttant
+d’occire ses ennemis, il doit donc disposer d’un arsenal suﬃsant. Il sera donc
+nécéssaire de créer plusieurs armes aﬁn d’ajouter une profondeur au gameplay.
+
+\subsection{Son}
+Que serait un jeu sans son? Le but ici sera de créer une bande son simple mais orignale.
+
+\subsection{Création des modèles}
+Tout jeu digne de ce nom doit aussi avoir des graphismes à la hauteur! C’est pourquoi
+cette partie consistera à la réalisation des modèles nécessaires aﬁn de réaliser
+notre projet, et lui donner une ambiance qui le différenciera des autres jeux post
+apocalyptiques. Seront inclus la création des personnages ainsi que les environements.
+
+\subsection{Interface}
+Aﬁn de rendre le jeu plus convivial, celui-ci doit posséder une interface composée
+de plusieurs menus. Celle-ci permettra notamment de naviguer dans les options du jeu,
+de lancer une partie en mode solo, ainsi que de choisir les paramètres des parties
+du mode multijoueur.
+
+\subsection{Site web}
+Le site web nous permettra de montrer l’avancement de notre projet.
+Il contiendra une description du projet, des images de celui-ci, ainsi que des
+liens permettant d’avoir un accès rapide aux sources du projet.
+
+
+
 \section{Bilan du projet}
 Bilan sur nous et notre groupe.
 Pas le même bilan au sein du groupe.
@@ -143,7 +212,7 @@ On ne s'agresse pas (dommage...)
 \section{Conclusion}
 
 \section{Bibliographie}
-LOL... (en plus faut la commenté)
+LOL... (en plus faut la commenter)
 
 - docs.unity.com
 - stackoverflow.com
