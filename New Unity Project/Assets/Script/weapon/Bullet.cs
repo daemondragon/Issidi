@@ -30,7 +30,6 @@ public class Bullet : NetworkBehaviour
 
         enabled = hasAuthority;
         this.team = team;
-        Debug.Log(team);
     }
 
 

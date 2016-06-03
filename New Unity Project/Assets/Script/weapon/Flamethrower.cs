@@ -63,9 +63,6 @@ public class Flamethrower : NetworkBehaviour
         }
 
         OldBool = testeur;
-
-
-
     }
 
 

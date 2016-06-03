@@ -24,6 +24,8 @@ public class GameManager : NetworkBehaviour
     [SyncVar]
     int blue_score;
 
+    int score_to_win = 25;
+
     // Use this for initialization
     void Start()
     {
@@ -71,7 +73,7 @@ public class GameManager : NetworkBehaviour
                 }
                 break;
             case State.InGame:
-                if (decreasing_timer <= 0.0f || blue_score > 25 || orange_score > 25)
+                if (decreasing_timer <= 0.0f || blue_score >= score_to_win || orange_score >= score_to_win)
                 {
                     state = State.EndOfGame;
                     decreasing_timer = 10.0f;
