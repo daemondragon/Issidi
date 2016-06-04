@@ -28,6 +28,8 @@ public class Deplacement : MonoBehaviour
     private float actual_dash_time;
     public float dash_time;
     public float dash_speed;
+    private Vector2 dash_direction;
+
     private Stats stats;
 
     //Rotation
@@ -89,10 +91,11 @@ public class Deplacement : MonoBehaviour
             movement = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
         else
         {
-            if (Input.GetAxis("Vertical") < -0.25f)
+            Vector2 actual_direction = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+            if (Vector2.Dot(dash_direction, actual_direction) < -0.25)
                 on_dash = false;
 
-            movement.x = 1;
+            movement = dash_direction;
             movement_speed = dash_speed;
 
             actual_dash_time += delta_time;
@@ -132,6 +135,11 @@ public class Deplacement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && on_ground && !on_dash && stats.CanDash())
         {
             on_dash = true;
+            if (stats.can_dash_in_multiple_direction && (movement.x != 0 || movement.y != 0))
+                dash_direction = movement;
+            else
+                dash_direction = new Vector2(1.0f, 0);
+
             actual_dash_time = 0.0f;
             stats.Dash();
         }

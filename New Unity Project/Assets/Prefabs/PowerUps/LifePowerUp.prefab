@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11461956}
   - 114: {fileID: 11479478}
   - 114: {fileID: 11469668}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LifePowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

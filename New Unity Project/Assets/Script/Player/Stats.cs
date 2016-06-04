@@ -87,6 +87,8 @@ public class Stats : NetworkBehaviour
     [SyncVar]
     float energy_per_second;
 
+    public bool can_dash_in_multiple_direction;
+
     public float MaxEnergy
     {
         get { return (max_energy); }
@@ -186,6 +188,7 @@ public class Stats : NetworkBehaviour
         EnergyPerDash = 30;
         Name = "Player";
         can_move_player = true;
+        can_dash_in_multiple_direction = true;
     }
 
     public void RecolorPlayer()
