@@ -13,7 +13,7 @@
 \fancyhf{}
 \rhead{Issidi}
 \lhead{Rapport final}
-\lfoot{Epita -- promotion 2020} //Insérer logo épita dans le lfoot
+\lfoot{Epita -- promotion 2020} //Insérer logo épita dans le lfoot //%\includegraphics{epita.jpg}
 \rfoot{Page \thepage}
 
 
@@ -23,7 +23,9 @@
 \author{Jérémy \bsc{Beuvry}\\
 		Julien \bsc{Boulicaut}\\
 		Clément \bsc{Finck}\\
-		Sébastien \bsc{Fleury}}
+		Sébastien \bsc{Fleury}\\
+		\\
+		Epita -- Promo 2020}
 
 \begin{document}
 \maketitle
@@ -42,7 +44,8 @@
 
 \section{Introduction}
 Dans le cadre de notre première année préparatoire au sein d'Epita, 
-il nous as été demandé de réaliser un projet informatique au sujet libre.
+il nous a été demandé de réaliser un projet informatique dont sujet
+était libre.
 
 /*
 **Plus de blabla sur : "comprendre la position du projet au sein 
@@ -57,7 +60,7 @@ Les auteurs de ce projet sont quatre compères de première année animés
 d'une motivation à toute épreuve.
 
 Ce projet prend la forme d'un jeu de tir à la troisième personne dans
-un univers post apocalyptique. Les différentes mécaniques du gameplay et
+un univers post apocalyptique. Les différentes mécaniques de jeu et
 l'univers seront bien entendu détaillés dans la section adaptée.
 
 La réalisation de ce projet Issidi nous a permit de nous confronter à
@@ -71,8 +74,57 @@ de nous lors de notre futur métier.
 \section{Présentation}
 \subsection{Présentation du projet}
 \subsubsection{Scénario}
+Dans un monde ravagé par la guerre tous les hommes sont mort ou
+enterrés, mais pas nécessairement dans cet ordre. En effet, les
+radiations résultant du grand bombardement de la troisième guerre
+mondiale ont rendu la surface de la Terre létale pour l'humanité
+telle que nous la connaissons. Les rares survivants sont contraints
+de se terrer dans des bunkers antiatomiques pour pouvoir
+espérer qu'il y ait un jour lointain un retour possible à la
+surface. En attendant, seul des drônes peuvent se risquer au dehorts
+pour récupérer des matériaux quand il en reste. Très vite, les
+ressources se font rares et des luttes éclattent peu à peu. Incarnez
+un pilote de drones de combat en récupérant un maximum de matériaux
+nécessaires à la survie des camarades de votre abri et en déjouant
+les assauts des autres pillards assoiffés de métal. Vous représenterez
+l'ultime rempart entre la vie et la mort pour vos frères, alors,
+laisserez-vous l'humanité sombrer sans agir ?
 
-\subsubsection{Gameplay}
+\subsubsection{Mécanique de jeu}
+Issidi est un jeu de tir à la troisième personne (aussi appelé
+\emph{Third Person Shooter}), qui sera créé avec le moteur de jeu
+Unity3d, édition personnelle. A la différence des shooters
+traditionels, plutôt horizontaux (souvent ramenés à un simple et
+large plan horizontal avec des obstacles), Issidi a pour but
+d’exploiter réellement les trois dimensions en permettant au
+joueur de marcher sur les murs, mais aussi sur le plafond rendant
+le jeu beaucoup plus dynamique! Ainsi, les possibilités de
+déplacements du joueur seront démultipliées pour proposer une
+expérience unique. En plus des déplacements classiques vous
+pourrez également esquiver à l’aide de petit saut rapide vers
+l’avant ou encore utiliser des doubles sauts qui permettront
+aussi d’atteindre certaines zones qui auraient été inaccessibles
+sinon. Attention toutefois à ne pas oublier où se trouve le sol
+car un saut depuis un mur ou le plafond vous précipitera à terre
+et même si votre etes solide, selon la hauteur, une telle chute
+vous sera sans doute fatal. De plus, dans le mode solo, la caméra
+à la troisième personne vous permettra de mieux appréhender votre
+environement ce qui vous permettra après réﬂexion de choisir votre
+chemin que ce soit : au plafond, sur les murs ou tout simplement
+au sol. Et ne croyez pas que ce sera une tâche aisée, votre
+environement étant en ruine et partiellement truffés d’appareils
+en tous genres présent uniquement pour vous réduire en pièces
+détachées, toutes les routes ne seront pas empruntables soit
+parcequ’elles seront bouchées, soit à cause des diverses tourelles
+et autres joyeuses défenses automatiques qui vous bloqueront
+déﬁnitivement le passage, vous forçant à rebrousser chemin, vous
+forçant à rebrousser chemin dans l’espoir d’en trouver un autre
+dans ces dédales de débris. Plusieurs armes seront disponibles
+pour varier le gameplay et permettre à tous les types de joueurs
+de prendre un maximum de plaisir. Le mode multijoueurs mettra en
+scène les batailles sanglantes entre pillards de ressources dont
+un seul sortira vainqueur, ou pas!
+
 
 
 \subsection{Présentation des membres de l'équipe}
@@ -135,7 +187,7 @@ ayant utilisé XNA, nativement celui du .NET. J'ai donc comme tout notre groupe 
 camarades non seulement très impliqués dans le projet, mais aussi et surtout très sympathiques,
 ouverts aux suggestions et capables de trouver des solutions aux problèmes.
 
-\subsection{Découpage du projet}
+\section{Découpage du projet}
 \subsubsection{Physique}
 Cette section sera dédiée à la gestion des interactions des différents élements avec
 la gravité. Ainsi que la gestion de tous les types de collisions : joueur/terrain,
@@ -202,6 +254,30 @@ Le site web nous permettra de montrer l’avancement de notre projet.
 Il contiendra une description du projet, des images de celui-ci, ainsi que des
 liens permettant d’avoir un accès rapide aux sources du projet.
 
+\section{Répartition des taches}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+			&	Jérémy		&	Julien		&	Clément		&	Sébastien	\\ \hline
+Site Web	&				& $\bigotimes$	& 				& $\bigcirc$	\\ \hline
+Physique	&				&				& $\bigcirc$	& $\bigotimes$	\\ \hline
+Multijoueur	& $\bigotimes$	& $\bigcirc$	&				& 				\\ \hline
+Animation	&				& $\bigotimes$	& $\bigcirc$	&				\\ \hline
+IA			& 				& $\bigotimes$	& $\bigotimes$	&				\\ \hline
+Particules	& $\bigcirc$	& 				&				& $\bigotimes$	\\ \hline
+Personnage	& $\bigotimes$	&				& 				& $\bigcirc$	\\ \hline
+Arme		& $\bigcirc$	&				&				& $\bigotimes$	\\ \hline
+Son			&				& $\bigcirc$	& $\bigotimes$	&				\\ \hline
+Modèles		& $\bigotimes$	&				& $\bigotimes$	&				\\ \hline
+Interfaces	& 				& $\bigcirc$	& $\bigotimes$	&				\\ \hline
+\end{tabular}
+
+Légende:\\
+$\bigotimes$ : s'occupe de\\
+$\bigcirc$ : aide
+
+\section{Avancement du projet}//Renommer cette catégorie si plus d'idée
+On NE parle PAS de code, mais du général, ce qu'on à fait.
+Description de ce qu'il y a dans le projet quoi.
 
 
 \section{Bilan du projet}
