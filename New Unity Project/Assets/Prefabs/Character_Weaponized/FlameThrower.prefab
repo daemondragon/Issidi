@@ -2440,6 +2440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character_factory: {fileID: 199760, guid: ce477039f2f90704b812d7c054290042, type: 2}
+  need_respawn: 0
+  can_dash_in_multiple_direction: 0
 --- !u!114 &11456270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2465,10 +2467,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sens: 0
   gravity: -40
-  speed: 5
+  speed: 7
   jump_speed: 15
   dash_time: 0.5
-  dash_speed: 10
+  dash_speed: 14
   rotation_time: 0.25
 --- !u!114 &11467870
 MonoBehaviour:

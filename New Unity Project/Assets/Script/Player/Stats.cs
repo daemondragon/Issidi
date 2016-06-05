@@ -188,7 +188,7 @@ public class Stats : NetworkBehaviour
         EnergyPerDash = 30;
         Name = "Player";
         can_move_player = true;
-        can_dash_in_multiple_direction = true;
+        can_dash_in_multiple_direction = (WeaponName == "Sniper");
     }
 
     public void RecolorPlayer()
