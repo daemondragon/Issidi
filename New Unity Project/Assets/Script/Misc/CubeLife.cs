@@ -24,6 +24,19 @@ public class CubeLife : NetworkBehaviour
     {
         GameObject explo = Instantiate(ExplosionEffect);
         explo.transform.position = transform.position;
+        explo.transform.rotation = transform.rotation;
+
+
+
+        
+
+
+        Detonator Det = explo.GetComponent<Detonator>();
+        if (Det)
+        {
+            Det.direction = transform.rotation.eulerAngles;
+        }
+
         NetworkServer.Spawn(explo);
         NetworkServer.Destroy(gameObject);
     }
@@ -32,7 +45,7 @@ public class CubeLife : NetworkBehaviour
     {
         Life -= Damage;
     }
-                
+
 
 
     void Update()
