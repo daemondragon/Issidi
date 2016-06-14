@@ -1,52 +1,79 @@
 fileFormatVersion: 2
-guid: d5cb8c311a3803643962e5c80823eaa5
-timeCreated: 1464355956
+guid: e4a059d5e597b5746a9d21e57c6ac769
+timeCreated: 1465894105
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: Armature
     100002: Bone
-    100004: Bone_001
-    100006: Bone_002
-    100008: Bone_003
-    100010: Bone_004
-    100012: Bone_005
-    100014: Bone_006
-    100016: Bone_007
-    100018: Bone_008
-    100020: Bone_009
-    100022: Bone_010
-    100024: Bone_011
-    100026: Bone_012
-    100028: Bone_013
-    100030: Bone_014
-    100032: Player
-    100034: //RootNode
+    100004: Bone.001
+    100006: Bone.001_end
+    100008: Bone.002
+    100010: Bone.003
+    100012: Bone.004
+    100014: Bone.004_end
+    100016: Bone.005
+    100018: Bone.006
+    100020: Bone.007
+    100022: Bone.007_end
+    100024: Bone.008
+    100026: Bone.008_end
+    100028: Bone.009
+    100030: Bone.010
+    100032: Bone.011
+    100034: Bone.011_end
+    100036: Bone.012
+    100038: Bone.013
+    100040: Bone.014
+    100042: Bone.014_end
+    100044: Bone.015
+    100046: Bone.015_end
+    100048: Bone.016
+    100050: Bone.016_end
+    100052: Bone.017
+    100054: Bone.017_end
+    100056: Bone.018
+    100058: Bone.018_end
+    100060: Player
+    100062: //RootNode
     400000: Armature
     400002: Bone
-    400004: Bone_001
-    400006: Bone_002
-    400008: Bone_003
-    400010: Bone_004
-    400012: Bone_005
-    400014: Bone_006
-    400016: Bone_007
-    400018: Bone_008
-    400020: Bone_009
-    400022: Bone_010
-    400024: Bone_011
-    400026: Bone_012
-    400028: Bone_013
-    400030: Bone_014
-    400032: Player
-    400034: //RootNode
+    400004: Bone.001
+    400006: Bone.001_end
+    400008: Bone.002
+    400010: Bone.003
+    400012: Bone.004
+    400014: Bone.004_end
+    400016: Bone.005
+    400018: Bone.006
+    400020: Bone.007
+    400022: Bone.007_end
+    400024: Bone.008
+    400026: Bone.008_end
+    400028: Bone.009
+    400030: Bone.010
+    400032: Bone.011
+    400034: Bone.011_end
+    400036: Bone.012
+    400038: Bone.013
+    400040: Bone.014
+    400042: Bone.014_end
+    400044: Bone.015
+    400046: Bone.015_end
+    400048: Bone.016
+    400050: Bone.016_end
+    400052: Bone.017
+    400054: Bone.017_end
+    400056: Bone.018
+    400058: Bone.018_end
+    400060: Player
+    400062: //RootNode
     4300000: Player
-    7400000: Default Take
-    7400002: Dash
-    7400004: Forward_walk
-    7400006: Jump
-    7400008: Shot
+    7400000: Armature|Dash
+    7400002: Armature|Forward_walk
+    7400004: Armature|Jump
+    7400006: Armature|Shot
     9500000: //RootNode
     13700000: Player
   materials:
