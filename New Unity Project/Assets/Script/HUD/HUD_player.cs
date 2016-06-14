@@ -37,7 +37,6 @@ public class HUD_player : NetworkBehaviour
 
     InputField msg_input;
     Text msg_tchat;
-    Text inputed_text;
     Text display_msg;
 
     Text scoreB;
@@ -91,7 +90,6 @@ public class HUD_player : NetworkBehaviour
         msg_input = input_tchat.GetComponentInChildren<InputField>();
         gamecontroller = GameObject.FindGameObjectWithTag("GameController");
         istchating = false;
-        inputed_text = msg_input.GetComponentInChildren<Text>();
         display_msg = GameObject.Find("msg_display").GetComponent<Text>();
 
         stats_bars = GameObject.Find("stats_bars");

@@ -51,14 +51,19 @@ public class PowerUps : NetworkBehaviour
         Stats stats = player.GetComponent<Stats>();
         if (stats)
         {
-            stats.Life += life_bonus;
-            stats.Energy += energy_bonus;
-            stats.Ammo += ammo_bonus;
-        }
+            if ((life_bonus > 0 && stats.Life < stats.MaxLife) ||
+                (energy_bonus > 0 && stats.Energy < stats.MaxEnergy) ||
+                (ammo_bonus > 0 && stats.Ammo < stats.MaxAmmo))
+            {
+                stats.Life += life_bonus;
+                stats.Energy += energy_bonus;
+                stats.Ammo += ammo_bonus;
 
-        SwitchRenderers(false);
-        activated = false;
-        repop = 0.0f;
+                SwitchRenderers(false);
+                activated = false;
+                repop = 0.0f;
+            }
+        }
     }
 
 
