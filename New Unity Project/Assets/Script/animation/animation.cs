@@ -16,6 +16,8 @@ public class animation : MonoBehaviour {
 
         inputH = Input.GetAxis("Horizontal");
         inputV = Input.GetAxis("Vertical");
+        
+
         anim.SetFloat("inputH", inputH);
         anim.SetFloat("inputV", inputV);
 

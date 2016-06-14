@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1f116446939b47c41ad994617aea92d6
-timeCreated: 1465902097
+guid: b374108371b54cf41befbb253c90558f
+timeCreated: 1465905247
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -73,10 +73,11 @@ ModelImporter:
     7400000: Armature|Backward_walk
     7400002: Armature|Dash
     7400004: Armature|Forward_walk
-    7400006: Armature|Jump
-    7400008: Armature|Left_walk
-    7400010: Armature|Shot
-    7400012: Armature|stay
+    7400006: Armature|idle
+    7400008: Armature|Jump
+    7400010: Armature|Left_walk
+    7400012: Armature|Right_walk
+    7400014: Armature|Shot
     9500000: //RootNode
     13700000: Player
   materials:
