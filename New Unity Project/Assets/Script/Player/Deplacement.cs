@@ -196,7 +196,15 @@ public class Deplacement : MonoBehaviour
 
     public Vector2 getMovement()
     {
-        return movement;
+        if (on_dash)
+            return dash_direction;
+        else
+            return movement;
+    }
+
+    public bool onDash()
+    {
+        return (on_dash);
     }
 
     #endregion
