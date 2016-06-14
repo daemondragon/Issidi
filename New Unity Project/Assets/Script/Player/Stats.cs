@@ -242,19 +242,21 @@ public class Stats : NetworkBehaviour
             Debug.Log("Error : no " + team + " spawn register in CharacterFactory, player will spawn at (0;0;0)");
         }
         else //Spawn at a random location
+            PlaceToSpawn(spawns[Random.Range(0, spawns.Length)].GetComponent<Spawner>());
+    }
+
+    public void PlaceToSpawn(Spawner spawn)
+    {
+        if (spawn)
         {
-            Spawner spawn = spawns[Random.Range(0, spawns.Length)].GetComponent<Spawner>();
-            if (spawn)
+            transform.position = spawn.getSpawnPosition(gameObject);
+            transform.rotation = spawn.getSpawnRotation(gameObject);
+            Deplacement deplacement = GetComponent<Deplacement>();
+            if (deplacement)
             {
-                transform.position = spawn.getSpawnPosition(gameObject);
-                transform.rotation = spawn.getSpawnRotation(gameObject);
-                Deplacement deplacement = GetComponent<Deplacement>();
-                if (deplacement)
-                {
-                    deplacement.CorrectRotation();
-                    deplacement.sens = deplacement.findGlobalAxis(transform.up);
-                    deplacement.SetOnGround(true);
-                }
+                deplacement.CorrectRotation();
+                deplacement.sens = deplacement.findGlobalAxis(transform.up);
+                deplacement.SetOnGround(true);
             }
         }
     }
