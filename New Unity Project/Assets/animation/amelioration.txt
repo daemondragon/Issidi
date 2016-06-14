@@ -1,0 +1,2 @@
+-séparer le debut du dash de l'atterissage
+- separer le debut du saut de l'atterissage

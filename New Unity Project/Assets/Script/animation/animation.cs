@@ -7,6 +7,7 @@ public class animation : MonoBehaviour {
     private float inputH;
     private float inputV;
     private bool dash;
+    private bool jump;
     private Deplacement deplacement;
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,10 @@ public class animation : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.Keypad3))
             dash = false;
         //dash = deplacement.onDash();
+        if (dash)
+            anim.Play("Armature|dash");
+        if (jump)
+            anim.Play("Armature|Jump", -1, 0f);
 
         anim.SetFloat("inputH", inputH);
         anim.SetFloat("inputV", inputV);
