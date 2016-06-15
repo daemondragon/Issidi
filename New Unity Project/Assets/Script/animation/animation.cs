@@ -11,16 +11,36 @@ public class animation : MonoBehaviour {
     private Deplacement deplacement;
     private float doubleJump;
     private bool keepJumping;
+    private bool idling;
+    private float inactiveTime;
+    private bool celebration;
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
         deplacement = GetComponent<Deplacement>();
         doubleJump = 0f ;
         keepJumping = true;
+        idling = false;
+        inactiveTime = 0;
+        celebration = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Input.anyKeyDown)
+        {
+            inactiveTime = 0;
+            idling = false;
+            if (celebration)
+            celebration = false;
+        }
+        inactiveTime += Time.deltaTime;
+        
+        if (inactiveTime >= 3.0)
+            idling = true;
+        if ((Input.GetKeyDown(KeyCode.V)))
+            celebration = true;
 
         inputH = Input.GetAxis("Horizontal");
         inputV = Input.GetAxis("Vertical");
@@ -42,18 +62,21 @@ public class animation : MonoBehaviour {
         if (jump && Input.GetKeyDown(KeyCode.Y) && keepJumping)
         {
             doubleJump++;
-            Debug.Log(keepJumping);
-        }
+                    }
         anim.SetFloat("Djump", doubleJump);
         anim.SetBool("dash", dash);
         anim.SetBool("jump", jump);
         anim.SetFloat("inputH", inputH);
         anim.SetFloat("inputV", inputV);
+        anim.SetBool("idling", idling);
+        anim.SetBool("celebration", celebration);
 
         if (doubleJump != 0)
         {
             keepJumping = false;
             doubleJump = 0;
         }
+        if (jump == false)
+            keepJumping = true;
     }
 }

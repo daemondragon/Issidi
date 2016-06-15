@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a4337b1797caaea4ca4678b8ed1ed6a8
-timeCreated: 1465905247
+guid: c09ee5fb7535f3c479abf73617e385f0
+timeCreated: 1465980093
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -44,15 +44,15 @@ ModelImporter:
     4300000: Player
     7400000: Default Take
     7400002: Backward_walk
-    7400004: Dash
-    7400006: Forward_walk
-    7400008: idle
-    7400010: Jump
-    7400012: Left_walk
-    7400014: Right_walk
-    7400016: Shot
-    7400018: Dash_end
-    7400020: Dash_start
+    7400004: Dash_end
+    7400006: Dash_start
+    7400008: Forward_walk
+    7400010: idle
+    7400012: Jump
+    7400014: Jump_landing
+    7400016: Left_walk
+    7400018: Right_walk
+    7400020: Shot
     9500000: //RootNode
     13700000: Player
   materials:
