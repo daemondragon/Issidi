@@ -9,12 +9,14 @@ public class animation : MonoBehaviour {
     private bool dash;
     private bool jump;
     private Deplacement deplacement;
-    private bool doubleJump;
+    private float doubleJump;
+    private bool keepJumping;
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
         deplacement = GetComponent<Deplacement>();
-        doubleJump = false;
+        doubleJump = 0f ;
+        keepJumping = true;
 	}
 	
 	// Update is called once per frame
@@ -22,19 +24,36 @@ public class animation : MonoBehaviour {
 
         inputH = Input.GetAxis("Horizontal");
         inputV = Input.GetAxis("Vertical");
-    
-        //dash = deplacement.onDash();
-        if (dash)
-            anim.Play("Armature|dash" ,- 1, 0f);
-        if (jump)
-            anim.Play("Armature|Jump", -1, 0f);
 
-        if (doubleJump)
-            anim.Play("Armature|jump");
+        //dash = deplacement.onDash();
+        // jump = deplacement.onJump()
+
+
+        if (Input.GetKeyDown(KeyCode.E))
+            dash = true;
+        if (Input.GetKeyUp(KeyCode.E))
+            dash = false;
+
+        if (Input.GetKeyDown(KeyCode.R))
+            jump = true;
+        if (Input.GetKeyUp(KeyCode.S))
+            jump = false;
+
+        if (jump && Input.GetKeyDown(KeyCode.Y) && keepJumping)
+        {
+            doubleJump++;
+            Debug.Log(keepJumping);
+        }
+        anim.SetFloat("Djump", doubleJump);
         anim.SetBool("dash", dash);
         anim.SetBool("jump", jump);
         anim.SetFloat("inputH", inputH);
         anim.SetFloat("inputV", inputV);
 
+        if (doubleJump != 0)
+        {
+            keepJumping = false;
+            doubleJump = 0;
+        }
     }
 }
