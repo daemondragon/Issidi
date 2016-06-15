@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c09ee5fb7535f3c479abf73617e385f0
 timeCreated: 1465980093
 licenseType: Free
@@ -55,6 +56,14 @@ ModelImporter:
     7400020: Shot
     9500000: //RootNode
     13700000: Player
+=======
+guid: 1d3774af5231ab54f9d3ed84c5efa52a
+timeCreated: 1465980052
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName: {}
+>>>>>>> ac8ef49084244b0270674cdc41cdbc76ee7044c3
   materials:
     importMaterials: 1
     materialName: 0
