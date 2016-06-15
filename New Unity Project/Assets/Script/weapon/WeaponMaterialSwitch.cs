@@ -9,6 +9,7 @@ public class WeaponMaterialSwitch : MonoBehaviour
     public Material Orange;
     public Material LightOrange;
 
+   
     bool RendererDone = false;
     void Start()
     {
@@ -38,4 +39,5 @@ public class WeaponMaterialSwitch : MonoBehaviour
     {
         if (Player != null && Player.team == Stats.Team.Orange && !RendererDone) { RunSwitchColor(); }
     }
+
 }
