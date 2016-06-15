@@ -128,7 +128,7 @@ public class Bullet : NetworkBehaviour
         {
             GameObject Explo = Instantiate(explosion);
             Explo.transform.position = PrevPos;
-            Explo.transform.LookAt(PrevPos);
+      //      Explo.transform.LookAt(PrevPos);
             NetworkServer.Spawn(Explo);
         }
     }
