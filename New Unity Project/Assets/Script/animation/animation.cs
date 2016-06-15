@@ -9,10 +9,12 @@ public class animation : MonoBehaviour {
     private bool dash;
     private bool jump;
     private Deplacement deplacement;
+    private bool doubleJump;
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
         deplacement = GetComponent<Deplacement>();
+        doubleJump = false;
 	}
 	
 	// Update is called once per frame
@@ -20,16 +22,17 @@ public class animation : MonoBehaviour {
 
         inputH = Input.GetAxis("Horizontal");
         inputV = Input.GetAxis("Vertical");
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-            dash = true;
-        if (Input.GetKeyUp(KeyCode.Keypad3))
-            dash = false;
+    
         //dash = deplacement.onDash();
         if (dash)
-            anim.Play("Armature|dash");
+            anim.Play("Armature|dash" ,- 1, 0f);
         if (jump)
             anim.Play("Armature|Jump", -1, 0f);
 
+        if (doubleJump)
+            anim.Play("Armature|jump");
+        anim.SetBool("dash", dash);
+        anim.SetBool("jump", jump);
         anim.SetFloat("inputH", inputH);
         anim.SetFloat("inputV", inputV);
 
