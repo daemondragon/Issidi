@@ -39,7 +39,7 @@ public class Bullet : NetworkBehaviour
     {
         if (body)
             body.velocity += gravity_vector * Time.deltaTime;
-
+        
         if (life_time > 0.0f)
         {
             float delta_time = Time.deltaTime;
@@ -51,9 +51,13 @@ public class Bullet : NetworkBehaviour
         {
             Cmd_DestroyBullet();
         }
-    }
 
-    void ApplyDamages(Collider[] Colliders)
+    }
+    void LateUpdate()
+    {
+        PrevPos = transform.position;
+    }
+        void ApplyDamages(Collider[] Colliders)
     {
         foreach (var collision in Colliders)
         {
@@ -115,13 +119,16 @@ public class Bullet : NetworkBehaviour
         }
     }
 
+    Vector3 PrevPos;
+
     [Command]
     void Cmd_Boom()
     {
         if (explosion != null)
         {
             GameObject Explo = Instantiate(explosion);
-            Explo.transform.position = this.transform.position;
+            Explo.transform.position = PrevPos;
+            Explo.transform.LookAt(PrevPos);
             NetworkServer.Spawn(Explo);
         }
     }
