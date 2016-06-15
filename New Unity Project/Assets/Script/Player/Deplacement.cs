@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 public class Deplacement : MonoBehaviour
 {
-    public Direction sens = Direction.Y;
+    public Direction sens;
 
     //Physic
     Rigidbody rigid_body;
@@ -19,9 +19,9 @@ public class Deplacement : MonoBehaviour
     Vector2 movement;
 
     //Jump
-    private bool on_ground;
-    private float jump_time;
-    private int multiple_jump;
+    public bool on_ground;
+    public float jump_time;
+    public int multiple_jump;
 
     //Dash
     private bool on_dash;
@@ -63,6 +63,8 @@ public class Deplacement : MonoBehaviour
 
         rigid_body = GetComponent<Rigidbody>();
         stats = GetComponent<Stats>();
+        on_ground = true;
+        sens = Direction.Y;
     }
 
     void FixedUpdate()
@@ -160,12 +162,11 @@ public class Deplacement : MonoBehaviour
 
     void Jump()
     {
+        Debug.Log(transform.up);
+
         jump_time = 0.0f;
         if (on_ground)
-        {
-            on_ground = false;
             multiple_jump = 1;
-        }
         else
             multiple_jump++;
 
@@ -179,6 +180,8 @@ public class Deplacement : MonoBehaviour
             v.z = transform.up.z * jump_speed;
 
         rigid_body.velocity = v;
+
+        Debug.Log(transform.up.y + ";" + v.y + ";" + jump_speed + ";" + sens + ";" + Direction.Y);
     }
 
     void OnCollisionEnter(Collision col)
@@ -187,11 +190,27 @@ public class Deplacement : MonoBehaviour
         {
             if (Vector3.Dot(contact.normal, transform.up) > 0.5f)
             {
-                on_ground = true;
-                multiple_jump = 0;
-                jump_time = 0.0f;
+                setPlayerOnGround();
             }
         }
+    }
+
+    void OnCollisionStay(Collision col)
+    {
+        foreach (ContactPoint contact in col.contacts)
+        {
+            if (Vector3.Dot(contact.normal, transform.up) > 0.5f)
+            {
+                setPlayerOnGround();
+            }
+        }
+    }
+
+    void setPlayerOnGround()
+    {
+        on_ground = true;
+        multiple_jump = 0;
+        jump_time = 0.0f;
     }
 
     public Vector2 getMovement()
@@ -204,7 +223,6 @@ public class Deplacement : MonoBehaviour
 
     public bool onDash()
     {
-        //plop
         return (on_dash);
     }
 
