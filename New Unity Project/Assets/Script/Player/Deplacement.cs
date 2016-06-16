@@ -39,6 +39,8 @@ public class Deplacement : MonoBehaviour
     private float start_rotation;
     public float rotation_time;
 
+    Animation_Info anim_info;
+
     public enum Direction
     {
         X = 0x01F,
@@ -65,6 +67,8 @@ public class Deplacement : MonoBehaviour
         stats = GetComponent<Stats>();
         on_ground = true;
         sens = Direction.Y;
+
+        anim_info = GetComponent<Animation_Info>();
     }
 
     void FixedUpdate()
@@ -130,10 +134,6 @@ public class Deplacement : MonoBehaviour
 
         rigid_body.velocity += final_gravity;
 
-
-        if (Input.GetAxis("Jump") != 0.0f && (on_ground || (multiple_jump < 2 && jump_time > 0.30)))
-            Jump();
-
         if (Input.GetKey(KeyCode.LeftShift) && on_ground && !on_dash && stats.CanDash())
         {
             on_dash = true;
@@ -145,6 +145,16 @@ public class Deplacement : MonoBehaviour
             actual_dash_time = 0.0f;
             stats.Dash();
         }
+
+        if (anim_info)
+        {
+            anim_info.on_dash = on_dash;
+            if (anim_info.double_jump)
+                anim_info.double_jump = false;
+        }
+
+        if (Input.GetAxis("Jump") != 0.0f && (on_ground || (multiple_jump < 2 && jump_time > 0.30)))
+            Jump();
 
         if (Input.GetKey(KeyCode.Keypad1))
             SetDirection(Direction.X);
@@ -162,11 +172,18 @@ public class Deplacement : MonoBehaviour
 
     void Jump()
     {
+        if (anim_info)
+            anim_info.jumping = true;
+
         jump_time = 0.0f;
         if (on_ground)
             multiple_jump = 1;
         else
+        {
             multiple_jump++;
+            if (anim_info)
+                anim_info.double_jump = true;
+        }
 
         Vector3 v = rigid_body.velocity;
 
@@ -207,6 +224,9 @@ public class Deplacement : MonoBehaviour
         on_ground = true;
         multiple_jump = 0;
         jump_time = 0.0f;
+
+        if (anim_info)
+            anim_info.jumping = false;
     }
 
     public Vector2 getMovement()

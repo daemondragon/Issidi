@@ -26,6 +26,8 @@ public class Weapon : NetworkBehaviour
 
     public Transform BulletStart;
 
+    Animation_Info anim_info;
+
     void Start()
     {
         enabled = isLocalPlayer;
@@ -36,6 +38,8 @@ public class Weapon : NetworkBehaviour
         temp_bullet = 0.0f;
         stats.MaxAmmo = nb_bullets;
         stats.Ammo = stats.MaxAmmo;
+
+        anim_info = GetComponent<Animation_Info>();
 
         if (!weapon)
             Debug.Log("Error in character prefab : no weapon orientation found in " + this);
@@ -69,6 +73,9 @@ public class Weapon : NetworkBehaviour
 
         if (stats)
             stats.Shoot();//Lose ammo
+
+        if (anim_info)
+            anim_info.shot = true;
     }
 
     void Update()
@@ -88,6 +95,9 @@ public class Weapon : NetworkBehaviour
 
         if (Input.GetButton("Fire1"))
         {
+            if (anim_info)
+                anim_info.shot = true;
+
             if (Automatic)
             {
                 if (Time.time - lastshoot > 1 / Rate)
@@ -106,6 +116,8 @@ public class Weapon : NetworkBehaviour
         else
         {
             Pressed = false;
+            if (anim_info)
+                anim_info.shot = false;
         }
     }
 }
