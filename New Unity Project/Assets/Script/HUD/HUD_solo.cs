@@ -73,7 +73,7 @@ public class HUD_solo : MonoBehaviour
 
         have_find = false;
 
-        timer_text.text = "Bienvenue dans ce tutoriel";
+        timer_text.text = "Bienvenue dans le tutoriel";
     }
 
     void Initialisation(GameObject character)
