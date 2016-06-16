@@ -4,7 +4,7 @@ using System.Collections;
 
 public class CubeLife : NetworkBehaviour
 {
-    public float MaximumLife = 100;
+    public float MaximumLife;
 
     [SyncVar]
     float Life;
@@ -25,11 +25,6 @@ public class CubeLife : NetworkBehaviour
         GameObject explo = Instantiate(ExplosionEffect);
         explo.transform.position = transform.position;
         explo.transform.rotation = transform.rotation;
-
-
-
-        
-
 
         Detonator Det = explo.GetComponent<Detonator>();
         if (Det)

@@ -162,8 +162,6 @@ public class Deplacement : MonoBehaviour
 
     void Jump()
     {
-        Debug.Log(transform.up);
-
         jump_time = 0.0f;
         if (on_ground)
             multiple_jump = 1;
@@ -180,8 +178,6 @@ public class Deplacement : MonoBehaviour
             v.z = transform.up.z * jump_speed;
 
         rigid_body.velocity = v;
-
-        Debug.Log(transform.up.y + ";" + v.y + ";" + jump_speed + ";" + sens + ";" + Direction.Y);
     }
 
     void OnCollisionEnter(Collision col)
