@@ -57,6 +57,8 @@ public class animation : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.S))
             anim_info.jumping = false;
 
+        anim_info.double_jump = Input.GetKeyDown(KeyCode.Y);
+
         anim.SetBool("Djump", anim_info.double_jump);
         anim.SetBool("dash", anim_info.on_dash);
         anim.SetBool("jump", anim_info.jumping);
