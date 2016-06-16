@@ -37,6 +37,7 @@ public class Bullet : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetRotation();
         if (body)
             body.velocity += gravity_vector * Time.deltaTime;
         
@@ -206,6 +207,12 @@ public class Bullet : NetworkBehaviour
             t.parent = null;
             Destroy(t.gameObject, 4);
         }
+    }
+
+    void SetRotation( )
+    {
+        Vector3 Direction = transform.position - PrevPos;
+        transform.LookAt(transform.position + Direction);       
     }
 
 }
