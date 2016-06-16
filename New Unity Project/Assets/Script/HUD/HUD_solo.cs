@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class HUD_solo : NetworkBehaviour
+public class HUD_solo : MonoBehaviour
 {
     enum State
     {
@@ -73,6 +72,8 @@ public class HUD_solo : NetworkBehaviour
         ChangeState(State.Play);
 
         have_find = false;
+
+        timer_text.text = "Bienvenue dans ce tutoriel";
     }
 
     void Initialisation(GameObject character)
@@ -132,7 +133,12 @@ public class HUD_solo : NetworkBehaviour
             amo.text = stats.Ammo.ToString() + "/" + stats.MaxAmmo.ToString();
         }
 
-        timer_text.text = "FInd me yolo wtf gkrgrg";
+        
+    }
+
+    public void setInfoMessage(string message)
+    {
+        timer_text.text = message;
     }
 
     void UpdateState()

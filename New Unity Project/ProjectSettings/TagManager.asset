@@ -10,6 +10,8 @@ TagManager:
   - BlueSpawn
   - WhiteSpawn
   - CharacterFactory
+  - FxTemporaire
+  - HUD
   layers:
   - Default
   - TransparentFX
