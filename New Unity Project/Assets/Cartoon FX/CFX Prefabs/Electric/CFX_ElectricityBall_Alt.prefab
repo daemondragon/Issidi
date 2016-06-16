@@ -46,6 +46,7 @@ GameObject:
   - 198: {fileID: 19800002}
   - 199: {fileID: 19900002}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11499196}
   m_Layer: 0
   m_Name: CFX_ElectricityBall_Alt
   m_TagString: Untagged
@@ -163,6 +164,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &11499196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 182
+    i1: 155
+    i2: 174
+    i3: 28
+    i4: 171
+    i5: 91
+    i6: 127
+    i7: 148
+    i8: 248
+    i9: 31
+    i10: 216
+    i11: 223
+    i12: 23
+    i13: 94
+    i14: 28
+    i15: 232
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
