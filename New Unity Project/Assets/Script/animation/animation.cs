@@ -46,7 +46,7 @@ public class animation : MonoBehaviour
             dash_timer += Time.deltaTime;
         else
             dash_timer = 0;
-        if (dash_timer >= 0.9)
+        if (dash_timer >= 0.4)
             anim_info.on_dash = false;
 
         inputH = Input.GetAxis("Horizontal");
@@ -54,7 +54,7 @@ public class animation : MonoBehaviour
 
         //dash = deplacement.onDash();
         // jump = deplacement.onJump()
-
+/*
         #region test
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -70,7 +70,7 @@ public class animation : MonoBehaviour
         anim_info.double_jump = Input.GetKeyDown(KeyCode.Y);
         anim_info.shot = Input.GetKey(KeyCode.T);
         #endregion test
-
+        */
         anim.SetBool("Djump", anim_info.double_jump);
         anim.SetBool("dash", anim_info.on_dash);
         anim.SetBool("jump", anim_info.jumping);
