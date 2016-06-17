@@ -12,6 +12,7 @@ public class animation : MonoBehaviour
     private bool idling;
     private float inactiveTime;
     private bool celebration;
+    private float dash_timer;
     // Use this for initialization
     void Start()
     {
@@ -37,8 +38,16 @@ public class animation : MonoBehaviour
 
         if (inactiveTime >= 3.0)
             idling = true;
+
         if ((Input.GetKeyDown(KeyCode.V)))
             celebration = true;
+
+        if (anim_info.on_dash)
+            dash_timer += Time.deltaTime;
+        else
+            dash_timer = 0;
+        if (dash_timer >= 0.9)
+            anim_info.on_dash = false;
 
         inputH = Input.GetAxis("Horizontal");
         inputV = Input.GetAxis("Vertical");
@@ -46,6 +55,7 @@ public class animation : MonoBehaviour
         //dash = deplacement.onDash();
         // jump = deplacement.onJump()
 
+        #region test
 
         if (Input.GetKeyDown(KeyCode.E))
             anim_info.on_dash = true;
@@ -58,10 +68,13 @@ public class animation : MonoBehaviour
             anim_info.jumping = false;
 
         anim_info.double_jump = Input.GetKeyDown(KeyCode.Y);
+        anim_info.shot = Input.GetKey(KeyCode.T);
+        #endregion test
 
         anim.SetBool("Djump", anim_info.double_jump);
         anim.SetBool("dash", anim_info.on_dash);
         anim.SetBool("jump", anim_info.jumping);
+        anim.SetBool("shooting", anim_info.shot);
         anim.SetFloat("inputH", inputH);
         anim.SetFloat("inputV", inputV);
         anim.SetBool("idling", idling);
