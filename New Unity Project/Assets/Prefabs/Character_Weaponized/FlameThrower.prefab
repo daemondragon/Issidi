@@ -204,6 +204,7 @@ GameObject:
   - 114: {fileID: 11444408}
   - 114: {fileID: 11440228}
   - 114: {fileID: 11451448}
+  - 114: {fileID: 11434012}
   m_Layer: 8
   m_Name: FlameThrower
   m_TagString: Player
@@ -1565,6 +1566,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f8a600269bb1d714e8551f1502bac348, type: 3}
   - {fileID: 8300000, guid: 84a8005c2985e5d4690aa825707e65fc, type: 3}
   - {fileID: 8300000, guid: ed15257815df51b4eb9612a5d5731dec, type: 3}
+--- !u!114 &11434012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3ecab09343f9a42957b07ac682a3b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11440228
 MonoBehaviour:
   m_ObjectHideFlags: 1

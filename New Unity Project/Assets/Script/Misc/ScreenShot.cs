@@ -13,7 +13,10 @@ public class ScreenShot : NetworkBehaviour {
 	void Update () {
 	    if (Input.GetKeyDown(KeyCode.F5))
         {
-            string filename = "Issidi:" + System.DateTime.Now.ToString();
+            string filename = "Issidi_(" + System.DateTime.Now.ToLongDateString() + " "
+                    + System.DateTime.Now.Hour + "h "
+                    + System.DateTime.Now.Minute + "m " 
+                    + System.DateTime.Now.Second + "s )" + ".png";
             Application.CaptureScreenshot(filename);
         }
 	}

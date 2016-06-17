@@ -243,6 +243,7 @@ GameObject:
   - 114: {fileID: 11493924}
   - 114: {fileID: 11472098}
   - 114: {fileID: 11491346}
+  - 114: {fileID: 11416662}
   m_Layer: 8
   m_Name: Sniper
   m_TagString: Player
@@ -2303,6 +2304,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraTarget: {fileID: 431242}
+--- !u!114 &11416662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3ecab09343f9a42957b07ac682a3b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11417538
 MonoBehaviour:
   m_ObjectHideFlags: 1
