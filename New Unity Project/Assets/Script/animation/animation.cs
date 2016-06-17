@@ -46,7 +46,7 @@ public class animation : MonoBehaviour
             dash_timer += Time.deltaTime;
         else
             dash_timer = 0;
-        if (dash_timer >= 0.4)
+        if (dash_timer >= 0.35)
             anim_info.on_dash = false;
 
         inputH = Input.GetAxis("Horizontal");
