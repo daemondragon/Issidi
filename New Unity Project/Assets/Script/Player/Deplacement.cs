@@ -172,17 +172,26 @@ public class Deplacement : MonoBehaviour
 
     void Jump()
     {
+        on_ground = false;
+        Debug.Log(on_ground);
         if (anim_info)
             anim_info.jumping = true;
 
         jump_time = 0.0f;
         if (on_ground)
+        {
             multiple_jump = 1;
+          
+        }
         else
         {
             multiple_jump++;
+            Debug.Log("bite");
             if (anim_info)
+            {
                 anim_info.double_jump = true;
+
+            }
         }
 
         Vector3 v = rigid_body.velocity;
