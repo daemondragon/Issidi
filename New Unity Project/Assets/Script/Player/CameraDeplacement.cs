@@ -54,7 +54,7 @@ public class CameraDeplacement : MonoBehaviour
 
         RaycastHit info;
         if (Physics.Raycast(parent_position ,camera_direction, out info, max_distance))
-            transform.position = parent_position + camera_direction * info.distance * 0.8f;
+            transform.position = parent_position + camera_direction * info.distance * 0.7f;
         else
             transform.position = parent_position + camera_direction * max_distance * 0.9f;
 
