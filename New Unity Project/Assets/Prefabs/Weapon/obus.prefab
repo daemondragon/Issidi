@@ -27,13 +27,12 @@ GameObject:
   - 4: {fileID: 425828}
   - 33: {fileID: 3356198}
   - 23: {fileID: 2328736}
-  - 54: {fileID: 5420234}
   - 114: {fileID: 11490954}
-  - 114: {fileID: 11460562}
   - 114: {fileID: 11436398}
-  - 114: {fileID: 11420416}
-  - 135: {fileID: 13589416}
-  m_Layer: 2
+  - 54: {fileID: 5420234}
+  - 114: {fileID: 11460562}
+  - 65: {fileID: 6537064}
+  m_Layer: 0
   m_Name: obus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,10 +93,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144800}
-  m_LocalRotation: {x: -0.000000022351735, y: -0.00000002185571, z: 0.000000022351733,
+  m_LocalRotation: {x: -0.000000022351742, y: -0.000000021855696, z: 0.000000021073424,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 10.207453, y: 10.20743, z: 10.20743}
   m_Children:
   - {fileID: 454604}
   - {fileID: 497058}
@@ -109,9 +108,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183206}
-  m_LocalRotation: {x: -1, y: -0.00000016292068, z: 0.00000016292068, w: 2.654315e-14}
-  m_LocalPosition: {x: 0, y: -0, z: -7.72}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalRotation: {x: -1, y: -0.000000164199, z: 0.00000016292067, w: 3.3667334e-14}
+  m_LocalPosition: {x: -0, y: 0, z: -0.0878}
+  m_LocalScale: {x: 0.09796763, y: 0.097967856, z: 0.097967856}
   m_Children:
   - {fileID: 414490}
   m_Father: {fileID: 425828}
@@ -122,9 +121,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146930}
-  m_LocalRotation: {x: 0.00000002235173, y: 1, z: 0.000000022351738, w: -0.0000001847764}
+  m_LocalRotation: {x: 0.00000002107342, y: 1, z: 0.000000022351745, w: -0.00000018477638}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 0.09796763, y: 0.097967856, z: 0.097967856}
   m_Children: []
   m_Father: {fileID: 425828}
   m_RootOrder: 1
@@ -138,7 +137,9 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 66eee62673b99f449a8702beb8bd5ecb, type: 2}
+  - {fileID: 2100000, guid: 6021fcc562bc1af47aaa7afbea233900, type: 2}
+  - {fileID: 2100000, guid: 1d673c5b3726aa64cb39d6ddcbeed71a, type: 2}
+  - {fileID: 2100000, guid: df4ac2a02e955b94cb32e1aa8e3be9a2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -160,7 +161,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144800}
-  m_Mesh: {fileID: 4300000, guid: 4595eca504166a447b66c19668d9e647, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 04eb08d2d495b2342bb3e1c1d952be49, type: 3}
 --- !u!54 &5420234
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -176,17 +177,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11420416
-MonoBehaviour:
+--- !u!65 &6537064
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144800}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075dfde3d107bba489925531ab5bf843, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.014122108, y: 0.014122108, z: 0.029081807}
+  m_Center: {x: -4.6566126e-10, y: -2.3283062e-10, z: 0.008020565}
 --- !u!114 &11436398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,18 +282,6 @@ MonoBehaviour:
     i15: 221
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!135 &13589416
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144800}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.25
-  m_Center: {x: 2.1319764e-15, y: 4.263953e-15, z: 0.600098}
 --- !u!198 &19825324
 ParticleSystem:
   m_ObjectHideFlags: 1
