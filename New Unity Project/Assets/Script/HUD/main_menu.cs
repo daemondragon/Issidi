@@ -14,14 +14,18 @@ public class main_menu : MonoBehaviour
 
     GameObject mainpanel;
     GameObject coPanel;
+    GameObject croix_rouge_A;
+    GameObject croix_rouge_P;
 
     public bool isAtStartup = true;
     NetworkClient myClient;
 
     InputField[] inputs;
-    InputField name;
+    InputField Name;
     InputField address;
     InputField port;
+
+    Button[] buttons;
 
     string ip_str;
     string port_str;
@@ -32,38 +36,83 @@ public class main_menu : MonoBehaviour
     {
         mainpanel = GameObject.Find("main");
         coPanel = GameObject.Find("menu_connexion");
-        coPanel.SetActive(false);
-        mainpanel.SetActive(true);
 
-        inputs = GameObject.Find("menu_connexion").GetComponentsInChildren<InputField>();
-        name = inputs[0];
-        address = inputs[1];
-        port = inputs[2];
 
-       name_str = "Unamed";
+        buttons = GameObject.Find("menu_connexion").GetComponentsInChildren<Button>();
+        croix_rouge_A = GameObject.Find("wrong_adress");
+        croix_rouge_P = GameObject.Find("wrong_port");
+
+
+
+        Name = GameObject.Find("name_lbl").GetComponentInChildren<InputField>();
+              address = GameObject.Find("ip_lbl").GetComponentInChildren<InputField>();
+        port = GameObject.Find("port_lbl").GetComponentInChildren<InputField>();
+
+        name_str = "Unamed";
         ip_str = "127.0.0.1";
         port_str = "7777";
+
+        coPanel.SetActive(false);
+        mainpanel.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (name_valid(name.text))
-            name_str = name.text;
-        if (address_valid(address.text))
+
+        bool c1 = Name.text != "";
+        bool c2 = address_valid(address.text);
+        int port_int = 0;
+
+
+
+        if (c1)
+            name_str = Name.text;
+        if (c2)
+        {
             ip_str = address.text;
+            croix_rouge_A.SetActive(false);
+        }
+        else if (address.text != "")
+            croix_rouge_A.SetActive(true);
+        else
+            croix_rouge_A.SetActive(false);
+
+
+        bool c3 = true;
         if (port.text != "")
+        {
+            port_int = Convert.ToUInt16(port.text);
+
+            c3 = port_int < 65536 && port_int > 1024;
             port_str = port.text;
-        
+        }
+
+        if (c3)
+        {
+            
+            croix_rouge_P.SetActive(false);
+        }
+        else if (port.text != "")
+            croix_rouge_P.SetActive(true);
+        else
+            croix_rouge_P.SetActive(false);
+
+
+
+        button_set((c2 || address.text == "")&& c3 && address.text!="");
     }
-    private bool name_valid(string s)
+    private void button_set(bool b)
     {
-        return s != "";
+
+        buttons[1].interactable = b;
+
     }
+
     private bool address_valid(string s)
     {
         IPAddress osef;
-        return s != "" && IPAddress.TryParse(s, out osef);
+        return s != "" && IPAddress.TryParse(s, out osef) && s.Contains(".");
     }
     public void openPanelco()
     {
@@ -90,7 +139,8 @@ public class main_menu : MonoBehaviour
     // Create a server and listen on a port
     public void SetupServer()
     {
-        NetworkServer.Listen(Convert.ToInt32(port_str));
+        Debug.Log(port_str);
+        NetworkServer.Listen(Convert.ToUInt16(port_str));
         isAtStartup = false;
     }
 
@@ -99,7 +149,7 @@ public class main_menu : MonoBehaviour
     {
         myClient = new NetworkClient();
         myClient.RegisterHandler(MsgType.Connect, OnConnected);
-        myClient.Connect(ip_str, Convert.ToInt32(port_str));
+        myClient.Connect(ip_str, Convert.ToUInt16(port_str));
         isAtStartup = false;
     }
 
@@ -108,7 +158,6 @@ public class main_menu : MonoBehaviour
     {
         myClient = ClientScene.ConnectLocalServer();
         myClient.RegisterHandler(MsgType.Connect, OnConnected);
-        isAtStartup = false;
     }
     // client function
     public void OnConnected(NetworkMessage netMsg)
@@ -117,9 +166,11 @@ public class main_menu : MonoBehaviour
     }
     public void Create_join()
     {
-     
-            SetupServer();
-            SetupLocalClient();
+       
+        SetupServer();
+ 
+        SetupLocalClient();
+        SceneManager.LoadScene(1);
 
     }
     public void return2main()
@@ -127,5 +178,5 @@ public class main_menu : MonoBehaviour
         coPanel.SetActive(false);
         mainpanel.SetActive(true);
     }
-  
+
 }
