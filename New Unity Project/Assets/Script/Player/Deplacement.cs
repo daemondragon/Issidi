@@ -74,7 +74,10 @@ public class Deplacement : MonoBehaviour
     void FixedUpdate()
     {
         if (!stats.CanMovePlayer)
+        {
+            rigid_body.velocity = new Vector3(0, 0, 0);
             return;
+        }
 
         float delta_time = Time.deltaTime;
         if (is_rotate)
