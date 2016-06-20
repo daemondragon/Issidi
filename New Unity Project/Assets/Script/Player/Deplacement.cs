@@ -173,7 +173,7 @@ public class Deplacement : MonoBehaviour
     void Jump()
     {
         on_ground = false;
-        Debug.Log(on_ground);
+        
         if (anim_info)
             anim_info.jumping = true;
 
@@ -186,7 +186,7 @@ public class Deplacement : MonoBehaviour
         else
         {
             multiple_jump++;
-            Debug.Log("bite");
+           
             if (anim_info)
             {
                 anim_info.double_jump = true;

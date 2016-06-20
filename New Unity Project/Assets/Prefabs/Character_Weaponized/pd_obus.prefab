@@ -181,7 +181,7 @@ GameObject:
   - 114: {fileID: 11423562}
   m_Layer: 0
   m_Name: pd_obus
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
