@@ -8,6 +8,11 @@ public class Weapon : NetworkBehaviour
 {
     public string Name;
 
+    public AudioClip Son_De_Tir;
+    private AudioSource audio_source;
+    public bool looping_sound;
+
+
     //weapon Setting
     public bool activate;
     public bool Automatic;
@@ -41,6 +46,9 @@ public class Weapon : NetworkBehaviour
 
         anim_info = GetComponent<Animation_Info>();
 
+        audio_source = GetComponents<AudioSource>()[1];
+
+
         if (!weapon)
             Debug.Log("Error in character prefab : no weapon orientation found in " + this);
     }
@@ -67,7 +75,18 @@ public class Weapon : NetworkBehaviour
         if (!isLocalPlayer || !weapon)
             return;
 
-       // Cmd_InstantiateBullet(weapon.getPosition() + weapon.getForward(), weapon.getRotation(), transform.up);
+        if (!looping_sound)
+        {
+            audio_source.clip = Son_De_Tir;
+            audio_source.Play();
+        }
+        else if (!audio_source.isPlaying)
+        {
+            audio_source.clip = Son_De_Tir;
+            audio_source.Play();
+        }
+
+        // Cmd_InstantiateBullet(weapon.getPosition() + weapon.getForward(), weapon.getRotation(), transform.up);
 
         Cmd_InstantiateBullet(BulletStart.position, BulletStart.rotation, transform.up);
 
