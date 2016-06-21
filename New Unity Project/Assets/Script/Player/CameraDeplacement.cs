@@ -53,7 +53,7 @@ public class CameraDeplacement : MonoBehaviour
         camera_direction.Normalize();
 
         RaycastHit info;
-        if (Physics.Raycast(parent_position ,camera_direction, out info, max_distance))
+        if (Physics.Raycast(parent_position, camera_direction, out info, max_distance))
             transform.position = parent_position + camera_direction * info.distance * 0.7f;
         else
             transform.position = parent_position + camera_direction * max_distance * 0.9f;
@@ -72,7 +72,20 @@ public class CameraDeplacement : MonoBehaviour
     void Update()
     {
         if (activate)
+        {
+            if (Input.GetKeyDown(KeyCode.F5))
+                SwitchSide();
+
             UpdateCamera();
+        }
+    }
+
+    void SwitchSide()
+    {
+        transform.RotateAround(transform.position, transform.root.transform.up, 180);
+        transform.localPosition = new Vector3(transform.localPosition.x,
+                                                transform.localPosition.y,
+                                               -transform.localPosition.z);
     }
 
     public Vector3 Forward()
