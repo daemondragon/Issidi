@@ -24,7 +24,9 @@ public class GameManager : NetworkBehaviour
     [SyncVar]
     int blue_score;
 
+    [SyncVar]
     public string server_ip_adress;
+    [SyncVar]
     public string port;
 
     int score_to_win = 25;
