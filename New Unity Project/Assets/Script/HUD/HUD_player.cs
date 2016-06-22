@@ -140,9 +140,9 @@ public class HUD_player : NetworkBehaviour
 
         playbtn.SetActive(false);
 
-        ChangeState(State.Selection);
-
         game_manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+        ChangeState(State.Selection);
     }
 
     void Initialisation(GameObject character)
@@ -339,6 +339,9 @@ public class HUD_player : NetworkBehaviour
             player = null;
             stats = null;
         }
+
+        if (s == State.Pause && game_manager)
+            GameObject.Find("ip_adress").GetComponent<Text>().text = game_manager.server_ip_adress + ":" + game_manager.port;
     }
 
     public void send_tchat()

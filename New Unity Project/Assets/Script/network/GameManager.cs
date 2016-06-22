@@ -24,6 +24,9 @@ public class GameManager : NetworkBehaviour
     [SyncVar]
     int blue_score;
 
+    public string server_ip_adress;
+    public string port;
+
     int score_to_win = 25;
 
     // Use this for initialization
@@ -35,6 +38,9 @@ public class GameManager : NetworkBehaviour
         orange_score = 0;
         blue_score = 0;
         state = State.WaitingForPlayer;
+
+        server_ip_adress = Network.player.ipAddress;
+        port = NetworkServer.listenPort.ToString();
     }
 
     // Update is called once per frame
