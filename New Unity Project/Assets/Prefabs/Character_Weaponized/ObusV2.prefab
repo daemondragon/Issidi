@@ -1587,7 +1587,7 @@ MonoBehaviour:
   Rate: 1.1
   bullet_template: {fileID: 144800, guid: eddda409efc2e184187187b792c630dd, type: 2}
   nb_bullets: 40
-  bullet_per_second: 0.3
+  bullet_per_second: 0.05
   BulletStart: {fileID: 497446}
 --- !u!114 &11411480
 MonoBehaviour:
