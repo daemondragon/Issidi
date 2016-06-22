@@ -96,9 +96,9 @@ public class test : NetworkBehaviour
             Debug.Log("Tire");
             entre_attaque_Current = entre_attaque;
             Debug.Log("tatatatatat");
-            audio_source.clip = tire_sound[actual_sound];
-            audio_source.Play();
-            actual_sound = (actual_sound + 1) % tire_sound.Count;
+            //audio_source.clip = tire_sound[actual_sound];
+            //audio_source.Play();
+           // actual_sound = (actual_sound + 1) % tire_sound.Count;
 
         }
     }
