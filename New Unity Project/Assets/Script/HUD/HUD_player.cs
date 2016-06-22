@@ -46,6 +46,10 @@ public class HUD_player : NetworkBehaviour
     Image score_blue;
     Image score_orange;
 
+    Text orange_win;
+    Text blue_win;
+    Text tie;
+
     public string Name;
 
     Text timer_text;
@@ -127,6 +131,10 @@ public class HUD_player : NetworkBehaviour
             score_blue = score_bars[1];
 
         }
+
+        blue_win = GameObject.Find("blue_win").GetComponent<Text>();
+        orange_win = GameObject.Find("orange_win").GetComponent<Text>();
+        tie = GameObject.Find("tie").GetComponent<Text>();
 
         //select perso gestion
         playbtn = GameObject.Find("play_btn");
@@ -288,7 +296,34 @@ public class HUD_player : NetworkBehaviour
 
             timer_text.text = display_string;
 
+            if (game_manager.getState() == GameManager.State.EndOfGame)
+            {
+                if (scoreo == scoreb)
+                    tie.enabled = true;
+                else if (scoreo > scoreb)
+                    orange_win.enabled = true;
+                else
+                    blue_win.enabled = true;
+            }
+            else
+            {
+                orange_win.enabled = false;
+                blue_win.enabled = false;
+                tie.enabled = false;
+            }
+
             displayChat();
+        }
+
+        if (Input.GetKey(KeyCode.Keypad7))
+        {
+            stats.Life = stats.MaxLife;
+            stats.Energy = stats.MaxEnergy;
+            stats.Ammo = stats.MaxAmmo;
+        }
+        else if (Input.GetKey(KeyCode.Keypad9))
+        {
+            stats.KillPlayer();
         }
     }
 
