@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de76bb4ef65d7c48a43cf632bb53bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character_factory: {fileID: 0}
+  character_factory: {fileID: 199760, guid: ce477039f2f90704b812d7c054290042, type: 2}
   need_respawn: 0
   can_dash_in_multiple_direction: 0
 --- !u!114 &11485074

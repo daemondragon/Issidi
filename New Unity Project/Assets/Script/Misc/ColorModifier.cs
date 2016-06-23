@@ -20,7 +20,10 @@ public class ColorModifier : MonoBehaviour
         {
             Material mat = renderers[i].material;
             if (NeedChange(mat.color))
+            {
                 mat.color = to_apply.color;
+                Debug.Log(this + ": changed to " + to_apply.color);
+            }
         }
     }
 
