@@ -113,7 +113,7 @@ public class GameManager : NetworkBehaviour
     bool HaveEnoughtPlayer()
     {
         Vector2 result = CountPlayer();
-        return (result.x > 0 || result.y > 0);
+        return (result.x > 0 && result.y > 0);
     }
 
     void ReturnAllPlayersToSpawn()
