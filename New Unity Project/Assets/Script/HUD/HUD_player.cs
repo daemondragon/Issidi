@@ -512,7 +512,7 @@ public class HUD_player : NetworkBehaviour
     }
     public void blasterselect()
     {
-        weaponType=3;
+        weaponType = 3;
     }
     public void Oselection()
     {

@@ -1576,7 +1576,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 106074, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22444732, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
       propertyPath: m_AnchorMin.y
@@ -1745,6 +1745,10 @@ Prefab:
     - target: {fileID: 22429998, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
       propertyPath: m_SizeDelta.y
       value: 263.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437506, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: blasterselect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
