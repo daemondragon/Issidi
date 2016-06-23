@@ -74,10 +74,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponized_characters:
-  - {fileID: 149054, guid: 60ed27b0709567245b9632913e72fa0a, type: 2}
-  - {fileID: 114090, guid: cfe47633980bd08459c74b1320640608, type: 2}
-  - {fileID: 196364, guid: 301acd873ad87d942acee5c934007a5a, type: 2}
-  - {fileID: 110304, guid: 9afd9b792fec5fd47b873ba31068af22, type: 2}
+  - {fileID: 198232, guid: e7d36036618ae4e4bb2015f022213f41, type: 2}
+  - {fileID: 123226, guid: c6b2bdd48f33a93459737778b3a22654, type: 2}
+  - {fileID: 159946, guid: 168c22b0a12a9e947b789a9c1930ad4d, type: 2}
+  - {fileID: 167386, guid: 7e7bd62e356e2c24cb869bf83f1e2317, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

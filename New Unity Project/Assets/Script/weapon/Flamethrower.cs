@@ -49,6 +49,12 @@ public class Flamethrower : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!stats)
+            stats = GetComponent<Stats>();
+
+        if (!stats)
+            Debug.Log("no stats found in: " + this);
+
         if (stats.IsDead() || !stats.CanMovePlayer)
             return;
 
