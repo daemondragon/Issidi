@@ -39,6 +39,7 @@ public class HUD_player : NetworkBehaviour
     GameObject select_panel;
     GameObject crosshair_panel;
     GameObject input_tchat;
+    GameObject option_panel;
     GameObject gamecontroller;
 
     InputField msg_input;
