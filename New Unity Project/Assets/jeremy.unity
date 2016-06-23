@@ -671,7 +671,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 116594, guid: 167ca25e2ba1e3d4fba602777c6537c4, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 167ca25e2ba1e3d4fba602777c6537c4, type: 2}
@@ -1473,15 +1473,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112642, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 182062, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 123184, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 187020, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
       propertyPath: m_IsActive
@@ -2750,6 +2750,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2131443128}
   - 114: {fileID: 2131443127}
+  - 114: {fileID: 2131443126}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -2757,6 +2758,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2131443126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131443125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 227461547, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  showGUI: 1
+  offsetX: 0
+  offsetY: 0
 --- !u!114 &2131443127
 MonoBehaviour:
   m_ObjectHideFlags: 0
