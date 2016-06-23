@@ -70,6 +70,7 @@ public class HUD_player : NetworkBehaviour
     GameObject selectbtnO;
     GameObject selectbtnS;
     GameObject selectbtnB;
+    
 
     public bool istchating;
 
@@ -570,6 +571,10 @@ public class HUD_player : NetworkBehaviour
     public void falmeselect()
     {
         weaponType = 1;
+    }
+    public void blasterselect()
+    {
+        weaponType=3;
     }
     public void Oselection()
     {

@@ -69,7 +69,6 @@ public class Flamethrower : NetworkBehaviour
     [Command]
     void CmdThrusters(bool ena)
     {
-        Debug.Log("sending :" + ena);
         EnableParts = ena;
     }
 
