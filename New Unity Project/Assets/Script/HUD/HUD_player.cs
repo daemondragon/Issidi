@@ -18,7 +18,6 @@ public class HUD_player : NetworkBehaviour
         Pause,
         Chat,
         Death,
-        Connection,
 
         Count//Don't add something after it
     }
@@ -110,30 +109,12 @@ public class HUD_player : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
-        #region serv
-
-        buttons = GameObject.Find("menu_connexion").GetComponentsInChildren<Button>();
-        croix_rouge_A = GameObject.Find("wrong_adress");
-        croix_rouge_P = GameObject.Find("wrong_port");
-
-
-
-        Name_input = GameObject.Find("name_lbl").GetComponentInChildren<InputField>();
-        address = GameObject.Find("ip_lbl").GetComponentInChildren<InputField>();
-        port = GameObject.Find("port_lbl").GetComponentInChildren<InputField>();
-
-        name_str = "Unamed";
-        ip_str = "127.0.0.1";
-        port_str = "7777";
-
-        #endregion
         panels = new GameObject[(int)State.Count];
         panels[(int)State.Play] = GameObject.Find("game_info");
         panels[(int)State.Selection] = GameObject.Find("select_perso");
         panels[(int)State.Death] = GameObject.Find("death_panel");
         panels[(int)State.Pause] = GameObject.Find("pause_panel");
         panels[(int)State.Chat] = GameObject.Find("tchatbox");
-        panels[(int)State.Connection] = GameObject.Find("connexion_menu");
 
         // tchat
         input_tchat = GameObject.Find("tchatbox");
@@ -201,7 +182,7 @@ public class HUD_player : NetworkBehaviour
 
         game_manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
-        ChangeState(State.Connection);
+        ChangeState(State.Selection);
     }
 
     void Initialisation(GameObject character)
@@ -229,49 +210,6 @@ public class HUD_player : NetworkBehaviour
     void Update()
 
     {
-        #region multi
-        bool c1 = Name_input.text != "";
-        bool c2 = address_valid(address.text);
-        int port_int = 0;
-
-
-
-        if (c1)
-            name_str = Name_input.text;
-        if (c2)
-        {
-            ip_str = address.text;
-            croix_rouge_A.SetActive(false);
-        }
-        else if (address.text != "")
-            croix_rouge_A.SetActive(true);
-        else
-            croix_rouge_A.SetActive(false);
-
-
-        bool c3 = true;
-        if (port.text != "")
-        {
-            port_int = Convert.ToUInt16(port.text);
-
-            c3 = port_int < 65536 && port_int > 1024;
-            port_str = port.text;
-        }
-
-        if (c3)
-        {
-
-            croix_rouge_P.SetActive(false);
-        }
-        else if (port.text != "")
-            croix_rouge_P.SetActive(true);
-        else
-            croix_rouge_P.SetActive(false);
-
-
-
-        button_set((c2 || address.text == "") && c3 && address.text != "");
-        #endregion
         if (team != -1 && weaponType != -1)
             playbtn.SetActive(true);
 
