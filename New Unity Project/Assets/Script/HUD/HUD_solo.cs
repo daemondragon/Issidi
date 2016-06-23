@@ -34,6 +34,10 @@ public class HUD_solo : MonoBehaviour
     private Button btn_continue;
     bool have_find;
 
+    bool sound_muted;
+    GameObject speaker_on;
+    GameObject speaker_off;
+
     GameObject weaponpanel;
 
     // Use this for initialization
@@ -69,6 +73,12 @@ public class HUD_solo : MonoBehaviour
             timer_text = scores[0];
 
         }
+
+        sound_muted = true;
+        speaker_on = GameObject.Find("speaker_on");
+        speaker_off = GameObject.Find("speaker_off");
+        SwitchMuteSound();//Sound will be unmuted after this
+
         ChangeState(State.Play);
 
         have_find = false;
@@ -93,6 +103,20 @@ public class HUD_solo : MonoBehaviour
             img.gameObject.SetActive(img.gameObject.name == stats.WeaponName);
         }
         have_find = true;
+    }
+
+    public void SwitchMuteSound()
+    {
+        sound_muted = !sound_muted;
+
+        speaker_on.SetActive(!sound_muted);
+        speaker_off.SetActive(sound_muted);
+
+        //Mute sound
+        if (sound_muted)
+            AudioListener.volume = 0.0f;
+        else
+            AudioListener.volume = 1.0f;
     }
 
     // Update is called once per frame

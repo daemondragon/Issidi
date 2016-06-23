@@ -76,6 +76,9 @@ public class HUD_player : NetworkBehaviour
     int team = -1; // 1 pour orange , 0 pour spectat, 2 pour bleu
     int weaponType = -1; // dans 0 ordre snip, lance-flame , obus de 0 a 2
 
+    bool sound_muted;
+    GameObject speaker_on;
+    GameObject speaker_off;
 
     GameManager game_manager = null;
 
@@ -147,6 +150,11 @@ public class HUD_player : NetworkBehaviour
         selectbtnB.SetActive(false);
 
         playbtn.SetActive(false);
+
+        sound_muted = true;
+        speaker_on = GameObject.Find("speaker_on");
+        speaker_off = GameObject.Find("speaker_off");
+        SwitchMuteSound();//Sound will be unmuted after this
 
         game_manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
@@ -234,6 +242,20 @@ public class HUD_player : NetworkBehaviour
             if (s)
                 s.RecolorPlayer();
         }
+    }
+
+    public void SwitchMuteSound()
+    {
+        sound_muted = !sound_muted;
+
+        speaker_on.SetActive(!sound_muted);
+        speaker_off.SetActive(sound_muted);
+
+        //Mute sound
+        if (sound_muted)
+            AudioListener.volume = 0.0f;
+        else
+            AudioListener.volume = 1.0f;
     }
 
     void DrawUpdate()
