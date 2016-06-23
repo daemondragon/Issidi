@@ -25,7 +25,6 @@ public class test : NetworkBehaviour
 
     void Start()
     {
-        this.GetComponent<Renderer>().material.color = Color.green;
         entre_attaque_Current = entre_attaque;
         timeLeftCurrent = timeLeft;
         actual_sound = 0;
@@ -40,8 +39,6 @@ public class test : NetworkBehaviour
             DistanceJoueur = Vector3.Distance(this.transform.position, Player.transform.position); // Calcul de la distance entre la tourelle et le joueur
 
             Detecter = (DistanceJoueur < distanceVision) ? Detection() : false; // Si le joueur est assez près, on verifie s'il est vu
-
-            this.GetComponent<Renderer>().material.color = (Detecter) ? Color.red : Color.green; // Simplement pour savoir qu'elle tourelle a le joueur en visuel
 
             if (Detecter)
             {
