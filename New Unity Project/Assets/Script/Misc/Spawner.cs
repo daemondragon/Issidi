@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour {
         BoxCollider body = obj.GetComponent<BoxCollider>();
         float up = 1.0f;
         if (body)
-            up = body.size.y * 0.55f; //Take the half size, but add something to let the player fall down at start.
+            up -= 0.55f;
 
         return (transform.position + transform.up * up);
     }

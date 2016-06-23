@@ -18,12 +18,10 @@ public class ColorModifier : MonoBehaviour
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
         for (int i = 0; i < renderers.Length; i++)
         {
-            Material mat = renderers[i].material;
-            if (NeedChange(mat.color))
-            {
-                mat.color = to_apply.color;
-                Debug.Log(this + ": changed to " + to_apply.color);
-            }
+            Material[] mats = renderers[i].materials;
+            for (int j = 0; j < mats.Length; j++)
+            if (NeedChange(mats[j].color))
+                mats[j].color = to_apply.color;
         }
     }
 

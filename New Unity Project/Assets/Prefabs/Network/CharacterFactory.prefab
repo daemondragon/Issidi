@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponized_characters:
-  - {fileID: 190220, guid: 79a5b19c080711e4181e8d47bea09db4, type: 2}
+  - {fileID: 149054, guid: 60ed27b0709567245b9632913e72fa0a, type: 2}
   - {fileID: 114090, guid: cfe47633980bd08459c74b1320640608, type: 2}
   - {fileID: 196364, guid: 301acd873ad87d942acee5c934007a5a, type: 2}
   - {fileID: 110304, guid: 9afd9b792fec5fd47b873ba31068af22, type: 2}
