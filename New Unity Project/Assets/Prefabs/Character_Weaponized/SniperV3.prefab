@@ -1275,7 +1275,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0.021, y: 0.08595854, z: 0.15}
   m_LocalScale: {x: 0.043361068, y: 0.043361053, z: 0.043361053}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
   - {fileID: 442060}
   - {fileID: 446646}
@@ -2932,8 +2932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0214055f029c1564fa9d4d8bb600c8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Nothing: {fileID: 2100000, guid: 76cfdb41a48c44b41a702e237d31fcf4, type: 2}
-  ReadyToShoot: {fileID: 2100000, guid: d9ec3226db1558f4a8acdf9693e5c314, type: 2}
+  Nothing: {fileID: 2100000, guid: eceac6ea04a54764b9287781c2b2a92b, type: 2}
+  ReadyToShoot: {fileID: 2100000, guid: bdbc834321b68dd49b682c623d58410d, type: 2}
 --- !u!114 &11489418
 MonoBehaviour:
   m_ObjectHideFlags: 1
