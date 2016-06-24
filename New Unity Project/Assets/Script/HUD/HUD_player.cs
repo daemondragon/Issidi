@@ -41,10 +41,13 @@ public class HUD_player : NetworkBehaviour
     GameObject input_tchat;
     GameObject option_panel;
     GameObject gamecontroller;
+    
 
     InputField msg_input;
     Text msg_tchat;
     Text display_msg;
+    Scrollbar scrollbar;
+    public int chat_fade=7;
 
     Text scoreB;
     int scoreb;
@@ -70,9 +73,10 @@ public class HUD_player : NetworkBehaviour
     GameObject selectbtnO;
     GameObject selectbtnS;
     GameObject selectbtnB;
-    
+
 
     public bool istchating;
+    public float time_chat;
 
     GameObject croix_rouge_A;
     GameObject croix_rouge_P;
@@ -86,6 +90,8 @@ public class HUD_player : NetworkBehaviour
     InputField port;
 
     Button[] buttons;
+
+
 
     string ip_str;
     string port_str;
@@ -116,13 +122,16 @@ public class HUD_player : NetworkBehaviour
         panels[(int)State.Death] = GameObject.Find("death_panel");
         panels[(int)State.Pause] = GameObject.Find("pause_panel");
         panels[(int)State.Chat] = GameObject.Find("tchatbox");
-
+    
         // tchat
+
         input_tchat = GameObject.Find("tchatbox");
         msg_input = input_tchat.GetComponentInChildren<InputField>();
         gamecontroller = GameObject.FindGameObjectWithTag("GameController");
         istchating = false;
         display_msg = GameObject.Find("msg_display").GetComponent<Text>();
+        time_chat = chat_fade;
+        scrollbar = input_tchat.GetComponentInChildren<Scrollbar>();
 
         stats_bars = GameObject.Find("stats_bars");
         if (stats_bars)
@@ -235,6 +244,7 @@ public class HUD_player : NetworkBehaviour
         }
         if (state == State.Play && Input.GetKeyDown(KeyCode.KeypadEnter))
         {
+            time_chat = 0f;
             ChangeState(State.Chat);
             stats.CanMovePlayer = false;
             input_tchat.SetActive(true);
@@ -244,12 +254,21 @@ public class HUD_player : NetworkBehaviour
             msg_input.MoveTextStart(true);
 
 
-            Debug.Log(msg_input.isFocused);
             msg_input.text += " ";
-            if (msg_input.isFocused)
-                Debug.Log("hgfvd");
+           
 
         }
+        if (state == State.Play)
+            time_chat += Time.deltaTime;
+        if (time_chat >= (float)chat_fade)
+        {
+            input_tchat.SetActive(false);
+                 }
+        else
+        {
+            input_tchat.SetActive(true);
+        }
+
     }
 
     void RecolorAllPlayer()
@@ -391,6 +410,7 @@ public class HUD_player : NetworkBehaviour
         }
         else if (state == State.Chat)
         {
+        
             if (Input.GetKeyDown(KeyCode.Escape))
                 ChangeState(State.Play);
         }
@@ -402,8 +422,10 @@ public class HUD_player : NetworkBehaviour
         for (int i = 0; i < (int)State.Count; i++)
         {
             panels[i].SetActive((int)s == i);
+           
         }
 
+ 
         if (s == State.Pause || s == State.Chat)
             panels[(int)State.Play].SetActive(true);
 
@@ -424,10 +446,11 @@ public class HUD_player : NetworkBehaviour
         }
 
         if (s == State.Pause && game_manager)
-            GameObject.Find("ip_adress").GetComponent<Text>().text = game_manager.server_ip_adress + ":" + game_manager.port;
+            GameObject.Find("ip_adress").GetComponent<InputField>().text = game_manager.server_ip_adress + ":" + game_manager.port;
     }
 
     public void send_tchat()
+
     {
         if (msg_input.text != null)
         {
@@ -435,8 +458,10 @@ public class HUD_player : NetworkBehaviour
 
             gamecontroller.GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, msg, Name);
         }
-        input_tchat.SetActive(false);
+
         ChangeState(State.Play);
+        time_chat = 0f;
+
     }
 
     public void displayChat()
@@ -447,6 +472,11 @@ public class HUD_player : NetworkBehaviour
         {
             display_msg.text += "\n" + msg.sender + " : " + msg.text;
         }
+
+    }
+    public void new_message()
+    {
+        time_chat = 0f;
     }
 
     #region buttons

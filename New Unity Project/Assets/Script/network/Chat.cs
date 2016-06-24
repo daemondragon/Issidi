@@ -29,7 +29,7 @@ public class Chat : NetworkBehaviour
         get { return messages; }
     }
 
-    int max_message = 10;
+    int max_message = 30;
 
     // Update is called once per frame
     void Update()
