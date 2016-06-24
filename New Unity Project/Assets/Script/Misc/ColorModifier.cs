@@ -27,8 +27,10 @@ public class ColorModifier : MonoBehaviour
 
     bool NeedChange(Color c)
     {
+        bool is_black = c.r == 0 && c.g == 0 && c.b == 0;
         return (c == Orange.color ||
                 c == Blue.color ||
-                c == White.color);
+                c == White.color ||
+                is_black);
     }
 }
