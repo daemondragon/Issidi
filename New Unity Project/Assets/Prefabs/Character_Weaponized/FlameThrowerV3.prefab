@@ -201,6 +201,7 @@ GameObject:
   - 82: {fileID: 8298244}
   - 114: {fileID: 11411740}
   - 114: {fileID: 11498686}
+  - 114: {fileID: 11453940}
   m_Layer: 0
   m_Name: FlameThrowerV3
   m_TagString: Player
@@ -2056,6 +2057,25 @@ MonoBehaviour:
   jumping: 0
   double_jump: 0
   shot: 0
+--- !u!114 &11453940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 9568538}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &11461120
 MonoBehaviour:
   m_ObjectHideFlags: 1

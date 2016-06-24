@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
 [RequireComponent(typeof(Animation_Info))]
-public class animation : MonoBehaviour
+public class animation : NetworkBehaviour
 {
-
     public Animator anim;
     private float inputH;
     private float inputV;
@@ -16,6 +16,11 @@ public class animation : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if (!hasAuthority)
+        {
+            enabled = false;
+            return;
+        }
         anim = GetComponent<Animator>();
         anim_info = GetComponent<Animation_Info>();
         idling = false;
@@ -26,6 +31,8 @@ public class animation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!hasAuthority)
+            return;
 
         if (Input.anyKeyDown)
         {
@@ -54,23 +61,23 @@ public class animation : MonoBehaviour
 
         //dash = deplacement.onDash();
         // jump = deplacement.onJump()
-/*
-        #region test
+        /*
+                #region test
 
-        if (Input.GetKeyDown(KeyCode.E))
-            anim_info.on_dash = true;
-        if (Input.GetKeyUp(KeyCode.E))
-            anim_info.on_dash = false;
+                if (Input.GetKeyDown(KeyCode.E))
+                    anim_info.on_dash = true;
+                if (Input.GetKeyUp(KeyCode.E))
+                    anim_info.on_dash = false;
 
-        if (Input.GetKeyDown(KeyCode.R))
-            anim_info.jumping = true;
-        if (Input.GetKeyUp(KeyCode.S))
-            anim_info.jumping = false;
+                if (Input.GetKeyDown(KeyCode.R))
+                    anim_info.jumping = true;
+                if (Input.GetKeyUp(KeyCode.S))
+                    anim_info.jumping = false;
 
-        anim_info.double_jump = Input.GetKeyDown(KeyCode.Y);
-        anim_info.shot = Input.GetKey(KeyCode.T);
-        #endregion test
-        */
+                anim_info.double_jump = Input.GetKeyDown(KeyCode.Y);
+                anim_info.shot = Input.GetKey(KeyCode.T);
+                #endregion test
+                */
         anim.SetBool("Djump", anim_info.double_jump);
         anim.SetBool("dash", anim_info.on_dash);
         anim.SetBool("jump", anim_info.jumping);

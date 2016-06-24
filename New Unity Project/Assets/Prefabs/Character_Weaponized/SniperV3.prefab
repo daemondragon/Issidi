@@ -979,6 +979,7 @@ GameObject:
   - 114: {fileID: 11426792}
   - 114: {fileID: 11440616}
   - 114: {fileID: 11489418}
+  - 114: {fileID: 11457136}
   m_Layer: 0
   m_Name: SniperV3
   m_TagString: Player
@@ -2929,6 +2930,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Orange: {fileID: 2100000, guid: 5379198155d491a4995387da8abbcda2, type: 2}
   LightOrange: {fileID: 2100000, guid: 30453487aa93ccd40929d71484a20de5, type: 2}
+--- !u!114 &11457136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 9519846}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &11461038
 MonoBehaviour:
   m_ObjectHideFlags: 1
