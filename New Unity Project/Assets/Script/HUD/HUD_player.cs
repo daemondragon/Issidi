@@ -91,8 +91,6 @@ public class HUD_player : NetworkBehaviour
 
     Button[] buttons;
 
-
-
     string ip_str;
     string port_str;
     string name_str;
@@ -268,7 +266,6 @@ public class HUD_player : NetworkBehaviour
         {
             input_tchat.SetActive(true);
         }
-
     }
 
     void RecolorAllPlayer()
@@ -410,7 +407,6 @@ public class HUD_player : NetworkBehaviour
         }
         else if (state == State.Chat)
         {
-        
             if (Input.GetKeyDown(KeyCode.Escape))
                 ChangeState(State.Play);
         }
