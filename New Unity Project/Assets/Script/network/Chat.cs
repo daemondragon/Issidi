@@ -29,11 +29,16 @@ public class Chat : NetworkBehaviour
         get { return messages; }
     }
 
+    [SyncVar]
+    public bool new_message = false;
+
     int max_message = 30;
 
     // Update is called once per frame
     void Update()
     {
+        if (new_message)
+            new_message = false;
     }
 
     [Command]
@@ -49,6 +54,8 @@ public class Chat : NetworkBehaviour
             });
             if (messages.Count > max_message)
                 messages.RemoveAt(0);
+
+            new_message = true;
         }
     }
 }

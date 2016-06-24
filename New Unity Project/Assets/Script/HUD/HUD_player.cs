@@ -41,13 +41,13 @@ public class HUD_player : NetworkBehaviour
     GameObject input_tchat;
     GameObject option_panel;
     GameObject gamecontroller;
-    
+
 
     InputField msg_input;
     Text msg_tchat;
     Text display_msg;
     Scrollbar scrollbar;
-    public int chat_fade=7;
+    public int chat_fade = 7;
 
     Text scoreB;
     int scoreb;
@@ -120,7 +120,7 @@ public class HUD_player : NetworkBehaviour
         panels[(int)State.Death] = GameObject.Find("death_panel");
         panels[(int)State.Pause] = GameObject.Find("pause_panel");
         panels[(int)State.Chat] = GameObject.Find("tchatbox");
-    
+
         // tchat
 
         input_tchat = GameObject.Find("tchatbox");
@@ -253,19 +253,21 @@ public class HUD_player : NetworkBehaviour
 
 
             msg_input.text += " ";
-           
-
         }
+
         if (state == State.Play)
             time_chat += Time.deltaTime;
         if (time_chat >= (float)chat_fade)
         {
             input_tchat.SetActive(false);
-                 }
+        }
         else
         {
             input_tchat.SetActive(true);
         }
+
+        if (game_manager && game_manager.GetComponent<Chat>().new_message)
+            time_chat = 0;
     }
 
     void RecolorAllPlayer()
@@ -418,10 +420,10 @@ public class HUD_player : NetworkBehaviour
         for (int i = 0; i < (int)State.Count; i++)
         {
             panels[i].SetActive((int)s == i);
-           
+
         }
 
- 
+
         if (s == State.Pause || s == State.Chat)
             panels[(int)State.Play].SetActive(true);
 
@@ -442,7 +444,7 @@ public class HUD_player : NetworkBehaviour
         }
 
         if (s == State.Pause && game_manager)
-            GameObject.Find("ip_adress").GetComponent<InputField>().text = game_manager.server_ip_adress ;
+            GameObject.Find("ip_adress").GetComponent<InputField>().text = game_manager.server_ip_adress;
     }
 
     public void send_tchat()
