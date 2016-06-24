@@ -12,6 +12,7 @@ TagManager:
   - CharacterFactory
   - FxTemporaire
   - HUD
+  - Tower
   layers:
   - Default
   - TransparentFX

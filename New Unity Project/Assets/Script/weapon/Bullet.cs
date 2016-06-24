@@ -15,12 +15,14 @@ public class Bullet : NetworkBehaviour
 
     private Vector3 gravity_vector;
     private Rigidbody body;
-    private Stats.Team team;
+    private Stats.Team team = Stats.Team.Orange;
 
     //if negative, infinite life_time (don't die if no collision)
     public float life_time;
 
     public float ZoneEffect;
+
+    private bool isTower = false;
 
     public void DelayedInitiate(Stats.Team team, Vector3 up)
     {
@@ -32,6 +34,10 @@ public class Bullet : NetworkBehaviour
         this.team = team;
     }
 
+    public void SetTower()
+    {
+        isTower = true;
+    }
 
 
     // Update is called once per frame
@@ -40,7 +46,7 @@ public class Bullet : NetworkBehaviour
         SetRotation();
         if (body)
             body.velocity += gravity_vector * Time.deltaTime;
-        
+
         if (life_time > 0.0f)
         {
             float delta_time = Time.deltaTime;
@@ -58,7 +64,7 @@ public class Bullet : NetworkBehaviour
     {
         PrevPos = transform.position;
     }
-        void ApplyDamages(Collider[] Colliders)
+    void ApplyDamages(Collider[] Colliders)
     {
         foreach (var collision in Colliders)
         {
@@ -67,8 +73,19 @@ public class Bullet : NetworkBehaviour
                 Stats stats = collision.gameObject.GetComponent<Stats>();
                 if (stats)
                 {
-                    //We can't take damage if one of the two player is in Spectator team, or if we are in the same team
-                    if (stats.team != Stats.Team.None && team != Stats.Team.None && team != stats.team)
+                    if (isTower)
+                    {
+                        if (ZoneEffect > 0)
+                        {
+
+                            stats.Life -= damage * (1 - (Vector3.Distance(transform.position, collision.transform.position) / ZoneEffect));
+                        }
+                        else
+                        {
+                            stats.Life -= damage;
+                        }
+                    }
+                    else if (stats.team != Stats.Team.None && team != Stats.Team.None && team != stats.team)
                     {
                         bool previously_dead = stats.IsDead();
                         if (ZoneEffect > 0)
@@ -107,6 +124,7 @@ public class Bullet : NetworkBehaviour
 
     void PlayerReceiveBullet(Collider collider)
     {
+
         if (ZoneEffect > 0)
         {
             var nearby = Physics.OverlapSphere(transform.position, ZoneEffect);
@@ -129,7 +147,7 @@ public class Bullet : NetworkBehaviour
         {
             GameObject Explo = Instantiate(explosion);
             Explo.transform.position = PrevPos;
-      //      Explo.transform.LookAt(PrevPos);
+            //      Explo.transform.LookAt(PrevPos);
             NetworkServer.Spawn(Explo);
         }
     }
@@ -209,10 +227,10 @@ public class Bullet : NetworkBehaviour
         }
     }
 
-    void SetRotation( )
+    void SetRotation()
     {
         Vector3 Direction = transform.position - PrevPos;
-        transform.LookAt(transform.position + Direction);       
+        transform.LookAt(transform.position + Direction);
     }
 
 }

@@ -9,7 +9,7 @@ public class test : NetworkBehaviour
     public float distanceVision = 30f;
     float timeLeft = 2.0f;
     float timeLeftCurrent;
-    float entre_attaque = 0.3f;
+    public float entre_attaque = 0.3f;
     float entre_attaque_Current;
     bool Detecter = false;
     float DistanceJoueur;
@@ -22,12 +22,16 @@ public class test : NetworkBehaviour
     private AudioSource audio_source;
     private int actual_sound;
 
+    Stats stat;
+    public GameObject StartBullet;
+
 
     void Start()
     {
         entre_attaque_Current = entre_attaque;
         timeLeftCurrent = timeLeft;
         actual_sound = 0;
+        stat = transform.root.GetComponent<Stats>();
     }
 
     // Update est appelée une foi par frame
@@ -36,7 +40,7 @@ public class test : NetworkBehaviour
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         if (Player != null)
         {
-            DistanceJoueur = Vector3.Distance(this.transform.position, Player.transform.position); // Calcul de la distance entre la tourelle et le joueur
+            DistanceJoueur = Vector3.Distance(StartBullet.transform.position, Player.transform.position); // Calcul de la distance entre la tourelle et le joueur
 
             Detecter = (DistanceJoueur < distanceVision) ? Detection() : false; // Si le joueur est assez près, on verifie s'il est vu
 
@@ -86,17 +90,13 @@ public class test : NetworkBehaviour
         }
         else
         {
-            GameObject balle = (GameObject)Instantiate(proj, transform.position, Quaternion.identity);
-            //balle.gameObject.name = "balle";
+            GameObject balle = (GameObject)Instantiate(proj, StartBullet.transform.position, Quaternion.identity);           
             NetworkServer.Spawn(balle);
-            balle.GetComponent<Rigidbody>().AddForce(DirectionJoueur * power);    //gestion du tire
-            Debug.Log("Tire");
-            entre_attaque_Current = entre_attaque;
-            Debug.Log("tatatatatat");
-            //audio_source.clip = tire_sound[actual_sound];
-            //audio_source.Play();
-           // actual_sound = (actual_sound + 1) % tire_sound.Count;
+            balle.GetComponent<Rigidbody>().AddForce(DirectionJoueur * power);
+            balle.GetComponent<Bullet>().SetTower();            
+            entre_attaque_Current = entre_attaque;      
 
         }
-    }
+    }    
+
 }
