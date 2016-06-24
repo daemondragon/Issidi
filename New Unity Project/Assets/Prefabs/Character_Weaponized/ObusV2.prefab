@@ -534,6 +534,7 @@ GameObject:
   - 114: {fileID: 11417904}
   - 114: {fileID: 11465364}
   - 82: {fileID: 8200106}
+  - 114: {fileID: 11481122}
   m_Layer: 0
   m_Name: ObusV2
   m_TagString: Player
@@ -1738,7 +1739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de76bb4ef65d7c48a43cf632bb53bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character_factory: {fileID: 0}
+  character_factory: {fileID: 199760, guid: ce477039f2f90704b812d7c054290042, type: 2}
   need_respawn: 0
   can_dash_in_multiple_direction: 0
 --- !u!114 &11440506
@@ -1902,6 +1903,20 @@ MonoBehaviour:
   edgesOnly: 0
   edgesOnlyBgColor: {r: 1, g: 1, b: 1, a: 1}
   edgeDetectShader: {fileID: 4800000, guid: 0d1644bdf064147baa97f235fc5b4903, type: 3}
+--- !u!114 &11481122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89503289aa1eb6b4cb00b2eb9d8ed123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  White: {fileID: 2100000, guid: 7d3c5af9006cc3e4599ff4198f0ae924, type: 2}
+  Blue: {fileID: 2100000, guid: 2dbe48cb1aeaa3a4ba4eb4e6c371bf1b, type: 2}
+  Orange: {fileID: 2100000, guid: 6050e3eda5758e544a38c8e61274a842, type: 2}
 --- !u!124 &12455268
 Behaviour:
   m_ObjectHideFlags: 1

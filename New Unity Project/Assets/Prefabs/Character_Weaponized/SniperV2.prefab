@@ -637,6 +637,7 @@ GameObject:
   - 114: {fileID: 11487952}
   - 114: {fileID: 11417126}
   - 82: {fileID: 8204278}
+  - 114: {fileID: 11480666}
   m_Layer: 0
   m_Name: SniperV2
   m_TagString: Player
@@ -2351,7 +2352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de76bb4ef65d7c48a43cf632bb53bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character_factory: {fileID: 0}
+  character_factory: {fileID: 199760, guid: ce477039f2f90704b812d7c054290042, type: 2}
   need_respawn: 0
   can_dash_in_multiple_direction: 0
 --- !u!114 &11412200
@@ -2505,6 +2506,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aeaeddad7b7ae6409fa47862f836e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11480666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89503289aa1eb6b4cb00b2eb9d8ed123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  White: {fileID: 2100000, guid: 7d3c5af9006cc3e4599ff4198f0ae924, type: 2}
+  Blue: {fileID: 2100000, guid: 2dbe48cb1aeaa3a4ba4eb4e6c371bf1b, type: 2}
+  Orange: {fileID: 2100000, guid: 6050e3eda5758e544a38c8e61274a842, type: 2}
 --- !u!114 &11487350
 MonoBehaviour:
   m_ObjectHideFlags: 1

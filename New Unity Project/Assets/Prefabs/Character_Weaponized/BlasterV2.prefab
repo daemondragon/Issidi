@@ -86,6 +86,7 @@ GameObject:
   - 114: {fileID: 11404214}
   - 114: {fileID: 11433554}
   - 82: {fileID: 8262012}
+  - 114: {fileID: 11401758}
   m_Layer: 0
   m_Name: BlasterV2
   m_TagString: Player
@@ -1506,6 +1507,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11401758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89503289aa1eb6b4cb00b2eb9d8ed123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  White: {fileID: 2100000, guid: 7d3c5af9006cc3e4599ff4198f0ae924, type: 2}
+  Blue: {fileID: 2100000, guid: 2dbe48cb1aeaa3a4ba4eb4e6c371bf1b, type: 2}
+  Orange: {fileID: 2100000, guid: 6050e3eda5758e544a38c8e61274a842, type: 2}
 --- !u!114 &11404214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1688,7 +1703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de76bb4ef65d7c48a43cf632bb53bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character_factory: {fileID: 0}
+  character_factory: {fileID: 199760, guid: ce477039f2f90704b812d7c054290042, type: 2}
   need_respawn: 0
   can_dash_in_multiple_direction: 0
 --- !u!114 &11476648
