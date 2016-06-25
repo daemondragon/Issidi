@@ -427,7 +427,7 @@ public class HUD_player : NetworkBehaviour
         }
 
         if (s == State.Pause && game_manager)
-            GameObject.Find("ip_adress").GetComponent<InputField>().text = game_manager.server_ip_adress;
+            GameObject.Find("ip_adress").GetComponent<InputField>().text = game_manager.server_ip_adress + ":" + game_manager.port;
     }
 
     public void send_tchat()
@@ -473,6 +473,12 @@ public class HUD_player : NetworkBehaviour
     }
     public void return2main()
     {
+        NetworkManager net_manager = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<NetworkManager>();
+        if (hasAuthority)
+            net_manager.StopHost();
+        else
+            net_manager.StopClient();
+
         SceneManager.LoadScene("menu_pricipal");
     }
 
