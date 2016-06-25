@@ -13,6 +13,7 @@ TagManager:
   - FxTemporaire
   - HUD
   - Tower
+  - NetworkManager
   layers:
   - Default
   - TransparentFX
