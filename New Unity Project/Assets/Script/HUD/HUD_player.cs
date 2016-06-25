@@ -473,6 +473,12 @@ public class HUD_player : NetworkBehaviour
     }
     public void return2main()
     {
+        NetworkManager net_manager = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<NetworkManager>();
+        if (hasAuthority)
+            net_manager.StopHost();
+        else
+            net_manager.StopClient();
+
         SceneManager.LoadScene("menu_pricipal");
     }
 
