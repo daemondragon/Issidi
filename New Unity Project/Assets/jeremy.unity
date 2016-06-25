@@ -935,46 +935,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11476874, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
-      propertyPath: m_Text
-      value: Unamed
-      objectReference: {fileID: 0}
-    - target: {fileID: 145570, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 145570, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
-      propertyPath: m_Name
-      value: name_Text
-      objectReference: {fileID: 0}
-    - target: {fileID: 102764, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
-      propertyPath: m_Name
-      value: ip_Text
-      objectReference: {fileID: 0}
-    - target: {fileID: 196938, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
-      propertyPath: m_Name
-      value: port_Text
-      objectReference: {fileID: 0}
-    - target: {fileID: 11435372, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11429748, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 11446630, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
+      propertyPath: HUD_Player
       value: 
-      objectReference: {fileID: 824302077}
-    - target: {fileID: 11429748, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CreateParty
-      objectReference: {fileID: 0}
-    - target: {fileID: 11435372, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 824302077}
-    - target: {fileID: 11435372, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: JoinParty
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2015501036}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
   m_IsPrefabParent: 0
@@ -1730,17 +1694,6 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 117156, guid: e0027407a43880143bb12c2f58d80f38, type: 2}
   m_PrefabInternal: {fileID: 366060662}
---- !u!114 &824302077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 824302071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 715cccaec01de8b4589a0d4f771e97ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &853204494
 Prefab:
   m_ObjectHideFlags: 0
@@ -4223,6 +4176,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2014979698}
   m_Mesh: {fileID: 4300032, guid: 8a148cbffbcfff740aa8b0c3bf4c3ce4, type: 3}
+--- !u!1 &2015501036 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 106074, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
+  m_PrefabInternal: {fileID: 2044310023}
 --- !u!1001 &2044310023
 Prefab:
   m_ObjectHideFlags: 0
@@ -4308,11 +4265,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22491612, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.3583573
-      objectReference: {fileID: 0}
-    - target: {fileID: 106074, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+      value: 0.35835734
       objectReference: {fileID: 0}
     - target: {fileID: 22444732, guid: a372b86d3f1b60e4abf1353b12c03377, type: 2}
       propertyPath: m_AnchorMin.y
