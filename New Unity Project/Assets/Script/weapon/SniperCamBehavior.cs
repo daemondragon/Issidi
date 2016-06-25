@@ -28,6 +28,8 @@ public class SniperCamBehavior : MonoBehaviour
 
     bool IsZoomed = false;
 
+    public Transform MeshToHide;
+
     void Start()
     {
         net = transform.root.GetComponent<NetworkOwner>();
@@ -42,11 +44,18 @@ public class SniperCamBehavior : MonoBehaviour
         Elasped += Time.deltaTime;
         if (IsZoomed)
         {
-
+            if (MeshToHide != null)
+            {
+                MeshToHide.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            }
             Zoom();
         }
         else
         {
+            if (MeshToHide != null)
+            {
+                MeshToHide.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            }
             DeZoom();
         }
         if (Input.GetMouseButtonDown(1))
