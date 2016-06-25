@@ -20,42 +20,43 @@ public class DontGoThroughThings : MonoBehaviour
     //initialize values 
     void Start()
     {
-        myRigidbody = GetComponent<Rigidbody>();
+        previousPosition = transform.position;
         myCollider = GetComponent<Collider>();
-        previousPosition = myRigidbody.position;
-        minimumExtent = Mathf.Min(Mathf.Min(myCollider.bounds.extents.x, myCollider.bounds.extents.y), myCollider.bounds.extents.z);
-        partialExtent = minimumExtent * (1.0f - skinWidth);
-        sqrMinimumExtent = minimumExtent * minimumExtent;
     }
 
     void FixedUpdate()
     {
         //have we moved more than our minimum extent? 
-        Vector3 movementThisStep = myRigidbody.position - previousPosition;
-        float movementSqrMagnitude = movementThisStep.sqrMagnitude;
 
-        if (movementSqrMagnitude > sqrMinimumExtent)
+        float Dist = Vector3.Distance(previousPosition, transform.position);
+
+
+        RaycastHit hitInfo;
+        if (Physics.Raycast(previousPosition, transform.forward * -1, out hitInfo))
         {
-            float movementMagnitude = Mathf.Sqrt(movementSqrMagnitude);
-            RaycastHit hitInfo;
 
-            //check for obstructions we might have missed 
-            if (Physics.Raycast(previousPosition, movementThisStep, out hitInfo, movementMagnitude, layerMask.value))
+
+            if (!hitInfo.collider || (hitInfo.distance > Dist))
             {
-                if (!hitInfo.collider)
-                    return;
-
-                if (hitInfo.collider.isTrigger)
-                {
-                    hitInfo.collider.SendMessage("OnTriggerEnter", myCollider);
-                    myCollider.SendMessage("OnTriggerEnter", hitInfo.collider);
-                }
-
-                           
-
+                previousPosition = transform.position;
+                return;
             }
+
+
+            Debug.Log(hitInfo.transform.name);
+
+            if (hitInfo.collider.isTrigger)
+            {
+                hitInfo.collider.SendMessage("OnTriggerEnter", myCollider);
+            }
+
+            if (myCollider.isTrigger)
+            {
+                myCollider.SendMessage("OnTriggerEnter", hitInfo.collider);
+            }
+            previousPosition = transform.position;
         }
 
-        previousPosition = myRigidbody.position;
+
     }
 }
