@@ -78,23 +78,6 @@ public class HUD_player : NetworkBehaviour
     public bool istchating;
     public float time_chat;
 
-    GameObject croix_rouge_A;
-    GameObject croix_rouge_P;
-
-    public bool isAtStartup = true;
-    NetworkClient myClient;
-
-    InputField[] inputs;
-    InputField Name_input;
-    InputField address;
-    InputField port;
-
-    Button[] buttons;
-
-    string ip_str;
-    string port_str;
-    string name_str;
-
     //Pour récuperer le bon character
     bool have_find;
     GameObject player;
@@ -200,7 +183,7 @@ public class HUD_player : NetworkBehaviour
         stats.CanMovePlayer = true;
 
         player = character;
-        Name = stats.Name;
+        stats.Name = Name;
 
         Text[] weapon_name = weapon_panel.GetComponentsInChildren<Text>();
         weapon_name[1].text = stats.WeaponName; // insert weapon name to be fair to other oponent else they stand no chance!
@@ -567,59 +550,5 @@ public class HUD_player : NetworkBehaviour
         team = 2;
         selectbtnB.SetActive(true);
     }
-    #endregion
-
-    #region serveur
-
-    // Create a server and listen on a port
-    public void SetupServer()
-    {
-        Debug.Log(port_str);
-        NetworkServer.Listen(Convert.ToUInt16(port_str));
-        isAtStartup = false;
-    }
-
-    // Create a client and connect to the server port
-    public void SetupClient()
-    {
-        myClient = new NetworkClient();
-        myClient.RegisterHandler(MsgType.Connect, OnConnected);
-        myClient.Connect(ip_str, Convert.ToUInt16(port_str));
-        isAtStartup = false;
-    }
-
-    // Create a local client and connect to the local server
-    public void SetupLocalClient()
-    {
-        myClient = ClientScene.ConnectLocalServer();
-        myClient.RegisterHandler(MsgType.Connect, OnConnected);
-    }
-    // client function
-    public void OnConnected(NetworkMessage netMsg)
-    {
-        Debug.Log("Connected to server");
-    }
-    public void Create_join()
-    {
-
-        SetupServer();
-
-        SetupLocalClient();
-        ChangeState(State.Selection);
-
-    }
-    private void button_set(bool b)
-    {
-
-        buttons[1].interactable = b;
-
-    }
-
-    private bool address_valid(string s)
-    {
-        IPAddress osef;
-        return s != "" && IPAddress.TryParse(s, out osef) && s.Contains(".");
-    }
-
     #endregion
 }

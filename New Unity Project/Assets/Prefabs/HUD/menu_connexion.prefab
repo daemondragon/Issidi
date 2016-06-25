@@ -11,7 +11,7 @@ GameObject:
   - 222: {fileID: 22215322}
   - 114: {fileID: 11470646}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ip_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,6 +116,7 @@ GameObject:
   - 114: {fileID: 11412030}
   - 114: {fileID: 11412656}
   - 114: {fileID: 11419894}
+  - 114: {fileID: 11446630}
   m_Layer: 5
   m_Name: menu_connexion
   m_TagString: Untagged
@@ -240,7 +241,7 @@ GameObject:
   - 222: {fileID: 22270050}
   - 114: {fileID: 11437464}
   m_Layer: 5
-  m_Name: Text
+  m_Name: name_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,7 +347,7 @@ GameObject:
   - 222: {fileID: 22243264}
   - 114: {fileID: 11434318}
   m_Layer: 5
-  m_Name: Text
+  m_Name: port_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -598,8 +599,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Create_join
+      - m_Target: {fileID: 11446630}
+        m_MethodName: CreateParty
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -728,8 +729,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetupClient
+      - m_Target: {fileID: 11446630}
+        m_MethodName: JoinParty
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -941,6 +942,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11446630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715cccaec01de8b4589a0d4f771e97ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUD_Player: {fileID: 0}
 --- !u!114 &11455638
 MonoBehaviour:
   m_ObjectHideFlags: 1
