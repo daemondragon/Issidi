@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -210,6 +211,7 @@ public class HUD_solo : MonoBehaviour
 
     public void return2main()
     {
+        GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<NetworkManager>().StopHost();
         SceneManager.LoadScene("menu_pricipal");
     }
 

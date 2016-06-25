@@ -427,7 +427,7 @@ public class HUD_player : NetworkBehaviour
         }
 
         if (s == State.Pause && game_manager)
-            GameObject.Find("ip_adress").GetComponent<InputField>().text = game_manager.server_ip_adress;
+            GameObject.Find("ip_adress").GetComponent<InputField>().text = game_manager.server_ip_adress + ":" + game_manager.port;
     }
 
     public void send_tchat()
