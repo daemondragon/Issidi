@@ -17,6 +17,7 @@ public class DontGoThroughThings : MonoBehaviour
     private Rigidbody myRigidbody;
     private Collider myCollider;
 
+    private float MinTime = 0;
     //initialize values 
     void Start()
     {
@@ -27,6 +28,14 @@ public class DontGoThroughThings : MonoBehaviour
     void FixedUpdate()
     {
         //have we moved more than our minimum extent? 
+        if (MinTime < 125)
+        {
+            MinTime += Time.deltaTime;
+            previousPosition = transform.position;
+            return;
+        }
+
+
 
         float Dist = Vector3.Distance(previousPosition, transform.position);
 
