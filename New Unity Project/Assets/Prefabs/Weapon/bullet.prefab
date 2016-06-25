@@ -18,6 +18,7 @@ GameObject:
   - 199: {fileID: 19918966}
   - 114: {fileID: 11410246}
   - 114: {fileID: 11474348}
+  - 114: {fileID: 11425398}
   m_Layer: 2
   m_Name: bullet
   m_TagString: Untagged
@@ -122,6 +123,22 @@ MonoBehaviour:
   damage: 10
   life_time: 10
   ZoneEffect: 0
+--- !u!114 &11425398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6fea3556c967d48af3e64b228cedd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendTriggerMessage: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  skinWidth: 0.1
 --- !u!114 &11441600
 MonoBehaviour:
   m_ObjectHideFlags: 1

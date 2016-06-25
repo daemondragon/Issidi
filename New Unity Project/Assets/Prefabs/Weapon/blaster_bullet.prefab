@@ -70,6 +70,7 @@ GameObject:
   - 114: {fileID: 11444174}
   - 114: {fileID: 11455842}
   - 114: {fileID: 11471164}
+  - 114: {fileID: 11425758}
   m_Layer: 2
   m_Name: blaster_bullet
   m_TagString: Untagged
@@ -86,7 +87,6 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 449322}
   m_RootOrder: 0
@@ -99,7 +99,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.105071, y: -1.9254034, z: -2.0351427}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 449322}
   m_Father: {fileID: 0}
@@ -113,7 +112,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 449322}
   m_RootOrder: 1
@@ -126,7 +124,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 425542}
   - {fileID: 430642}
@@ -240,6 +237,22 @@ MonoBehaviour:
   delay: 0.1
   finalIntensity: 0
   autodestruct: 1
+--- !u!114 &11425758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6fea3556c967d48af3e64b228cedd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendTriggerMessage: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  skinWidth: 0.1
 --- !u!114 &11437778
 MonoBehaviour:
   m_ObjectHideFlags: 1
