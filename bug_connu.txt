@@ -5,3 +5,4 @@ ignore raycast pour les mur solo invisible.	 *
 Resoudre problème TP solo.			 * rigid body collision continuous detection
 rigidbody du prefab pd_obus use_gravity = false; *
 map solo on peut encore bouger en pause		 *
+le client ne peut pas parler dans le chat
