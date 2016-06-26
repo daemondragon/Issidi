@@ -8,16 +8,21 @@ public class SwitchGravity : MonoBehaviour
 {
     private float DistanceMax = 2.0f;
     Deplacement d;
+    Stats stats;
     int layerMask = 9;
 
     void Start()
     {
-        d = transform.GetComponent<Deplacement>();
+        d = GetComponent<Deplacement>();
+        stats = GetComponent<Stats>();
     }
 
 
     void Update()
     {
+        if (stats && !stats.CanMovePlayer)
+            return;
+
         if (Input.GetKeyDown(KeyCode.E))
             TryChangeDirection();
     }
