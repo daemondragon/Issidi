@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  speed: 60
+  speed: 40
   gravity: -1
   damage: 70
   life_time: 20

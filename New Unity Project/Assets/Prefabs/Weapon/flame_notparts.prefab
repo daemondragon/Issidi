@@ -107,7 +107,7 @@ MonoBehaviour:
   explosion: {fileID: 0}
   speed: 12
   gravity: 0
-  damage: 1
+  damage: 3
   life_time: 0.33
   ZoneEffect: 0
 --- !u!114 &11488392

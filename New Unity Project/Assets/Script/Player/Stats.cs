@@ -5,6 +5,8 @@ public class Stats : NetworkBehaviour
 {
     private ColorModifier[] colors = null;
 
+    public GameObject Explosion;
+
     public enum Team
     {
         None = 0,
@@ -275,8 +277,19 @@ public class Stats : NetworkBehaviour
 
     public void KillPlayer()
     {
+        Cmd_Explosion();
         Cmd_CreateCharacterFactory();
         Cmd_DestroyPlayer(gameObject);
+    }
+
+    [Command]
+    void Cmd_Explosion()
+    {
+        if(Explosion != null)
+        {
+            GameObject O = (GameObject)Instantiate(Explosion,transform.position,Quaternion.identity);
+            NetworkServer.Spawn(O);            
+        }
     }
 
     [Command]
