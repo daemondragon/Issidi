@@ -225,13 +225,15 @@ public class Stats : NetworkBehaviour
 
     }
 
+    [Command]
     void Cmd_SendMessage(Chat.Type type, string message, string sender)
     {
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().GetComponent<Chat>().SendMessage(type, message, sender);
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<Chat>().SendMessage(type, message, sender);
     }
 
     public void SendMessage(Chat.Type type, string message, string sender)
     {
+        Debug.Log(sender + " client message: " + message);
         Cmd_SendMessage(type, message, sender);
     }
 
@@ -295,10 +297,10 @@ public class Stats : NetworkBehaviour
     [Command]
     void Cmd_Explosion()
     {
-        if(Explosion != null)
+        if (Explosion != null)
         {
-            GameObject O = (GameObject)Instantiate(Explosion,transform.position,Quaternion.identity);
-            NetworkServer.Spawn(O);            
+            GameObject O = (GameObject)Instantiate(Explosion, transform.position, Quaternion.identity);
+            NetworkServer.Spawn(O);
         }
     }
 

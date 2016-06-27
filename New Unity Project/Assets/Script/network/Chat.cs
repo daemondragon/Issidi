@@ -30,17 +30,23 @@ public class Chat : NetworkBehaviour
     }
 
     [SyncVar]
-    public bool new_message = false;
+    public int new_message = 0;
 
     int max_message = 30;
 
     // Update is called once per frame
     void Update()
     {
-        if (new_message)
-            new_message = false;
+        if (new_message != 0)
+            new_message--;
     }
 
+    public bool NewMessage()
+    {
+        return new_message != 0;
+    }
+
+    [Server]
     public void SendMessage(Type type, string message, string sender)
     {
         if (type != Type.Command)
@@ -54,7 +60,7 @@ public class Chat : NetworkBehaviour
             if (messages.Count > max_message)
                 messages.RemoveAt(0);
 
-            new_message = true;
+            new_message = 3;
         }
     }
 }
