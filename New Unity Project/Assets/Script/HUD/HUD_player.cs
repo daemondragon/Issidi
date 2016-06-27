@@ -433,7 +433,7 @@ public class HUD_player : NetworkBehaviour
     public void send_tchat()
 
     {
-        if (msg_input.text != null)
+        if (msg_input.text != null && msg_input.text != "")
         {
             string msg = msg_input.text.ToString();
             stats.SendMessage(Chat.Type.ServerInfo, msg, Name);
