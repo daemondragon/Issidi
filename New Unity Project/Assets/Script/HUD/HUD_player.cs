@@ -249,8 +249,12 @@ public class HUD_player : NetworkBehaviour
             input_tchat.SetActive(true);
         }
 
-        if (game_manager && game_manager.GetComponent<Chat>().new_message)
+        if (game_manager && game_manager.GetComponent<Chat>().NewMessage())
             time_chat = 0;
+
+        if (hasAuthority && Input.GetKeyDown(KeyCode.Keypad0))
+            stats.SendMessage(Chat.Type.PlayerMessage, "bien joue!", "Un autre robot");
+
     }
 
     void RecolorAllPlayer()
