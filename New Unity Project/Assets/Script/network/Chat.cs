@@ -41,6 +41,7 @@ public class Chat : NetworkBehaviour
             new_message = false;
     }
 
+    [Server]
     public void SendMessage(Type type, string message, string sender)
     {
         if (type != Type.Command)

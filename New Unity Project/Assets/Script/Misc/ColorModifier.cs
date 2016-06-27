@@ -20,8 +20,8 @@ public class ColorModifier : MonoBehaviour
         {
             Material[] mats = renderers[i].materials;
             for (int j = 0; j < mats.Length; j++)
-            if (mats[j].HasProperty("_Color") && NeedChange(mats[j].color))
-                mats[j].color = to_apply.color;
+                if (mats[j].HasProperty("_Color") && NeedChange(mats[j].color))
+                    mats[j].color = to_apply.color;
         }
     }
 
