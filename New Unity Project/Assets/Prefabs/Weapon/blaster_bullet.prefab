@@ -303,7 +303,7 @@ MonoBehaviour:
   explosion: {fileID: 100004, guid: b69bae1cab5b7f94f81fd8df175e1ce8, type: 2}
   speed: 12
   gravity: 0
-  damage: 8
+  damage: 9
   life_time: 10
   ZoneEffect: 0
 --- !u!114 &11455842

@@ -2200,15 +2200,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f67abd3d02ad149aeb7ef82e779467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Lance-Grenade
+  Name: Blaster
   Son_De_Tir: {fileID: 8300000, guid: 79759d51eb151fc429db447c90c54e3b, type: 3}
   looping_sound: 0
   activate: 0
   Automatic: 1
   Rate: 10
   bullet_template: {fileID: 180630, guid: 20f44e797a20e254f81877ccd89ff2b1, type: 2}
-  nb_bullets: 40
-  bullet_per_second: 0.7
+  nb_bullets: 60
+  bullet_per_second: 0.8
   BulletStart: {fileID: 460034}
 --- !u!114 &11490162
 MonoBehaviour:
