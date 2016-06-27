@@ -52,7 +52,7 @@ public class DontGoThroughThings : MonoBehaviour
             }
 
 
-            Debug.Log(hitInfo.transform.name);
+         
 
             if (hitInfo.collider.isTrigger)
             {
