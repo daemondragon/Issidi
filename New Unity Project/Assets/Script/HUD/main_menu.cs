@@ -13,6 +13,7 @@ public class main_menu : MonoBehaviour
 {
 
     GameObject mainpanel;
+    GameObject selct_map;
    
    
 
@@ -20,10 +21,11 @@ public class main_menu : MonoBehaviour
     void Start()
     {
         mainpanel = GameObject.Find("main");
-       
+        selct_map = GameObject.Find("selection_map");
 
 
         mainpanel.SetActive(true);
+        selct_map.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,6 +33,10 @@ public class main_menu : MonoBehaviour
     {
 
     
+    }
+    public void open_slct()
+    {
+        selct_map.SetActive(true);
     }
   
     public void openPanelco()
@@ -48,9 +54,14 @@ public class main_menu : MonoBehaviour
     {
         Application.Quit();
     }
-    public void option()
+    public void retour()
     {
-
+        selct_map.SetActive(false);
+    }
+   
+    public void openMap2()
+    {
+        SceneManager.LoadScene(3);
     }
  
 
