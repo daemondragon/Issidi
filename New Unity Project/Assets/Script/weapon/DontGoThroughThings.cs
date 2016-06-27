@@ -13,7 +13,7 @@ public class DontGoThroughThings : MonoBehaviour
     private float minimumExtent;
     private float partialExtent;
     private float sqrMinimumExtent;
-    private Vector3 previousPosition;
+    private Vector3 previousPosition = Vector3.zero;
     private Rigidbody myRigidbody;
     private Collider myCollider;
 
@@ -28,22 +28,22 @@ public class DontGoThroughThings : MonoBehaviour
     void FixedUpdate()
     {
         //have we moved more than our minimum extent? 
-        if (MinTime < 125)
+        if(previousPosition == Vector3.zero)
         {
-            MinTime += Time.deltaTime;
             previousPosition = transform.position;
             return;
         }
-
-
 
         float Dist = Vector3.Distance(previousPosition, transform.position);
 
 
         RaycastHit hitInfo;
-        if (Physics.Raycast(previousPosition, transform.forward * -1, out hitInfo))
-        {
 
+        
+
+        if (Physics.Linecast(previousPosition, transform.position,out hitInfo))
+        {
+            
 
             if (!hitInfo.collider || (hitInfo.distance > Dist))
             {
