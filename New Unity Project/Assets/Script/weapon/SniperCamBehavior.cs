@@ -17,6 +17,9 @@ public class SniperCamBehavior : MonoBehaviour
     NetworkOwner net;
     public Camera cam;
 
+    float BTime = 0.250f;
+    float CurTime = 0;
+
 
     int MinFOV = 20; //Zoomed
     int MaxFOV = 60; //DeZoomed FRANGLAIS
@@ -58,10 +61,15 @@ public class SniperCamBehavior : MonoBehaviour
             }
             DeZoom();
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && CurTime > BTime)
         {
             IsZoomed = !IsZoomed;
             Elasped = 0;
+            CurTime = 0;
+        }
+        else
+        {
+            CurTime += Time.deltaTime;
         }
     }
 
