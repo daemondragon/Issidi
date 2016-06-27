@@ -92,10 +92,7 @@ public class GameManager : NetworkBehaviour
                 break;
             case State.EndOfGame:
                 if (decreasing_timer <= 0.0f)
-                {
                     state = State.WaitingForPlayer;
-                    GetComponent<Chat>().SendMessage(Chat.Type.ServerInfo, "Waiting for player", "server");
-                }
                 break;
         }
     }
