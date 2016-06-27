@@ -434,7 +434,7 @@ public class HUD_player : NetworkBehaviour
 
     {
         if (msg_input.text != null && msg_input.text != "")
-        {
+        {//test
             string msg = msg_input.text.ToString();
             stats.SendMessage(Chat.Type.ServerInfo, msg, Name);
             msg_input.text = "";
