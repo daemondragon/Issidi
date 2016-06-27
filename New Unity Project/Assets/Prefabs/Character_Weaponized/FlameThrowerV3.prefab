@@ -2224,7 +2224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Lance-Flamme
-  Son_De_Tir: {fileID: 8300000, guid: a66ac5842adb2054a8fac05b17b393e7, type: 3}
+  Son_De_Tir: {fileID: 8300000, guid: e67f69f9d6826db418c773c3fbf7b931, type: 3}
   looping_sound: 1
   activate: 0
   Automatic: 1
