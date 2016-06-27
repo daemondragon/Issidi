@@ -436,8 +436,7 @@ public class HUD_player : NetworkBehaviour
         if (msg_input.text != null)
         {
             string msg = msg_input.text.ToString();
-
-            gamecontroller.GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, msg, Name);
+            stats.SendMessage(Chat.Type.ServerInfo, msg, Name);
         }
 
         ChangeState(State.Play);

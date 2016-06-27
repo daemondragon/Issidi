@@ -51,6 +51,9 @@ public class GameManager : NetworkBehaviour
         if (!hasAuthority)
             return;
 
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+            decreasing_timer = 5.0f;
+
         UpdateState();
     }
 
@@ -91,7 +94,7 @@ public class GameManager : NetworkBehaviour
                 if (decreasing_timer <= 0.0f)
                 {
                     state = State.WaitingForPlayer;
-                    GetComponent<Chat>().Cmd_SendMessage(Chat.Type.ServerInfo, "Waiting for player", "server");
+                    GetComponent<Chat>().SendMessage(Chat.Type.ServerInfo, "Waiting for player", "server");
                 }
                 break;
         }
