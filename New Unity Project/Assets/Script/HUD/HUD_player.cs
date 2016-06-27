@@ -251,10 +251,6 @@ public class HUD_player : NetworkBehaviour
 
         if (game_manager && game_manager.GetComponent<Chat>().NewMessage())
             time_chat = 0;
-
-        if (hasAuthority && Input.GetKeyDown(KeyCode.Keypad0))
-            stats.SendMessage(Chat.Type.PlayerMessage, "bien joue!", "Un autre robot");
-
     }
 
     void RecolorAllPlayer()
@@ -441,6 +437,7 @@ public class HUD_player : NetworkBehaviour
         {
             string msg = msg_input.text.ToString();
             stats.SendMessage(Chat.Type.ServerInfo, msg, Name);
+            msg_input.text = "";
         }
 
         ChangeState(State.Play);
