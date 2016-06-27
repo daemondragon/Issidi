@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/jeremy.unity
   - enabled: 1
     path: Assets/Map solo/Map Solo.unity
+  - enabled: 1
+    path: Assets/2em map mult.unity
