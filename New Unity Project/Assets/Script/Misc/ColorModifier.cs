@@ -3,7 +3,6 @@ using System.Collections;
 
 public class ColorModifier : MonoBehaviour
 {
-    public Material White;
     public Material Blue;
     public Material Orange;
 
@@ -28,15 +27,7 @@ public class ColorModifier : MonoBehaviour
         {
             Renderer[] renderers = GetComponentsInChildren<Renderer>();
             for (int i = 0; i < renderers.Length; i++)
-            {
-                Material[] mats = renderers[i].materials;
-                for (int j = 0; j < mats.Length; j++)
-                {
-                    Color color;
-                    color.r = color.g = color.b = color.a = 255;
-                    mats[j].color = color;
-                }
-            }
+                renderers[i].enabled = false;
         }
     }
 
@@ -45,7 +36,6 @@ public class ColorModifier : MonoBehaviour
         bool is_black = c.r == 0 && c.g == 0 && c.b == 0;
         return (c == Orange.color ||
                 c == Blue.color ||
-                c == White.color ||
                 is_black);
     }
 }

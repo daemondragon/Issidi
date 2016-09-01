@@ -207,8 +207,11 @@ public class HUD_player : NetworkBehaviour
         UpdateState();
         RecolorAllPlayer();
 
-        if (state == State.Play || state == State.Pause || state == State.Chat)
+        if ((state == State.Play || state == State.Pause || state == State.Chat))
             DrawUpdate();
+
+        if (state == State.Play)
+            panels[(int)State.Play].SetActive(!stats || stats.team != Stats.Team.None);
 
         if (state == State.Play && !have_find)
         {

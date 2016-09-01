@@ -72,7 +72,7 @@ public class Weapon : NetworkBehaviour
 
     private void Shoot()
     {
-        if (!isLocalPlayer || !weapon)
+        if (!isLocalPlayer || !weapon || (stats && stats.team == Stats.Team.None))
             return;
 
         if (!looping_sound)

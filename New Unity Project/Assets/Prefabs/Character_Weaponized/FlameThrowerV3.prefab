@@ -2209,7 +2209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89503289aa1eb6b4cb00b2eb9d8ed123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  White: {fileID: 2100000, guid: 7d3c5af9006cc3e4599ff4198f0ae924, type: 2}
+  White: {fileID: 2100000, guid: 0d9e9a52600328345b7308d68d956761, type: 2}
   Blue: {fileID: 2100000, guid: 2dbe48cb1aeaa3a4ba4eb4e6c371bf1b, type: 2}
   Orange: {fileID: 2100000, guid: 6050e3eda5758e544a38c8e61274a842, type: 2}
 --- !u!114 &11498686
