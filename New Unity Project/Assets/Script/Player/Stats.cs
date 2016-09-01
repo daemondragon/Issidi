@@ -203,6 +203,7 @@ public class Stats : NetworkBehaviour
         foreach (ColorModifier col in colors)
         {
             col.SetTeam(_team);
+            GetComponent<BoxCollider>().enabled = _team != Team.None;
         }
     }
 

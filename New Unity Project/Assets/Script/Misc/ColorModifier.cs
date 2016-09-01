@@ -9,19 +9,34 @@ public class ColorModifier : MonoBehaviour
 
     public void SetTeam(Stats.Team team)
     {
-        Material to_apply = White;
-        if (team == Stats.Team.Blue)
-            to_apply = Blue;
-        else if (team == Stats.Team.Orange)
-            to_apply = Orange;
-
-        Renderer[] renderers = GetComponentsInChildren<Renderer>();
-        for (int i = 0; i < renderers.Length; i++)
+        if (team != Stats.Team.None)
         {
-            Material[] mats = renderers[i].materials;
-            for (int j = 0; j < mats.Length; j++)
-                if (mats[j].HasProperty("_Color") && NeedChange(mats[j].color))
-                    mats[j].color = to_apply.color;
+            Material to_apply = Blue;
+            if (team == Stats.Team.Orange)
+                to_apply = Orange;
+
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                Material[] mats = renderers[i].materials;
+                for (int j = 0; j < mats.Length; j++)
+                    if (mats[j].HasProperty("_Color") && NeedChange(mats[j].color))
+                        mats[j].color = to_apply.color;
+            }
+        }
+        else
+        {
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                Material[] mats = renderers[i].materials;
+                for (int j = 0; j < mats.Length; j++)
+                {
+                    Color color;
+                    color.r = color.g = color.b = color.a = 255;
+                    mats[j].color = color;
+                }
+            }
         }
     }
 

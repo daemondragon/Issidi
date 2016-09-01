@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NetworkOwner))]
 [RequireComponent(typeof(Stats))]
 
@@ -90,93 +89,103 @@ public class Deplacement : MonoBehaviour
 
     void MoveCharacter(float delta_time)
     {
-        Vector3 direction = transform.up;
-        is_walking = false;
+        if (stats.team != Stats.Team.None)
+        {
+            Vector3 direction = transform.up;
+            is_walking = false;
 
-        movement = new Vector2(0, 0);
-        float movement_speed = speed;
+            movement = new Vector2(0, 0);
+            float movement_speed = speed;
 
-        if (!on_dash)
-            movement = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+            if (!on_dash)
+                movement = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+            else
+            {
+                Vector2 actual_direction = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+                if (Vector2.Dot(dash_direction, actual_direction) < -0.25)
+                    on_dash = false;
+
+                movement = dash_direction;
+                movement_speed = dash_speed;
+
+                actual_dash_time += delta_time;
+                if (actual_dash_time > dash_time)
+                    on_dash = false;
+            }
+
+            if (!on_ground)
+            {
+                jump_time += delta_time;
+                movement *= 0.5f;
+            }
+
+            bool is_moving = (movement.x != 0.0f || movement.y != 0.0f);
+            is_walking = is_moving && on_ground;
+            if (is_moving)
+            {
+                //Clear the velocity of the deplacement axis
+                rigid_body.velocity = new Vector3(rigid_body.velocity.x * Mathf.Abs(direction.x),
+                                                  rigid_body.velocity.y * Mathf.Abs(direction.y),
+                                                  rigid_body.velocity.z * Mathf.Abs(direction.z));
+            }
+
+            rigid_body.velocity += (transform.forward * movement.x + transform.right * movement.y) * movement_speed;
+
+
+            Vector3 final_gravity = gravity * direction * delta_time;
+            if (on_dash && on_ground)
+                final_gravity /= 20;
+
+            rigid_body.velocity += final_gravity;
+
+            if (Input.GetKey(KeyCode.LeftShift) && on_ground && !on_dash && stats.CanDash())
+            {
+                on_dash = true;
+                if (stats.can_dash_in_multiple_direction && (movement.x != 0 || movement.y != 0))
+                    dash_direction = movement;
+                else
+                    dash_direction = new Vector2(1.0f, 0);
+
+                actual_dash_time = 0.0f;
+                stats.Dash();
+            }
+
+            if (anim_info)
+            {
+                anim_info.on_dash = on_dash;
+                if (anim_info.double_jump)
+                    anim_info.double_jump = false;
+            }
+
+            if (Input.GetAxis("Jump") != 0.0f && (on_ground || (multiple_jump < 2 && jump_time > 0.30)))
+                Jump();
+
+            if (Input.GetKey(KeyCode.Keypad1))
+                SetDirection(Direction.X);
+            else if (Input.GetKey(KeyCode.Keypad2))
+                SetDirection(Direction.mX);
+            else if (Input.GetKey(KeyCode.Keypad3))
+                SetDirection(Direction.Y);
+            else if (Input.GetKey(KeyCode.Keypad4))
+                SetDirection(Direction.mY);
+            else if (Input.GetKey(KeyCode.Keypad5))
+                SetDirection(Direction.Z);
+            else if (Input.GetKey(KeyCode.Keypad6))
+                SetDirection(Direction.mZ);
+        }
         else
         {
-            Vector2 actual_direction = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
-            if (Vector2.Dot(dash_direction, actual_direction) < -0.25)
-                on_dash = false;
+            movement = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+            transform.position += (transform.forward * movement.x + transform.right * movement.y +
+                transform.up * Input.GetAxis("Jump") - transform.up * (float)System.Convert.ToDouble(Input.GetKey(KeyCode.LeftShift))) * speed * Time.deltaTime;
 
-            movement = dash_direction;
-            movement_speed = dash_speed;
-
-            actual_dash_time += delta_time;
-            if (actual_dash_time > dash_time)
-                on_dash = false;
         }
-
-        if (!on_ground)
-        {
-            jump_time += delta_time;
-            movement *= 0.5f;
-        }
-
-        bool is_moving = (movement.x != 0.0f || movement.y != 0.0f);
-        is_walking = is_moving && on_ground;
-        if (is_moving)
-        {
-            //Clear the velocity of the deplacement axis
-            rigid_body.velocity = new Vector3(rigid_body.velocity.x * Mathf.Abs(direction.x),
-                                              rigid_body.velocity.y * Mathf.Abs(direction.y),
-                                              rigid_body.velocity.z * Mathf.Abs(direction.z));
-        }
-
-        rigid_body.velocity += (transform.forward * movement.x + transform.right * movement.y) * movement_speed;
-
-
-        Vector3 final_gravity = gravity * direction * delta_time;
-        if (on_dash && on_ground)
-            final_gravity /= 20;
-
-        rigid_body.velocity += final_gravity;
-
-        if (Input.GetKey(KeyCode.LeftShift) && on_ground && !on_dash && stats.CanDash())
-        {
-            on_dash = true;
-            if (stats.can_dash_in_multiple_direction && (movement.x != 0 || movement.y != 0))
-                dash_direction = movement;
-            else
-                dash_direction = new Vector2(1.0f, 0);
-
-            actual_dash_time = 0.0f;
-            stats.Dash();
-        }
-
-        if (anim_info)
-        {
-            anim_info.on_dash = on_dash;
-            if (anim_info.double_jump)
-                anim_info.double_jump = false;
-        }
-
-        if (Input.GetAxis("Jump") != 0.0f && (on_ground || (multiple_jump < 2 && jump_time > 0.30)))
-            Jump();
-
-        if (Input.GetKey(KeyCode.Keypad1))
-            SetDirection(Direction.X);
-        else if (Input.GetKey(KeyCode.Keypad2))
-            SetDirection(Direction.mX);
-        else if (Input.GetKey(KeyCode.Keypad3))
-            SetDirection(Direction.Y);
-        else if (Input.GetKey(KeyCode.Keypad4))
-            SetDirection(Direction.mY);
-        else if (Input.GetKey(KeyCode.Keypad5))
-            SetDirection(Direction.Z);
-        else if (Input.GetKey(KeyCode.Keypad6))
-            SetDirection(Direction.mZ);
     }
 
     void Jump()
     {
         on_ground = false;
-        
+
         if (anim_info)
             anim_info.jumping = true;
 
@@ -184,12 +193,12 @@ public class Deplacement : MonoBehaviour
         if (on_ground)
         {
             multiple_jump = 1;
-          
+
         }
         else
         {
             multiple_jump++;
-           
+
             if (anim_info)
             {
                 anim_info.double_jump = true;
