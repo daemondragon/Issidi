@@ -9,12 +9,14 @@ public class CameraDeplacement : MonoBehaviour
     private Vector3 camera_direction;
     public float mouse_sensivity;
     private bool activate;
+    Stats stats;
 
     private Deplacement deplacement;
 
     void Start()
     {
         deplacement = transform.root.GetComponent<Deplacement>();
+        stats = GetComponentInParent<Stats>();
 
         NetworkOwner net = transform.root.GetComponent<NetworkOwner>();
         GetComponent<Camera>().enabled = net.IsMine();
@@ -46,17 +48,19 @@ public class CameraDeplacement : MonoBehaviour
 
     void UpdateCamera()
     {
-        //Prevent the camera to go inside wall
-        Vector3 parent_position = transform.parent.transform.position;
+        if (!stats || stats.team != Stats.Team.None)
+        {//Prevent the camera to go inside wall
+            Vector3 parent_position = transform.parent.transform.position;
 
-        camera_direction = transform.position - parent_position;
-        camera_direction.Normalize();
+            camera_direction = transform.position - parent_position;
+            camera_direction.Normalize();
 
-        RaycastHit info;
-        if (Physics.Raycast(parent_position, camera_direction, out info, max_distance))
-            transform.position = parent_position + camera_direction * info.distance * 0.7f;
-        else
-            transform.position = parent_position + camera_direction * max_distance * 0.9f;
+            RaycastHit info;
+            if (Physics.Raycast(parent_position, camera_direction, out info, max_distance))
+                transform.position = parent_position + camera_direction * info.distance * 0.7f;
+            else
+                transform.position = parent_position + camera_direction * max_distance * 0.9f;
+        }
 
         if (deplacement && deplacement.canMoveCamera())
             MoveCamera();

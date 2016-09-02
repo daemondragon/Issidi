@@ -15,6 +15,7 @@ public class SniperCamBehavior : MonoBehaviour
     // Use this for initialization
 
     NetworkOwner net;
+    Stats stats;
     public Camera cam;
 
     float BTime = 0.250f;
@@ -36,6 +37,7 @@ public class SniperCamBehavior : MonoBehaviour
     void Start()
     {
         net = transform.root.GetComponent<NetworkOwner>();
+        stats = GetComponentInParent<Stats>();
         Dif = MaxFOV - MinFOV;
     }
 
@@ -47,7 +49,7 @@ public class SniperCamBehavior : MonoBehaviour
         Elasped += Time.deltaTime;
         if (IsZoomed)
         {
-            if (MeshToHide != null)
+            if (MeshToHide != null && (!stats || stats.team != Stats.Team.None))
             {
                 MeshToHide.GetComponent<SkinnedMeshRenderer>().enabled = false;
             }
@@ -55,7 +57,7 @@ public class SniperCamBehavior : MonoBehaviour
         }
         else
         {
-            if (MeshToHide != null)
+            if (MeshToHide != null && (!stats || stats.team != Stats.Team.None))
             {
                 MeshToHide.GetComponent<SkinnedMeshRenderer>().enabled = true;
             }
